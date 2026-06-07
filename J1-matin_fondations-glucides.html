@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>J1 Matin · Fondations & Glucides — Nutrition WFARM2149</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6f1e7; --paper-2:#efe7d6; --ink:#211c16; --ink-soft:#5a5044;
+  --accent:#b8492b; --accent-deep:#8a3219; --accent-soft:#e8c9bb;
+  --line:#d9cdb6; --gold:#a9842f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.6;
+  background-image:radial-gradient(circle at 12% 8%,rgba(184,73,43,.06),transparent 40%),radial-gradient(circle at 88% 92%,rgba(169,132,47,.06),transparent 45%);
+}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 120px}
+header.hero{padding:64px 0 40px;border-bottom:3px double var(--line);margin-bottom:8px}
+.kicker{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-deep);font-weight:700}
+.hero h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(38px,7vw,68px);line-height:.98;margin:14px 0 10px;letter-spacing:-.01em}
+.hero .sub{font-style:italic;font-size:21px;color:var(--ink-soft);max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.pill{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--ink-soft);background:rgba(255,255,255,.4)}
+.pill.hot{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+section{margin-top:54px}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:22px}
+.sec-num{font-family:"Fraunces",serif;font-weight:900;font-size:40px;color:var(--accent);line-height:1;opacity:.85}
+.sec-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:30px;margin:0;letter-spacing:-.01em}
+.sec-head .tag{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--gold);padding:5px 10px;border-radius:4px;align-self:center}
+
+.card{background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:16px 0;box-shadow:0 2px 0 rgba(0,0,0,.02)}
+.card h3{font-family:"Fraunces",serif;font-weight:600;font-size:21px;margin:0 0 8px}
+.card p{margin:8px 0}
+.term{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.92em}
+mark{background:linear-gradient(transparent 55%,var(--accent-soft) 55%);color:inherit;padding:0 1px;font-weight:500}
+.num{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--gold)}
+ul.clean{margin:8px 0;padding-left:22px}
+ul.clean li{margin:5px 0}
+.callout{border-left:4px solid var(--accent);background:rgba(184,73,43,.06);padding:12px 18px;border-radius:0 8px 8px 0;margin:14px 0;font-size:16.5px}
+.callout b{color:var(--accent-deep)}
+
+/* reveal cards */
+.reveal{border:1px dashed var(--accent);border-radius:10px;padding:0;margin:12px 0;overflow:hidden;background:rgba(255,255,255,.4)}
+.reveal summary{cursor:pointer;list-style:none;padding:16px 20px;font-family:"Fraunces",serif;font-weight:600;font-size:18px;display:flex;align-items:center;gap:12px}
+.reveal summary::-webkit-details-marker{display:none}
+.reveal summary::before{content:"?";font-family:"JetBrains Mono",monospace;font-weight:700;color:#fff;background:var(--accent);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:14px;flex:0 0 auto}
+.reveal[open] summary::before{content:"✓";background:var(--gold)}
+.reveal .body{padding:0 20px 18px 58px;font-size:16.5px;color:var(--ink-soft)}
+.reveal .body p:first-child{margin-top:0}
+
+/* checklist */
+.check{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.check:last-child{border-bottom:none}
+.check input{appearance:none;width:24px;height:24px;border:2px solid var(--accent);border-radius:6px;flex:0 0 auto;margin-top:2px;cursor:pointer;position:relative;transition:.15s}
+.check input:checked{background:var(--accent)}
+.check input:checked::after{content:"✓";color:#fff;position:absolute;inset:0;display:grid;place-items:center;font-family:"JetBrains Mono";font-weight:700;font-size:14px}
+.check label{cursor:pointer;flex:1}
+.check input:checked + label{opacity:.5;text-decoration:line-through}
+.progress-box{position:sticky;top:0;z-index:5;background:var(--paper-2);border:1px solid var(--line);border-radius:0 0 12px 12px;padding:12px 20px;margin:0 -24px 0;display:flex;align-items:center;gap:14px;font-family:"JetBrains Mono",monospace;font-size:13px}
+.bar{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--gold));transition:width .4s}
+
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:16px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-deep)}
+tr:last-child td{border-bottom:none}
+footer{margin-top:70px;padding-top:24px;border-top:3px double var(--line);font-style:italic;color:var(--ink-soft);font-size:15px}
+.nav{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.nav a{font-family:"JetBrains Mono",monospace;font-size:12px;text-decoration:none;color:var(--accent-deep);border:1px solid var(--line);padding:8px 14px;border-radius:8px;background:rgba(255,255,255,.4)}
+.nav a:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="progress-box">
+  <span>RÉVISÉ</span>
+  <div class="bar"><i id="barfill"></i></div>
+  <span id="pct">0%</span>
+</div>
+<div class="wrap">
+<header class="hero">
+  <div class="kicker">WFARM2149 · Approche pharmaceutique de la nutrition</div>
+  <h1>Jour 1 — Matin</h1>
+  <p class="sub">Fondations : évaluation de l'état nutritionnel, métabolisme de base, recommandations — puis glucides &amp; fibres. Le socle qui revient à <em>chaque</em> examen.</p>
+  <div class="meta">
+    <span class="pill hot">~2 h</span>
+    <span class="pill">Chap. 1 · Intro</span>
+    <span class="pill">Glucides &amp; fibres</span>
+    <span class="pill">Définitions clés</span>
+  </div>
+</header>
+
+<!-- 1 -->
+<section id="s1">
+  <div class="sec-head"><span class="sec-num">1</span><h2>Évaluer l'état &amp; les besoins nutritionnels</h2><span class="tag">tombe souvent</span></div>
+
+  <div class="card">
+    <h3>Composition corporelle — mesurer la masse grasse</h3>
+    <ul class="clean">
+      <li><span class="term">Impédancemétrie</span> — courant électrique selon teneur en eau/électrolytes (masse maigre = faible résistance ; masse grasse &amp; os = isolants). <em>Biais :</em> hydratation, état nutritionnel, activité physique, électrodes.</li>
+      <li><span class="term">Plis cutanés</span> — pince à différents sites.</li>
+      <li><span class="term">Absorptiométrie biphotonique (DEXA)</span> — référence pour % masse grasse / masse maigre.</li>
+    </ul>
+    <div class="callout"><b>BMI / IMC</b> = poids / taille² → unité <span class="num">kg/m²</span>. Surpoids ≥ <span class="num">25</span> · Obésité ≥ <span class="num">30</span>. Critères d'obésité = BMI <strong>+</strong> % masse grasse <strong>+</strong> tour de taille (jamais le BMI seul).</div>
+  </div>
+
+  <div class="card">
+    <h3>Métabolisme de base (BMR)</h3>
+    <p>Énergie minimale pour les fonctions vitales <strong>au repos complet</strong>. Représente <span class="num">60–75 %</span> de la dépense énergétique journalière. Dépend de : <mark>masse maigre</mark>, âge (↓ avec l'âge), sexe, température.</p>
+    <table>
+      <tr><th>Méthode</th><th>Principe</th></tr>
+      <tr><td>Calorimétrie <strong>directe</strong></td><td>Mesure de la chaleur produite (chambre fermée). Coûteuse, peu utilisée.</td></tr>
+      <tr><td>Calorimétrie <strong>indirecte</strong></td><td>Analyse des gaz O₂ / CO₂ inhalés et expirés. ← retient ce mot-clé «&nbsp;gaz&nbsp;».</td></tr>
+    </table>
+  </div>
+
+  <details class="reveal">
+    <summary>RDA / Apport nutritionnel conseillé — définition exacte attendue</summary>
+    <div class="body"><p>Quantité quotidienne d'un nutriment couvrant les besoins de <span class="num">97,5 %</span> de la population = <mark>moyenne des besoins + 2 écarts-types (SD)</mark>. Établie selon âge, sexe, état physiologique — <strong>pas</strong> selon le BMI ou l'apport énergétique total.</p></div>
+  </details>
+
+  <div class="card">
+    <h3>Outils d'étiquetage — ne pas confondre</h3>
+    <ul class="clean">
+      <li><span class="term">Nutri-Score</span> — basé sur la <strong>composition nutritionnelle</strong>. Défavorables : énergie, sucres, AGS, sodium. Favorables : fruits/légumes/légumineuses, fibres, protéines. <em>Ne tient pas compte des contaminants.</em></li>
+      <li><span class="term">Classification NOVA</span> — basée sur le <strong>degré de transformation</strong> des aliments.</li>
+      <li><span class="term">Aliment ultra-transformé</span> — produit industriel à nombreux ingrédients (additifs, arômes, conservateurs). Ex : sodas, nuggets, barres, plats préparés.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+  <div class="sec-head"><span class="sec-num">2</span><h2>Glucides</h2></div>
+  <div class="card">
+    <p>Classés selon leur «&nbsp;complexité&nbsp;». Doivent constituer <span class="num">&gt; 55 %</span> de l'apport énergétique journalier, dont <span class="num">&lt; 10 %</span> de sucres libres.</p>
+    <p><strong>Piège fréquent :</strong> dans les céréales, l'apport calorique principal vient des <mark>glucides complexes (amidon)</mark>, pas des sucres simples ni des protéines.</p>
+  </div>
+
+  <div class="card">
+    <h3>Index glycémique (IG)</h3>
+    <p>Vitesse à laquelle un aliment glucidique élève la glycémie après ingestion.</p>
+    <table>
+      <tr><th>IG bas</th><th>modéré</th><th>élevé</th></tr>
+      <tr><td><span class="num">&lt; 55</span></td><td><span class="num">56–69</span></td><td><span class="num">&gt; 70</span></td></tr>
+    </table>
+    <p><strong>IG bas →</strong> moins de pics glycémiques → bénéfique dans le <mark>diabète de type 2</mark>, le syndrome métabolique, le contrôle du poids ; ↑ satiété, ↓ insulinorésistance. <em>Ex :</em> lentilles, pois chiches, avoine, patate douce.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+  <div class="sec-head"><span class="sec-num">3</span><h2>Fibres alimentaires</h2><span class="tag">définition clé 2025</span></div>
+
+  <details class="reveal">
+    <summary>Fibre alimentaire fermentescible — la définition de Q1 (juin 2025)</summary>
+    <div class="body">
+      <p>Oligomère ou polymère — souvent de nature glucidique — qui <mark>résiste à la digestion</mark> par les enzymes digestives dans la partie haute de l'intestin, mais qui est <mark>fermenté</mark> (partiellement/totalement) par les bactéries du microbiote.</p>
+      <p><strong>Exemples :</strong> inuline, amidon résistant, pectine. <strong>⚠️ Pas la cellulose</strong> (non fermentée chez l'humain). <strong>Intérêt santé :</strong> transit, régulation glycémie / lipémie.</p>
+    </div>
+  </details>
+
+  <div class="card">
+    <h3>Le trio à relier (impact santé)</h3>
+    <ul class="clean">
+      <li><span class="term">Prébiotiques</span> — fibres fermentescibles qui stimulent <strong>sélectivement</strong> les bonnes bactéries.</li>
+      <li><span class="term">Probiotiques</span> — micro-organismes vivants bénéfiques (≠ fibres !).</li>
+      <li><span class="term">Fermentation bactérienne</span> — fibres → <mark>AGCC</mark> (butyrate, propionate, acétate) → barrière épithéliale, ↓ inflammation, métabolisme énergétique.</li>
+    </ul>
+    <div class="callout"><b>Chiffres à retenir :</b> AJR fibres ≈ <span class="num">30 g/j</span>. Le risque de cancer du côlon baisse de <span class="num">~10 %</span> par <span class="num">10 g</span> de fibres/j en plus. Bénéfices aussi : diabète T2, cardiovasculaire, mortalité toutes causes.</div>
+  </div>
+
+  <details class="reveal">
+    <summary>Amidon résistant — terme &amp; piège</summary>
+    <div class="body"><p>Fraction d'amidon non digérée dans l'intestin grêle, qui parvient au côlon et y est fermentée (= comportement de fibre). À distinguer de l'amidon classique, lui <strong>digéré par l'amylase</strong> (V/F classique : «&nbsp;l'amidon est un sucre non digestible&nbsp;» → <strong>FAUX</strong>).</p></div>
+  </details>
+
+  <details class="reveal">
+    <summary>2 interactions microbiote ↔ alimentation (réponse type)</summary>
+    <div class="body"><p>(1) <strong>Fermentation des fibres</strong> → AGCC → santé intestinale &amp; prévention du cancer colorectal. (2) <strong>Polyphénols</strong> métabolisés par le microbiote en composés bioactifs (ex. urolithines, anti-inflammatoires). Bonus : édulcorants artificiels (sucralose, saccharine) → dysbiose possible.</p></div>
+  </details>
+</section>
+
+<!-- checklist -->
+<section id="done">
+  <div class="sec-head"><span class="sec-num">✓</span><h2>Avant de fermer cette fiche</h2></div>
+  <div class="card" id="checklist">
+    <div class="check"><input type="checkbox" id="c1"><label for="c1">Je sais citer 3 méthodes de mesure de la masse grasse + leurs biais</label></div>
+    <div class="check"><input type="checkbox" id="c2"><label for="c2">BMI : formule, unité, seuils surpoids/obésité, + les 2 autres critères</label></div>
+    <div class="check"><input type="checkbox" id="c3"><label for="c3">BMR : définition, % de la DET, calorimétrie directe vs indirecte</label></div>
+    <div class="check"><input type="checkbox" id="c4"><label for="c4">RDA = moyenne + 2 SD → 97,5 % de la population</label></div>
+    <div class="check"><input type="checkbox" id="c5"><label for="c5">Nutri-Score vs NOVA vs ultra-transformé : je ne confonds pas</label></div>
+    <div class="check"><input type="checkbox" id="c6"><label for="c6">IG : seuils chiffrés + pourquoi IG bas est bénéfique</label></div>
+    <div class="check"><input type="checkbox" id="c7"><label for="c7">Fibre fermentescible : définition par cœur (+ exemples, pas la cellulose)</label></div>
+    <div class="check"><input type="checkbox" id="c8"><label for="c8">Prébiotique / probiotique / AGCC : je relie les 3 à la santé</label></div>
+    <div class="check"><input type="checkbox" id="c9"><label for="c9">Les chiffres fibres : 30 g/j, −10 % cancer côlon / 10 g</label></div>
+  </div>
+</section>
+
+<footer>
+  <p>Fiche 1/4 · Synthèse fidèle au cours et aux anciens examens corrigés. Garde le format examen en tête : <em>définitions + exemple, vrai/faux à justifier, «&nbsp;donnez le terme&nbsp;»</em>.</p>
+  <div class="nav">
+    <a href="J1-apresmidi_lipides-proteines.html">→ J1 Après-midi · Lipides &amp; protéines</a>
+    <a href="J2-matin_micronutriments-obesite.html">→ J2 Matin</a>
+    <a href="J2-apresmidi_drill-examens.html">→ J2 Après-midi · Drill</a>
+  </div>
+</footer>
+</div>
+
+<script>
+(function(){
+  var KEY="nutri_j1matin";
+  var boxes=document.querySelectorAll('#checklist input');
+  function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||"{}");boxes.forEach(function(b){if(s[b.id])b.checked=true;});}catch(e){}}
+  function save(){try{var s={};boxes.forEach(function(b){s[b.id]=b.checked;});localStorage.setItem(KEY,JSON.stringify(s));}catch(e){}}
+  function upd(){var n=0;boxes.forEach(function(b){if(b.checked)n++;});var p=boxes.length?Math.round(n/boxes.length*100):0;document.getElementById('barfill').style.width=p+"%";document.getElementById('pct').textContent=p+"%";}
+  load();upd();
+  boxes.forEach(function(b){b.addEventListener('change',function(){save();upd();});});
+})();
+</script>
+</body>
+</html>

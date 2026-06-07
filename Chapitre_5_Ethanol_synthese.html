@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapitre 5 — Éthanol · Synthèse d'examen · FARM 2149</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f1e7;
+    --bg-2:#efe6d6;
+    --ink:#2b2118;
+    --ink-soft:#5c4d3d;
+    --wine:#7a1f2b;
+    --wine-dark:#5a141d;
+    --amber:#bd7a25;
+    --amber-soft:#e3b261;
+    --gold-line:#d9c4a0;
+    --paper:#fffdf8;
+    --green:#3f6b46;
+    --shadow:rgba(60,40,20,.14);
+    --maxw:860px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(189,122,37,.10), transparent 40%),
+      radial-gradient(circle at 88% 92%, rgba(122,31,43,.08), transparent 45%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Spectral", Georgia, serif;
+    font-size:18px;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber-soft);color:var(--wine-dark);}
+
+  /* ---------- HEADER ---------- */
+  header.hero{
+    position:relative;
+    padding:88px 24px 64px;
+    text-align:center;
+    overflow:hidden;
+    border-bottom:1px solid var(--gold-line);
+  }
+  header.hero::before{
+    content:"C₂H₅OH";
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%) rotate(-8deg);
+    font-family:"IBM Plex Mono",monospace;
+    font-size:clamp(80px,22vw,260px);
+    color:rgba(122,31,43,.06);
+    letter-spacing:.05em;
+    white-space:nowrap;
+    pointer-events:none;
+    z-index:0;
+  }
+  .hero-inner{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;}
+  .kicker{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:13px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--amber);margin-bottom:18px;
+  }
+  header.hero h1{
+    font-family:"Fraunces",serif;
+    font-weight:800;
+    font-size:clamp(44px,8vw,86px);
+    line-height:.98;
+    margin:0 0 10px;
+    color:var(--wine-dark);
+    letter-spacing:-.01em;
+  }
+  header.hero .sub{
+    font-style:italic;font-size:clamp(19px,3vw,26px);
+    color:var(--ink-soft);font-weight:500;margin-top:4px;
+  }
+  .hero-meta{
+    margin-top:30px;font-family:"IBM Plex Mono",monospace;
+    font-size:12.5px;letter-spacing:.12em;color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+  .hero-meta span{margin:0 10px;}
+
+  /* ---------- LAYOUT ---------- */
+  main{max-width:var(--maxw);margin:0 auto;padding:0 24px 120px;}
+
+  /* ---------- TOC ---------- */
+  nav.toc{
+    background:var(--paper);
+    border:1px solid var(--gold-line);
+    border-radius:14px;
+    padding:26px 30px;
+    margin:56px 0;
+    box-shadow:0 10px 30px -18px var(--shadow);
+  }
+  nav.toc h2{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--amber);margin:0 0 16px;font-weight:600;
+  }
+  nav.toc ol{margin:0;padding:0;list-style:none;counter-reset:toc;
+    columns:2;column-gap:38px;}
+  nav.toc li{counter-increment:toc;margin:0 0 9px;break-inside:avoid;}
+  nav.toc a{
+    color:var(--ink);text-decoration:none;font-size:16.5px;
+    display:flex;gap:12px;align-items:baseline;transition:color .2s;
+  }
+  nav.toc a::before{
+    content:counter(toc,decimal-leading-zero);
+    font-family:"IBM Plex Mono",monospace;font-size:12px;
+    color:var(--amber);font-weight:600;min-width:24px;
+  }
+  nav.toc a:hover{color:var(--wine);}
+
+  /* ---------- SECTIONS ---------- */
+  section{margin:64px 0;scroll-margin-top:24px;}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:18px;
+    padding-bottom:14px;border-bottom:2px solid var(--wine);}
+  .sec-num{
+    font-family:"IBM Plex Mono",monospace;font-weight:600;
+    font-size:15px;color:var(--paper);background:var(--wine);
+    padding:4px 11px;border-radius:6px;flex-shrink:0;
+  }
+  h2.sec-title{
+    font-family:"Fraunces",serif;font-weight:700;
+    font-size:clamp(28px,4.4vw,40px);line-height:1.05;
+    margin:0;color:var(--wine-dark);letter-spacing:-.01em;
+  }
+  h3{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:23px;color:var(--ink);margin:34px 0 8px;
+  }
+  p{margin:0 0 16px;}
+  strong{color:var(--wine-dark);font-weight:600;}
+  em.term{font-style:normal;font-weight:600;color:var(--amber);}
+
+  ul,ol.body-list{margin:0 0 18px;padding-left:0;list-style:none;}
+  ul li,ol.body-list li{position:relative;padding-left:26px;margin-bottom:9px;}
+  ul li::before{content:"";position:absolute;left:4px;top:.72em;
+    width:7px;height:7px;background:var(--amber);
+    transform:rotate(45deg);border-radius:1px;}
+  ol.body-list{counter-reset:bl;}
+  ol.body-list li{counter-increment:bl;}
+  ol.body-list li::before{content:counter(bl);position:absolute;left:0;top:0;
+    font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;
+    color:var(--wine);background:var(--bg-2);width:21px;height:21px;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;}
+
+  /* ---------- BOXES ---------- */
+  .box{border-radius:14px;padding:22px 26px;margin:28px 0;
+    position:relative;box-shadow:0 8px 26px -18px var(--shadow);}
+  .box .box-label{
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;
+    letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+    display:inline-flex;align-items:center;gap:8px;margin-bottom:12px;
+  }
+  .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0;}
+
+  /* Examen box */
+  .exam{background:linear-gradient(180deg,#fbeee0,#f7e4cf);
+    border:1px solid var(--amber-soft);border-left:5px solid var(--amber);}
+  .exam .box-label{color:var(--amber);}
+  .exam .box-label::before{content:"✎";font-size:15px;}
+  .exam .qyear{font-family:"IBM Plex Mono",monospace;font-size:12px;
+    color:var(--wine);font-weight:600;}
+  .exam .q{font-style:italic;font-weight:500;color:var(--wine-dark);
+    font-size:18.5px;margin-bottom:8px;}
+
+  /* Retenir box */
+  .retenir{background:linear-gradient(180deg,#eef3ea,#e6efe1);
+    border:1px solid #bcd0b4;border-left:5px solid var(--green);}
+  .retenir .box-label{color:var(--green);}
+  .retenir .box-label::before{content:"★";font-size:14px;}
+  .retenir ul li::before{background:var(--green);}
+
+  /* Piège box */
+  .piege{background:linear-gradient(180deg,#fce9e6,#f8ddd8);
+    border:1px solid #e3a99e;border-left:5px solid var(--wine);}
+  .piege .box-label{color:var(--wine);}
+  .piege .box-label::before{content:"⚠";font-size:15px;}
+  .piege ul li::before{background:var(--wine);}
+
+  /* ---------- TABLE ---------- */
+  .table-wrap{overflow-x:auto;margin:24px 0;border-radius:12px;
+    border:1px solid var(--gold-line);box-shadow:0 8px 26px -20px var(--shadow);}
+  table{border-collapse:collapse;width:100%;font-size:16px;background:var(--paper);}
+  th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--bg-2);}
+  th{background:var(--wine);color:var(--paper);font-family:"IBM Plex Mono",monospace;
+    font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;}
+  tr:last-child td{border-bottom:none;}
+  tbody tr:nth-child(even){background:#fbf6ec;}
+  td strong{color:var(--wine-dark);}
+
+  /* ---------- METABOLISM DIAGRAM ---------- */
+  .pathway{display:flex;flex-wrap:wrap;gap:14px;align-items:stretch;
+    margin:26px 0;justify-content:center;}
+  .mol{background:var(--paper);border:1.5px solid var(--gold-line);
+    border-radius:12px;padding:16px 20px;text-align:center;min-width:140px;
+    box-shadow:0 6px 18px -14px var(--shadow);}
+  .mol .formula{font-family:"IBM Plex Mono",monospace;font-weight:600;
+    font-size:17px;color:var(--wine-dark);}
+  .mol .name{font-size:13px;color:var(--ink-soft);font-style:italic;margin-top:3px;}
+  .arrow{display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-width:120px;color:var(--amber);font-family:"IBM Plex Mono",monospace;
+    font-size:12px;font-weight:600;}
+  .arrow .enz{color:var(--wine);font-weight:600;}
+  .arrow .line{font-size:24px;line-height:1;color:var(--amber);}
+  .arrow .co{font-size:11px;color:var(--ink-soft);font-style:italic;}
+
+  /* ---------- FILIATION ---------- */
+  .filiation{display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+    justify-content:center;margin:22px 0;}
+  .stage{background:var(--wine);color:var(--paper);padding:10px 18px;
+    border-radius:30px;font-weight:600;font-size:15px;font-family:"Fraunces",serif;}
+  .stage.s2{background:#9a3340;}
+  .stage.s3{background:var(--amber);}
+  .stage.s4{background:var(--wine-dark);}
+  .chev{color:var(--amber);font-size:22px;font-weight:700;}
+
+  /* ---------- CALLOUT NUMBERS ---------- */
+  .stat-row{display:flex;flex-wrap:wrap;gap:16px;margin:26px 0;}
+  .stat{flex:1 1 150px;background:var(--paper);border:1px solid var(--gold-line);
+    border-radius:12px;padding:18px 20px;box-shadow:0 6px 18px -16px var(--shadow);}
+  .stat .big{font-family:"Fraunces",serif;font-weight:800;font-size:32px;
+    color:var(--wine);line-height:1;}
+  .stat .cap{font-size:14px;color:var(--ink-soft);margin-top:6px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{text-align:center;padding:50px 24px 40px;border-top:1px solid var(--gold-line);
+    color:var(--ink-soft);font-size:14px;font-family:"IBM Plex Mono",monospace;
+    letter-spacing:.05em;}
+  footer .disc{font-family:"Spectral",serif;font-style:italic;font-size:14.5px;
+    max-width:600px;margin:0 auto 16px;letter-spacing:0;}
+
+  a.top{position:fixed;bottom:24px;right:24px;background:var(--wine);
+    color:var(--paper);width:46px;height:46px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;text-decoration:none;
+    font-size:20px;box-shadow:0 8px 20px -8px var(--shadow);opacity:.9;
+    transition:transform .2s,opacity .2s;z-index:20;}
+  a.top:hover{transform:translateY(-3px);opacity:1;}
+
+  @media(max-width:620px){
+    body{font-size:17px;}
+    nav.toc ol{columns:1;}
+    .arrow{min-width:90px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="kicker">FARM 2149 · Approche pharmaceutique de la nutrition</div>
+    <h1>Chapitre 5<br>Éthanol</h1>
+    <div class="sub">L'alcool : nutriment énergétique, toxique hépatique &amp; cancérogène</div>
+    <div class="hero-meta">
+      <span>Pr. N. M. Delzenne</span>·<span>UCLouvain</span>·<span>Synthèse d'examen</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <nav class="toc">
+    <h2>Plan de la synthèse</h2>
+    <ol>
+      <li><a href="#s1">Vue d'ensemble &amp; définitions</a></li>
+      <li><a href="#s2">Consommation &amp; seuils</a></li>
+      <li><a href="#s3">Métabolisme de l'éthanol</a></li>
+      <li><a href="#s4">Impact nutritionnel</a></li>
+      <li><a href="#s5">Conséquences métaboliques</a></li>
+      <li><a href="#s6">Alcool &amp; santé : aigu / chronique</a></li>
+      <li><a href="#s7">Alcool &amp; cancer</a></li>
+      <li><a href="#s8">Alcoolo-dépendance</a></li>
+      <li><a href="#s9">Interactions alcool–médicaments</a></li>
+      <li><a href="#s10">Recommandations &amp; synthèse</a></li>
+    </ol>
+  </nav>
+
+  <!-- ============ 1 ============ -->
+  <section id="s1">
+    <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">Vue d'ensemble &amp; définitions</h2></div>
+    <p>L'éthanol (C₂H₅OH) occupe une place singulière en nutrition : c'est un <strong>nutriment énergétique</strong> (7 kcal/g), mais aussi un <strong>xénobiotique toxique</strong> qui ne peut être stocké et qui doit être métabolisé en priorité par le foie. Sur le plan de la santé publique, c'est la <strong>drogue la plus « dangereuse »</strong> selon Nutt et al. (Lancet, 2010), à la fois pour le consommateur et pour son entourage.</p>
+
+    <p>Un point essentiel à comprendre dès le départ : l'éthanol est un produit issu de la <em class="term">fermentation</em> (donc « produit par la flore »), il est <strong>inducteur du CYP2E1</strong>, et il devient un problème de santé publique majeur lorsque la consommation est excessive.</p>
+
+    <div class="box exam">
+      <span class="box-label">Tombé à l'examen</span>
+      <p class="q">« Donnez un terme qui correspond à la définition : un produit de l'alimentation produit par la flore, qui induit le CYP2E1 et qui est un problème de santé publique lorsque la prise est excessive. »</p>
+      <p><strong>Réponse : l'éthanol.</strong> Cette définition est revenue plusieurs années — retenez les trois indices (fermentation → induction CYP2E1 → santé publique).</p>
+    </div>
+
+    <div class="box retenir">
+      <span class="box-label">À retenir</span>
+      <ul>
+        <li>Éthanol = <strong>7 kcal/g</strong> mais <strong>« calories vides »</strong> (aucun nutriment essentiel).</li>
+        <li>Métabolisé par le foie en <strong>acétaldéhyde</strong> = composé réactif, toxique et <strong>cancérogène</strong>.</li>
+        <li><strong>Inducteur du CYP2E1</strong> → clé pour comprendre les interactions médicamenteuses.</li>
+        <li>Classé <strong>cancérogène de groupe 1 (CIRC)</strong> : il n'existe pas de dose « sans risque ».</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 2 ============ -->
+  <section id="s2">
+    <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Consommation &amp; seuils</h2></div>
+    <p>La <strong>consommation abusive</strong> est définie comme celle qui provoque des dommages pour la santé. En Belgique, la consommation moyenne avoisine <strong>8 L d'alcool pur / an / habitant adulte</strong>.</p>
+
+    <div class="stat-row">
+      <div class="stat"><div class="big">12 g</div><div class="cap">= 1 unité d'alcool (≈ 1,5 dl de vin ou 3 dl de bière)</div></div>
+      <div class="stat"><div class="big">&gt;50 g</div><div class="cap">/jour chez l'homme = consommation à risque</div></div>
+      <div class="stat"><div class="big">&gt;25 g</div><div class="cap">/jour chez la femme = consommation à risque</div></div>
+    </div>
+
+    <p>La recommandation nutritionnelle est de <strong>ramener l'apport de l'alcool à ≤ 4 % de l'AET</strong> (apport énergétique total) — idéalement &lt; 2 %.</p>
+
+    <div class="box exam">
+      <span class="box-label">Tombé à l'examen</span>
+      <p class="q">Analyse d'enquête alimentaire — un apport d'alcool relevé à <strong>5,2 % de l'AET</strong> était jugé trop élevé.</p>
+      <p>La correction attendait : <em>norme &lt; 5 % AET (idéalement &lt; 2 %)</em> → excès = ↑ maladies hépatiques, cancers, troubles métaboliques. <strong>Conseil pratique :</strong> limiter à &lt; 2 verres/jour avec des jours sans alcool.</p>
+    </div>
+
+    <div class="box retenir">
+      <span class="box-label">À retenir — les chiffres clés</span>
+      <ul>
+        <li><strong>1 unité = 12 g</strong> d'alcool pur.</li>
+        <li>Recommandation belge : <strong>max 10 unités/semaine + ≥ 2 jours sans alcool</strong>.</li>
+        <li>OMS : ne pas dépasser ~2 verres/jour, avec des jours d'abstinence.</li>
+        <li>Objectif diététique : alcool ≤ <strong>4 % de l'AET</strong>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 3 ============ -->
+  <section id="s3">
+    <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Métabolisme de l'éthanol</h2></div>
+
+    <h3>Absorption &amp; biodisponibilité</h3>
+    <ul>
+      <li>Absorption rapide au niveau de l'<strong>estomac</strong> et du <strong>grêle proximal</strong> (T½ ≈ 2 min).</li>
+      <li><strong>Biodisponibilité ≈ 80 %</strong>.</li>
+      <li>L'alcool <strong>ne peut pas être stocké</strong> : il est métabolisé en priorité.</li>
+      <li>La présence de glucides dans l'estomac <strong>ralentit l'absorption</strong> de l'alcool.</li>
+    </ul>
+
+    <h3>Les deux voies oxydatives majeures</h3>
+    <p>L'éthanol est oxydé en <strong>acétaldéhyde (éthanal)</strong> par deux systèmes, puis l'acétaldéhyde est transformé en acétate par l'<strong>aldéhyde déshydrogénase (ALDH)</strong>.</p>
+
+    <div class="pathway">
+      <div class="mol"><div class="formula">CH₃-CH₂-OH</div><div class="name">éthanol</div></div>
+      <div class="arrow">
+        <span class="enz">ADH</span>
+        <span class="line">→</span>
+        <span class="co">NAD⁺ → NADH+H⁺ · cytoplasme</span>
+      </div>
+      <div class="mol"><div class="formula">CH₃-CHO</div><div class="name">acétaldéhyde</div></div>
+      <div class="arrow">
+        <span class="enz">ALDH</span>
+        <span class="line">→</span>
+        <span class="co">éthanal → acétate</span>
+      </div>
+      <div class="mol"><div class="formula">CH₃-COO⁻</div><div class="name">acétate</div></div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Système</th><th>Localisation</th><th>Caractéristiques</th></tr></thead>
+        <tbody>
+          <tr><td><strong>ADH</strong> (alcool déshydrogénase)</td><td>Cytoplasme hépatique</td><td><strong>Non inductible</strong> · cofacteur NAD⁺ · voie principale aux doses usuelles</td></tr>
+          <tr><td><strong>CYP2E1</strong> (OFM / microsomal)</td><td>Réticulum endoplasmique</td><td><strong>Inductible par l'alcool</strong> · cofacteur NADPH + O₂ · ↑ en cas de consommation chronique</td></tr>
+          <tr><td><strong>Catalase</strong></td><td>Peroxysomes</td><td>Voie accessoire (mineure)</td></tr>
+          <tr><td><strong>ALDH</strong> (aldéhyde DH)</td><td>Mitochondrie</td><td>Convertit l'éthanal toxique → acétate</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Élimination</h3>
+    <ul>
+      <li>Métabolisme gastrique (ADH) ≈ <strong>10 %</strong>.</li>
+      <li>Métabolisme hépatique ≈ <strong>105 mg/kg·h</strong>.</li>
+      <li>Élimination non hépatique : ~0,4 mg/h par les <strong>poumons</strong>.</li>
+      <li>Vitesse de décroissance de l'alcoolémie : <strong>≈ 0,1 g/L·h</strong>.</li>
+    </ul>
+
+    <div class="box piege">
+      <span class="box-label">Le piège à éviter</span>
+      <ul>
+        <li><strong>ADH = non inductible</strong> ; <strong>CYP2E1 = inductible</strong>. Ne pas inverser !</li>
+        <li>Bien associer chaque cofacteur : ADH → <strong>NAD⁺</strong> · CYP2E1 → <strong>NADPH + O₂</strong>.</li>
+        <li>C'est l'<strong>acétaldéhyde</strong> (et non l'éthanol lui-même) qui porte l'essentiel de la toxicité mitochondriale et cancérogène.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 4 ============ -->
+  <section id="s4">
+    <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Impact nutritionnel</h2></div>
+
+    <h3>Valeur calorique</h3>
+    <p>L'alcool apporte <strong>≈ 7,1 kcal/g</strong> (un peu moins si la métabolisation passe par l'OFM/CYP2E1, ce qui survient pour un apport &gt; 30 % de l'AET).</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Boisson</th><th>Énergie</th><th>Glucides</th></tr></thead>
+        <tbody>
+          <tr><td>Vin (1 verre)</td><td><strong>85 kcal</strong></td><td>0 g</td></tr>
+          <tr><td>Bière (1 verre)</td><td><strong>133 kcal</strong></td><td>40 g/L</td></tr>
+          <tr><td>Champagne</td><td>—</td><td>25 g/L</td></tr>
+          <tr><td>Liqueur</td><td>—</td><td>300 g/L</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Carences induites</h3>
+    <p>L'alcool augmente le catabolisme de la <strong>vitamine A</strong> et des vitamines liposolubles (favorisé par la pancréatite), provoque une <strong>accumulation hépatique de fer (Fe)</strong>, et entraîne des <strong>carences en vitamines B</strong> — particulièrement <strong>B1 (thiamine)</strong>, B6 et B9.</p>
+
+    <p>La relation <strong>alcool–obésité</strong> est davantage vraie chez l'homme.</p>
+
+    <div class="box exam">
+      <span class="box-label">Tombé à l'examen</span>
+      <p class="q">« L'éthanol ingéré en grande quantité… fournit un apport énergétique de 7 kcal/g (attention : l'énoncé indiquait parfois 7 kJ/g, ce qui était <em>faux</em>). »</p>
+      <p>Rappel d'unités : <strong>1 kcal = 1 Cal = 4,2 kJ</strong>. L'apport correct est de <strong>7 kcal/g</strong> (≈ 29 kJ/g), pas 7 kJ/g.</p>
+    </div>
+
+    <div class="box retenir">
+      <span class="box-label">À retenir</span>
+      <ul>
+        <li>Alcool = <strong>7 kcal/g</strong>, « calories vides ».</li>
+        <li>Carence emblématique : <strong>vitamine B1 (thiamine)</strong> → liée au syndrome de Korsakoff.</li>
+        <li>Paradoxe : ↑ apport calorique mais aussi <strong>dénutrition</strong> (cf. section 5).</li>
+        <li>Surcharge en <strong>fer hépatique</strong> à connaître.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 5 ============ -->
+  <section id="s5">
+    <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Conséquences métaboliques</h2></div>
+
+    <p>Sur le métabolisme énergétique, l'alcool agit à plusieurs niveaux :</p>
+    <ul>
+      <li>L'<strong>acétaldéhyde augmente la production de catécholamines</strong>.</li>
+      <li><strong>Réduction de l'oxydation des lipides</strong> et altération de la chaîne respiratoire mitochondriale.</li>
+      <li><strong>Diminution de la masse maigre</strong> (protéolyse).</li>
+      <li>Diminution de la consommation alimentaire.</li>
+    </ul>
+
+    <p>Conséquence apparemment paradoxale : l'<strong>alcoolisme sévère</strong> (alcool ≈ 50 % de l'AET) est un facteur de <strong>perte de poids</strong> liée à une <strong>malnutrition protéino-énergétique</strong>.</p>
+
+    <h3>Le schéma de synthèse (De Fline et al., 2019)</h3>
+    <p>Autour de l'alcool, quatre grands axes de perturbation :</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Axe</th><th>Conséquences</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Bilan énergétique</strong></td><td>Obésité / adiposité abdominale ↔ ou dénutrition protéino-énergétique</td></tr>
+          <tr><td><strong>Carences nutritionnelles</strong></td><td>Vitamines hydrosolubles (B) &amp; liposolubles · minéraux (Ca, Mg, Zn, Se, Cu) · Fe (surcharge)</td></tr>
+          <tr><td><strong>Glucose</strong></td><td>↓ sensibilité à l'insuline · diabète secondaire · hypoglycémies</td></tr>
+          <tr><td><strong>Lipides &amp; acide urique</strong></td><td>Hypertriglycéridémie · stéatose · pancréatite aiguë · hyperuricémie (crise de goutte)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box retenir">
+      <span class="box-label">À retenir — le réflexe « inhibition gluconéogenèse »</span>
+      <p>La toxicité métabolique aiguë repose sur l'<strong>inhibition de la gluconéogenèse hépatique → hypoglycémie</strong>, la production d'<strong>acétaldéhyde toxique pour la mitochondrie</strong>, et une <strong>acidocétose</strong> (lactate, acétate). C'est une chaîne logique qui revient souvent.</p>
+    </div>
+  </section>
+
+  <!-- ============ 6 ============ -->
+  <section id="s6">
+    <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">Alcool &amp; santé : aigu / chronique</h2></div>
+
+    <h3>Toxicité aiguë</h3>
+    <ul>
+      <li><strong>Alcoolémie 5 g/L (109 mM)</strong> → <strong>arrêt respiratoire</strong> (fatal).</li>
+      <li>1<sup>re</sup> cause de mortalité due à l'alcool : <strong>accidents de voiture</strong>.</li>
+      <li>Épisode alcoolique aigu → <strong>pancréatite aiguë</strong>.</li>
+      <li><strong>Syndrome d'alcoolisme fœtal (SAF)</strong> : l'alcool traverse le placenta et affecte le développement du fœtus, surtout le cerveau.</li>
+    </ul>
+
+    <h3>Toxicité chronique — la filiation hépatique</h3>
+    <div class="filiation">
+      <span class="stage">Stéatose</span>
+      <span class="chev">→</span>
+      <span class="stage s2">Stéatohépatite alcoolique</span>
+      <span class="chev">→</span>
+      <span class="stage s4">Cirrhose</span>
+    </div>
+    <p>La <strong>cirrhose alcoolique</strong> résulte d'une inflammation répétée du foie : en réponse aux lésions, le foie forme du tissu cicatriciel (<strong>fibrose</strong>) qui finit par remplacer le tissu sain, perturbant durablement la structure et la fonction hépatiques.</p>
+    <p>Autres atteintes chroniques : <strong>cancers</strong> · <strong>neuropathie périphérique</strong> et détérioration cognitive (déficit en <strong>B1</strong> → syndrome de Korsakoff) · atteintes mentales (dépression, violence envers soi-même et autrui).</p>
+
+    <div class="stat-row">
+      <div class="stat"><div class="big">1/20</div><div class="cap">décès est dû à l'alcool (OMS)</div></div>
+      <div class="stat"><div class="big">#1</div><div class="cap">facteur de risque santé chez les 15–59 ans</div></div>
+      <div class="stat"><div class="big">Groupe 1</div><div class="cap">cancérogène certain (CIRC)</div></div>
+    </div>
+
+    <div class="box exam">
+      <span class="box-label">Tombé à l'examen (juin 2024 &amp; juin 2018)</span>
+      <p class="q">« Citez 2 (ou 3) problèmes de santé liés à l'usage chronique d'alcool et justifiez brièvement. »</p>
+      <p><strong>Réponse-type structurée :</strong></p>
+      <ol class="body-list">
+        <li><strong>Hépatotoxicité → cirrhose</strong> : métabolisme hépatique → acétaldéhyde toxique → fibrose.</li>
+        <li><strong>Cancers</strong> : œsophage, pharynx, larynx, sein, foie (CIRC groupe 1).</li>
+        <li><strong>Neurotoxicité</strong> : troubles cognitifs, mémoire, Korsakoff (déficit B1), dépression.</li>
+        <li><em>(Bonus)</em> <strong>Syndrome d'alcoolisme fœtal</strong> en cas de grossesse.</li>
+      </ol>
+    </div>
+
+    <div class="box retenir">
+      <span class="box-label">À retenir — distinguer aigu vs chronique</span>
+      <ul>
+        <li><strong>Aigu :</strong> arrêt respiratoire (5 g/L), accidents, pancréatite aiguë, SAF.</li>
+        <li><strong>Chronique :</strong> stéatose → stéatohépatite → cirrhose ; cancers ; neuro/psy.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 7 ============ -->
+  <section id="s7">
+    <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title">Alcool &amp; cancer</h2></div>
+    <p>L'éthanol est classé <strong>cancérogène de groupe 1 par le CIRC</strong>. Toute consommation régulière augmente le risque de cancers des <strong>voies aérodigestives supérieures</strong> (œsophage, bouche, pharynx, larynx), du <strong>sein</strong> et du <strong>foie</strong>. Mécanisme : l'acétaldéhyde est mutagène, et l'éthanol génère des <strong>ROS</strong> (espèces réactives de l'oxygène) qui endommagent l'ADN.</p>
+
+    <div class="box piege">
+      <span class="box-label">Le piège classique — « le vin est antioxydant »</span>
+      <p>Question récurrente : <em>« Une consommation modérée de vin (1–2 verres ; propriétés antioxydantes) prévient-elle le cancer de l'œsophage ? »</em></p>
+      <ul>
+        <li><strong>NON.</strong> Le <strong>vin</strong> contient des polyphénols antioxydants (resvératrol), mais <strong>l'éthanol lui-même n'est PAS antioxydant</strong> — au contraire, il produit des ROS.</li>
+        <li>L'idée d'un effet protecteur est <strong>très controversée et scientifiquement insuffisante</strong>.</li>
+        <li>Les éventuels bénéfices cardiovasculaires du vin rouge <strong>ne justifient jamais</strong> une consommation quotidienne à visée préventive, surtout concernant les cancers.</li>
+      </ul>
+    </div>
+
+    <div class="box retenir">
+      <span class="box-label">À retenir — la formule qui rapporte des points</span>
+      <p>« <strong>Le vin contient des antioxydants (polyphénols/resvératrol) ; l'éthanol, lui, est pro-oxydant et cancérogène de groupe 1.</strong> » Ne jamais confondre la boisson et la molécule.</p>
+    </div>
+  </section>
+
+  <!-- ============ 8 ============ -->
+  <section id="s8">
+    <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title">Alcoolo-dépendance</h2></div>
+
+    <h3>Une maladie psychiatrique</h3>
+    <p>La dépendance à l'alcool est définie comme une <strong>maladie psychiatrique</strong>, diagnostiquée selon les <strong>critères du DSM</strong> (DSM-5).</p>
+
+    <h3>Modèle neurobiologique</h3>
+    <ul>
+      <li><strong>Circuit de la récompense</strong> : dopamine, peptides opioïdes, sérotonine, GABA, glutamate.</li>
+      <li><strong>Renforcement positif</strong> : obtenir le stimulus de « récompense » (euphorie, plaisir).</li>
+      <li><strong>Renforcement négatif</strong> : éviter les symptômes de sevrage et les émotions négatives (anxiété).</li>
+      <li><strong>Système du stress</strong> : libération de cortisol → anxiété.</li>
+    </ul>
+
+    <h3>Le syndrome de sevrage</h3>
+    <p>Symptômes : tremblements, hypertension, maux de tête, nausées/vomissements, sueurs, anxiété, hallucinations (visuelles et auditives), <strong>delirium tremens</strong>, crise d'épilepsie, et au pire la <strong>mort</strong>.</p>
+    <ul>
+      <li><strong>Durée :</strong> 5 à 7 jours.</li>
+      <li><strong>Traitement :</strong> benzodiazépines.</li>
+    </ul>
+
+    <h3>Axe microbiote – intestin – cerveau</h3>
+    <p>La dépendance pourrait impliquer des phénomènes inflammatoires d'origine intestinale (Leclercq et al., 2013) : la surconsommation induit une <strong>dysbiose</strong> et une <strong>↑ perméabilité intestinale</strong> → passage de <strong>LPS</strong> et peptidoglycanes → activation de <strong>TLR2/TLR4</strong> sur les PBMC → libération de cytokines (IL-8, IL-1β, IL-18) → <strong>inflammation</strong> → dépression / anxiété → entretien de la surconsommation.</p>
+
+    <div class="box exam">
+      <span class="box-label">Angle d'examen probable</span>
+      <p>Le lien <strong>dépendance ↔ microbiote ↔ inflammation</strong> est un sujet de prédilection du cours (recherche du groupe Delzenne/Leclercq). Sachez décrire la cascade : <em>dysbiose → perméabilité → LPS → inflammation → comportement</em>.</p>
+    </div>
+
+    <div class="box retenir">
+      <span class="box-label">À retenir</span>
+      <ul>
+        <li>Dépendance = maladie psychiatrique (diagnostic <strong>DSM</strong>).</li>
+        <li>Sevrage : <strong>5–7 j</strong>, risque de <strong>delirium tremens</strong>, traité par <strong>benzodiazépines</strong>.</li>
+        <li>Mot-clé inflammation : <strong>LPS → TLR4</strong>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 9 ============ -->
+  <section id="s9">
+    <div class="sec-head"><span class="sec-num">09</span><h2 class="sec-title">Interactions alcool–médicaments</h2></div>
+    <p>L'alcool est un acteur majeur des interactions aliment–médicament, principalement <strong>via le CYP2E1</strong> qu'il induit en consommation chronique.</p>
+
+    <h3>Le cas emblématique : le paracétamol</h3>
+    <p>Le paracétamol est métabolisé par le CYP2E1 en <strong>NAPQI</strong>, métabolite hépatotoxique normalement détoxifié par le glutathion (GSH). En cas d'<strong>alcoolisme chronique</strong>, le CYP2E1 est <strong>induit</strong> → davantage de NAPQI produit → <strong>risque d'hépatotoxicité majoré</strong> (d'autant plus que les réserves de GSH sont basses chez le dénutri).</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Médicament</th><th>Effet de l'alcool</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Paracétamol</strong></td><td>↑ CYP2E1 → ↑ NAPQI → hépatotoxicité</td></tr>
+          <tr><td><strong>Isoniazide</strong></td><td>↑ acétylation (↑ acétyl-CoA) → ↑ toxicité</td></tr>
+          <tr><td><strong>Félodipine</strong> (anti-HTA)</td><td>Interaction découverte « fortuitement » lors d'études sur l'alcool (→ a mené à la découverte de l'effet du jus de pamplemousse)</td></tr>
+          <tr><td><strong>Benzodiazépines</strong> (diazépam…)</td><td>↑ sédation (interaction pharmacodynamique)</td></tr>
+          <tr><td><strong>Warfarine</strong></td><td>Anticoagulant à faible index thérapeutique → interaction à risque</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box retenir">
+      <span class="box-label">À retenir — le combo gagnant</span>
+      <p>« <strong>Alcool chronique → induction du CYP2E1 → ↑ NAPQI → hépatotoxicité du paracétamol.</strong> » C'est l'exemple-type d'interaction pharmacocinétique par induction enzymatique à maîtriser parfaitement.</p>
+    </div>
+  </section>
+
+  <!-- ============ 10 ============ -->
+  <section id="s10">
+    <div class="sec-head"><span class="sec-num">10</span><h2 class="sec-title">Recommandations &amp; synthèse finale</h2></div>
+
+    <div class="box retenir">
+      <span class="box-label">Les recommandations à connaître par cœur</span>
+      <ul>
+        <li><strong>Belgique :</strong> max <strong>10 unités/semaine</strong> + au moins <strong>2 jours sans alcool</strong>/semaine.</li>
+        <li><strong>OMS :</strong> ne pas dépasser ~2 verres/jour, avec des jours d'abstinence.</li>
+        <li><strong>Diététique :</strong> alcool ≤ <strong>4 % de l'AET</strong> (idéalement &lt; 2 %).</li>
+        <li>Aucune dose n'est « sans risque » (cancérogène groupe 1).</li>
+      </ul>
+    </div>
+
+    <h3>La fiche mémo — tout le chapitre en 8 idées</h3>
+    <ol class="body-list">
+      <li><strong>7 kcal/g</strong>, calories vides, non stockable.</li>
+      <li>Voies : <strong>ADH (non inductible, NAD⁺)</strong> &amp; <strong>CYP2E1 (inductible, NADPH)</strong> → acétaldéhyde → acétate (ALDH).</li>
+      <li>C'est l'<strong>acétaldéhyde</strong> le grand toxique (mitochondrie, ADN).</li>
+      <li>Carences : <strong>B1</strong>, B6, B9, vit. liposolubles ; surcharge en Fe.</li>
+      <li>Aigu : arrêt respiratoire, pancréatite, SAF. Chronique : <strong>stéatose → cirrhose</strong>, cancers, neuro/psy.</li>
+      <li>Cancérogène <strong>groupe 1 CIRC</strong> ; l'éthanol est <strong>pro-oxydant</strong> (≠ vin).</li>
+      <li>Dépendance = maladie psy (DSM) ; sevrage 5–7 j ; lien <strong>microbiote–inflammation</strong>.</li>
+      <li>Interactions : <strong>CYP2E1 + paracétamol → hépatotoxicité</strong>.</li>
+    </ol>
+
+    <div class="box exam">
+      <span class="box-label">Format des questions du Pr. Delzenne</span>
+      <p>Le chapitre tombe surtout sous forme de : <em>« citez X problèmes de santé / effets et justifiez »</em>, de <em>définitions à retrouver</em> (l'éthanol comme inducteur du CYP2E1), et de <em>vrai/faux argumentés</em> (le vin antioxydant, l'apport en kcal vs kJ). Privilégiez les <strong>réponses brèves, structurées et justifiées</strong>.</p>
+    </div>
+  </section>
+
+</main>
+
+<a href="#" class="top" aria-label="Haut de page">↑</a>
+
+<footer>
+  <p class="disc">Synthèse personnelle de révision élaborée à partir des diapositives du chapitre 5 (Éthanol, Pr. N. M. Delzenne, FARM 2149) et de la compilation des examens des années passées. À recouper avec le cours officiel.</p>
+  <div>FARM 2149 · CHAPITRE 5 · ÉTHANOL</div>
+</footer>
+
+</body>
+</html>

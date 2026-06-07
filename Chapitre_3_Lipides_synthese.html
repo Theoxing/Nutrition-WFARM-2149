@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapitre 3 — Les lipides | FARM 2149</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f1e7;
+    --paper-2:#efe6d6;
+    --ink:#2a2620;
+    --ink-soft:#564f43;
+    --olive:#3f5b3c;
+    --olive-deep:#2c4029;
+    --olive-light:#e4ecdf;
+    --ochre:#b5651d;
+    --ochre-deep:#8a4a12;
+    --ochre-light:#f6e9d6;
+    --brick:#9c3b2e;
+    --brick-light:#f4e2dd;
+    --line:#d8ccb6;
+    --shadow:rgba(53,42,24,.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 18% -8%, #fdf8ee 0%, rgba(253,248,238,0) 45%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Spectral',Georgia,serif;
+    font-size:18px;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;pointer-events:none;z-index:0;
+    opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* layout */
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1;}
+  .layout{display:grid;grid-template-columns:248px 1fr;gap:48px;align-items:start;}
+  @media(max-width:900px){.layout{grid-template-columns:1fr;gap:0;}}
+
+  /* nav */
+  nav.toc{
+    position:sticky;top:24px;align-self:start;
+    font-family:'Spectral',serif;font-size:14.5px;
+    border-left:2px solid var(--line);
+    padding:8px 0 8px 18px;
+    max-height:calc(100vh - 48px);overflow:auto;
+  }
+  nav.toc .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ochre-deep);display:block;margin-bottom:14px;
+  }
+  nav.toc a{
+    display:block;color:var(--ink-soft);text-decoration:none;padding:5px 0;
+    border-bottom:1px dotted transparent;transition:.2s;line-height:1.35;
+  }
+  nav.toc a:hover{color:var(--olive-deep);transform:translateX(3px);}
+  nav.toc a .num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ochre);margin-right:7px;}
+  @media(max-width:900px){nav.toc{display:none;}}
+
+  /* hero */
+  header.hero{
+    padding:80px 0 38px;border-bottom:3px double var(--olive);margin-bottom:14px;
+    grid-column:1 / -1;
+  }
+  .hero .kicker{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--ochre-deep);margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:'Fraunces',serif;font-weight:800;font-size:clamp(38px,6vw,68px);
+    line-height:1.02;margin:0 0 14px;color:var(--olive-deep);letter-spacing:-.01em;
+  }
+  .hero h1 em{font-style:italic;font-weight:500;color:var(--ochre-deep);}
+  .hero .sub{font-size:20px;color:var(--ink-soft);max-width:680px;font-style:italic;}
+  .hero .meta{
+    margin-top:24px;display:flex;gap:10px;flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;
+  }
+  .hero .meta span{
+    background:var(--olive-light);color:var(--olive-deep);
+    padding:6px 13px;border-radius:2px;border:1px solid #cfdcc8;
+  }
+
+  /* sections */
+  section{padding:42px 0 8px;scroll-margin-top:24px;}
+  h2{
+    font-family:'Fraunces',serif;font-weight:700;font-size:clamp(26px,3.4vw,36px);
+    color:var(--olive-deep);margin:0 0 4px;line-height:1.1;display:flex;
+    align-items:baseline;gap:14px;
+  }
+  h2 .h2num{
+    font-family:'IBM Plex Mono',monospace;font-size:15px;color:#fff;
+    background:var(--ochre);padding:4px 10px;border-radius:3px;
+    flex-shrink:0;transform:translateY(-4px);font-weight:500;
+  }
+  h2 + .lead{color:var(--ink-soft);font-style:italic;margin:2px 0 22px;font-size:17px;}
+  h3{
+    font-family:'Fraunces',serif;font-weight:600;font-size:22px;color:var(--brick);
+    margin:34px 0 8px;letter-spacing:-.01em;
+  }
+  h4{font-family:'Spectral',serif;font-weight:600;font-size:18px;color:var(--olive-deep);margin:22px 0 4px;}
+  p{margin:0 0 14px;}
+  a.ref{color:var(--ochre-deep);text-decoration:none;border-bottom:1px solid var(--line);}
+
+  /* chemistry token */
+  .chem{font-family:'IBM Plex Mono',monospace;font-size:.9em;background:var(--paper-2);
+    padding:1px 6px;border-radius:3px;border:1px solid var(--line);white-space:nowrap;}
+  .up{color:var(--olive);font-weight:600;}
+  .down{color:var(--brick);font-weight:600;}
+
+  ul.clean{list-style:none;padding:0;margin:0 0 16px;}
+  ul.clean li{position:relative;padding:6px 0 6px 26px;border-bottom:1px solid rgba(216,204,182,.5);}
+  ul.clean li::before{content:"›";position:absolute;left:4px;top:6px;color:var(--ochre);font-weight:700;font-family:'Fraunces',serif;}
+  ul.clean li:last-child{border-bottom:none;}
+
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  @media(max-width:720px){.twocol{grid-template-columns:1fr;gap:0;}}
+
+  /* tables */
+  .tbl-wrap{overflow-x:auto;margin:18px 0 26px;border-radius:6px;box-shadow:0 2px 14px var(--shadow);}
+  table{border-collapse:collapse;width:100%;font-size:15.5px;background:#fdfaf3;min-width:480px;}
+  caption{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ochre-deep);text-align:left;padding:0 0 8px;}
+  th{background:var(--olive-deep);color:#f3eddf;font-family:'Spectral',serif;font-weight:600;
+    text-align:left;padding:11px 14px;font-size:14.5px;letter-spacing:.01em;}
+  td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tbody tr:nth-child(even){background:var(--paper);}
+  tbody tr:hover{background:var(--olive-light);}
+  td strong{color:var(--olive-deep);}
+
+  /* callout boxes */
+  .box{border-radius:8px;padding:22px 26px 18px;margin:26px 0;position:relative;
+    box-shadow:0 3px 16px var(--shadow);border:1px solid;}
+  .box .label{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:500;display:inline-flex;align-items:center;gap:8px;margin-bottom:10px;padding:4px 11px;border-radius:20px;
+  }
+  .box p:last-child,.box ul:last-child{margin-bottom:0;}
+  .box h4:first-of-type{margin-top:4px;}
+
+  .exam{background:var(--ochre-light);border-color:#e7c896;}
+  .exam .label{background:var(--ochre);color:#fff;}
+  .exam .qa{margin:10px 0;padding:12px 16px;background:rgba(255,255,255,.55);border-left:3px solid var(--ochre);border-radius:4px;}
+  .exam .q{font-style:italic;color:var(--ochre-deep);margin-bottom:6px;}
+  .exam .a{font-size:16px;}
+  .verdict{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;padding:1px 7px;border-radius:3px;margin-right:5px;}
+  .v-true{background:var(--olive-light);color:var(--olive-deep);border:1px solid #bcd0b4;}
+  .v-false{background:var(--brick-light);color:var(--brick);border:1px solid #e3bdb5;}
+
+  .retenir{background:var(--olive-light);border-color:#bcd0b4;}
+  .retenir .label{background:var(--olive-deep);color:#eef3e8;}
+  .retenir ul{list-style:none;padding:0;margin:6px 0 0;}
+  .retenir li{padding:5px 0 5px 28px;position:relative;}
+  .retenir li::before{content:"★";position:absolute;left:0;top:5px;color:var(--olive);font-size:14px;}
+
+  .pitfall{background:var(--brick-light);border-color:#e3bdb5;}
+  .pitfall .label{background:var(--brick);color:#fff;}
+
+  blockquote{margin:18px 0;padding:8px 0 8px 22px;border-left:3px solid var(--ochre);
+    font-style:italic;color:var(--ink-soft);}
+  blockquote cite{display:block;font-style:normal;font-family:'IBM Plex Mono',monospace;
+    font-size:12px;color:var(--ochre-deep);margin-top:6px;letter-spacing:.04em;}
+
+  /* divider */
+  .ornament{text-align:center;color:var(--line);font-size:22px;letter-spacing:1em;margin:40px 0 8px;}
+
+  footer{border-top:3px double var(--olive);margin-top:60px;padding:34px 0 70px;
+    color:var(--ink-soft);font-size:14.5px;}
+  footer strong{color:var(--olive-deep);}
+
+  /* entrance animation */
+  section,.hero{opacity:0;transform:translateY(14px);animation:rise .7s ease forwards;}
+  .hero{animation-delay:.05s;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+  @media(prefers-reduced-motion:reduce){section,.hero{animation:none;opacity:1;transform:none;}}
+
+  .pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;
+    padding:2px 8px;border-radius:12px;background:var(--paper-2);border:1px solid var(--line);
+    color:var(--ink-soft);margin:0 2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">FARM 2149 · Approche pharmaceutique de la nutrition · N.M. Delzenne</div>
+    <h1>Chapitre 3<br><em>Les lipides</em></h1>
+    <div class="sub">Biodiversité des acides gras alimentaires — structure, fonctions, et impact sur la santé cardiovasculaire.</div>
+    <div class="meta">
+      <span>Synthèse de révision</span>
+      <span>Encadrés « Examen »</span>
+      <span>Points clés à retenir</span>
+      <span>UCLouvain · LDRI</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc">
+      <span class="tag">Sommaire</span>
+      <a href="#s1"><span class="num">01</span>Généralités</a>
+      <a href="#s2"><span class="num">02</span>Structure &amp; classification</a>
+      <a href="#s3"><span class="num">03</span>Acides gras essentiels</a>
+      <a href="#s4"><span class="num">04</span>Fonctions des AG</a>
+      <a href="#s5"><span class="num">05</span>Sources alimentaires</a>
+      <a href="#s6"><span class="num">06</span>Lipides &amp; santé CV</a>
+      <a href="#s7"><span class="num">07</span>Phytostérols / stanols</a>
+      <a href="#s8"><span class="num">08</span>Recommandations CSS</a>
+      <a href="#s9"><span class="num">09</span>Aliments fonctionnels</a>
+      <a href="#s10"><span class="num">10</span>Fiche express</a>
+    </nav>
+
+    <main>
+
+    <!-- 1 -->
+    <section id="s1">
+      <h2><span class="h2num">01</span>Généralités sur les lipides alimentaires</h2>
+      <p class="lead">De quoi parle-t-on réellement quand on dit « lipides » ?</p>
+
+      <ul class="clean">
+        <li>Quand on parle de <strong>lipides alimentaires</strong>, il s'agit <strong>principalement de triglycérides</strong> (TG = glycérol + 3 acides gras).</li>
+        <li>Le <strong>cholestérol</strong> ne représente qu'une <strong>très faible part</strong> des lipides alimentaires.</li>
+        <li>Les triglycérides, via les acides gras qu'ils contiennent, ont une valeur calorique approximative de <strong>≈ 9 kcal/g</strong>.</li>
+        <li>Une fois absorbés, les lipides sont <strong>oxydés et/ou stockés</strong> (foie, tissu adipeux). L'enjeu nutritionnel est donc autant <em>qualitatif</em> que quantitatif.</li>
+      </ul>
+
+      <div class="box retenir">
+        <span class="label">★ À retenir</span>
+        <p>Le message central du chapitre : un acide gras est une <strong>source de calories</strong>, mais l'important est de <strong>connaître ceux qui ont un impact neutre — ou mieux, positif — pour la santé</strong>. Toute la suite découle de cette idée de « gestion qualitative » des graisses.</p>
+      </div>
+
+      <div class="box exam">
+        <span class="label">📝 Examen</span>
+        <div class="qa">
+          <div class="q">« Tous les lipides apportent 9 kcal/g ? »</div>
+          <div class="a">Réponse nuancée : <strong>en moyenne oui</strong>, mais cette valeur est une approximation utilisée pour l'étiquetage. Certaines formes (acides gras à très courte/très longue chaîne) ou la biodisponibilité réelle peuvent faire dévier légèrement cette valeur. À mentionner : c'est une <em>moyenne conventionnelle</em>.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament">✦ ✦ ✦</div>
+
+    <!-- 2 -->
+    <section id="s2">
+      <h2><span class="h2num">02</span>Structure &amp; classification des acides gras</h2>
+      <p class="lead">Les acides gras sont des <strong>acides carboxyliques</strong> à chaîne hydrocarbonée.</p>
+
+      <h3>Nomenclature</h3>
+      <p>On note la longueur de chaîne, le nombre de doubles liaisons et leur position. Exemple : <span class="chem">C18:1 (Δ9 cis)</span> = acide oléique → 18 carbones, 1 double liaison, en position 9, configuration <em>cis</em>.</p>
+      <p>La notation « <strong>n-x</strong> » (ou ω-x) repère la <strong>première double liaison à partir de l'extrémité méthyle</strong> : un acide gras <em>n-3</em> a sa première double liaison sur le 3<sup>e</sup> carbone depuis le bout méthyle.</p>
+
+      <h3>Classification selon la longueur de chaîne</h3>
+      <div class="tbl-wrap">
+      <table>
+        <caption>Longueur de chaîne — définition &amp; origine</caption>
+        <thead><tr><th>Catégorie</th><th>Carbones</th><th>Exemples</th><th>Origine</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Chaîne courte</strong> (AGCC)</td><td>≤ C4</td><td>acétate, propionate, butyrate, isovalérate</td><td>Alimentaire + <strong>fermentation colique</strong></td></tr>
+          <tr><td><strong>Chaîne moyenne</strong> (AGCM)</td><td>C5–C10</td><td>—</td><td>Alimentaire</td></tr>
+          <tr><td><strong>Chaîne longue</strong> (AGCL)</td><td>C12–C18</td><td>palmitique, stéarique, oléique…</td><td>Alimentaire + synthèse <em>de novo</em> conditionnelle*</td></tr>
+          <tr><td><strong>Chaîne très longue</strong></td><td>&gt; C20</td><td>EPA, DHA, arachidonique</td><td>Alimentaire + synthèse <em>de novo</em> conditionnelle*</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p style="font-size:14.5px;color:var(--ink-soft);">*La synthèse endogène est limitée par les enzymes <strong>désaturases</strong> et <strong>élongases</strong> → d'où la notion d'acides gras « essentiels » (voir §3).</p>
+
+      <h3>Les « dilemmes nutritionnels »</h3>
+      <p>Toute la valeur santé d'un acide gras se joue sur quelques oppositions structurales clés :</p>
+      <ul class="clean">
+        <li><strong>Saturé vs insaturé</strong> — présence ou non de double(s) liaison(s).</li>
+        <li><strong>Mono-insaturé (AGMI) vs poly-insaturé (AGPI)</strong> — une vs plusieurs doubles liaisons.</li>
+        <li><strong>n-3 vs n-6</strong> — position de la première double liaison → familles métaboliques distinctes.</li>
+        <li><strong>cis vs trans</strong> — géométrie de la double liaison → <em>cis</em> = coudé (bénin/bénéfique), <em>trans</em> = quasi rectiligne (délétère).</li>
+        <li><strong>conjugué vs non conjugué</strong> — doubles liaisons séparées par un seul C (CLA) vs non.</li>
+        <li><strong>essentiel vs non essentiel</strong> — apporté obligatoirement par l'alimentation ou non.</li>
+      </ul>
+
+      <div class="box retenir">
+        <span class="label">★ À retenir</span>
+        <ul>
+          <li>Savoir <strong>lire et écrire</strong> une formule type <span class="chem">C18:2 n-6 (cis Δ9,12)</span> = acide linoléique.</li>
+          <li>Connaître par cœur quelques repères : <span class="chem">C16:0</span> palmitique (saturé), <span class="chem">C18:1</span> oléique (AGMI, n-9), <span class="chem">C18:2 n-6</span> linoléique, <span class="chem">C18:3 n-3</span> α-linolénique, <span class="chem">C22:6 n-3</span> DHA.</li>
+          <li>La <strong>configuration <em>cis</em></strong> donne une chaîne coudée → fluidité membranaire ; la <strong><em>trans</em></strong> mime spatialement un acide gras saturé.</li>
+        </ul>
+      </div>
+
+      <div class="box exam">
+        <span class="label">📝 Examen</span>
+        <p><strong>Définir « acide gras oméga-3 essentiel »</strong> (question tombée plusieurs fois) :</p>
+        <div class="qa">
+          <div class="a">AGPI dont la 1<sup>re</sup> double liaison est située sur le 3<sup>e</sup> atome de carbone à partir de l'extrémité méthyle, <strong>que l'organisme ne peut pas synthétiser</strong> et qui doit donc être apporté par l'alimentation. Ex. : <strong>acide α-linolénique (ALA)</strong> ; EPA et DHA en sont dérivés (synthétisés en faible quantité à partir de l'ALA).</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament">✦ ✦ ✦</div>
+
+    <!-- 3 -->
+    <section id="s3">
+      <h2><span class="h2num">03</span>Les acides gras essentiels (n-6 &amp; n-3)</h2>
+      <p class="lead">Deux familles, deux têtes de file indispensables, un rapport à surveiller.</p>
+
+      <div class="twocol">
+        <div>
+          <h4>Famille n-6</h4>
+          <ul class="clean">
+            <li><strong>Acide linoléique (LA)</strong> <span class="chem">C18:2 n-6</span> — le précurseur essentiel.</li>
+            <li>→ acide γ-linolénique (GLA), dihomo-GLA, puis <strong>acide arachidonique (AA)</strong> <span class="chem">C20:4 n-6</span>.</li>
+            <li>Sources : huiles de tournesol, maïs, soja.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Famille n-3</h4>
+          <ul class="clean">
+            <li><strong>Acide α-linolénique (ALA)</strong> <span class="chem">C18:3 n-3</span> — précurseur essentiel d'origine <strong>végétale</strong> (lin, colza, noix).</li>
+            <li>→ <strong>EPA</strong> <span class="chem">C20:5 n-3</span> et <strong>DHA</strong> <span class="chem">C22:6 n-3</span> — surtout dans les <strong>poissons gras</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Transformation biochimique chez l'homme</h3>
+      <p>Les deux familles partagent les <strong>mêmes enzymes</strong> (compétition !) : la <strong>Δ6-désaturase</strong>, l'<strong>élongase</strong> et la <strong>Δ5-désaturase</strong>. Les produits à 20 carbones (AA pour le n-6, EPA pour le n-3) sont les précurseurs des <strong>eicosanoïdes</strong> : prostaglandines, thromboxanes, leucotriènes.</p>
+
+      <blockquote>n-6 (acide arachidonique) → eicosanoïdes plutôt <strong>pro-inflammatoires</strong> · n-3 (EPA, DHA) → médiateurs plutôt <strong>anti-inflammatoires</strong>.</blockquote>
+
+      <h3>Le rapport n-6 / n-3</h3>
+      <p>L'alimentation occidentale présente un <strong>rapport n-6/n-3 trop élevé</strong>, ce qui serait étroitement lié au développement de pathologies associées à l'obésité. L'apport en n-3 doit donc être pensé <strong>relativement à l'apport en n-6</strong>.</p>
+
+      <h3>Autres rôles des AGPI n-3</h3>
+      <ul class="clean">
+        <li>Maturation du système nerveux central, fonction cognitive et apprentissage.</li>
+        <li>Développement fœtal et grossesse à terme.</li>
+        <li>Réponse inflammatoire et immunitaire.</li>
+        <li>Prévention des pathologies cardiovasculaires ; cancer (côlon, sein, prostate).</li>
+        <li>Santé mentale / humeur ; AGPI n-3 et n-6 → diminution du risque de diabète de type 2.</li>
+      </ul>
+
+      <div class="box exam">
+        <span class="label">📝 Examen — QCM récurrent</span>
+        <p>« <em>Les acides gras polyinsaturés n-3…</em> » (justifier chaque proposition) :</p>
+        <div class="qa">
+          <div class="a"><span class="verdict v-false">FAUX</span> …possèdent 3 doubles liaisons → certains en ont plus (le DHA en a <strong>6</strong>). Le « 3 » désigne la <em>position</em>, pas le nombre.</div>
+        </div>
+        <div class="qa">
+          <div class="a"><span class="verdict v-false">FAUX</span> …se retrouvent exclusivement dans les poissons gras → l'<strong>ALA est végétal</strong> (lin, noix, colza).</div>
+        </div>
+        <div class="qa">
+          <div class="a"><span class="verdict v-true">VRAI</span> …sont susceptibles de subir une <strong>peroxydation lipidique</strong> (riches en doubles liaisons).</div>
+        </div>
+        <div class="qa">
+          <div class="a"><span class="verdict v-true">VRAI</span> …doivent être ingérés en quantité <strong>dépendant de l'apport en n-6</strong> (ratio recommandé ≈ 4:1).</div>
+        </div>
+      </div>
+
+      <div class="box retenir">
+        <span class="label">★ À retenir</span>
+        <ul>
+          <li>Essentiels = <strong>LA (n-6)</strong> et <strong>ALA (n-3)</strong>. EPA/DHA et AA en dérivent (semi-essentiels).</li>
+          <li>Une même chaîne enzymatique (Δ6, élongase, Δ5) → <strong>compétition n-6/n-3</strong>.</li>
+          <li>Objectif diététique : <strong>abaisser le rapport n-6/n-3</strong> (viser &lt; 4–5:1).</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="ornament">✦ ✦ ✦</div>
+
+    <!-- 4 -->
+    <section id="s4">
+      <h2><span class="h2num">04</span>Les fonctions des acides gras</h2>
+      <p class="lead">Bien plus que des réserves d'énergie.</p>
+
+      <div class="tbl-wrap">
+      <table>
+        <caption>Rôles physiologiques des acides gras</caption>
+        <thead><tr><th>Fonction</th><th>Détail</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Substrat énergétique</strong></td><td>Oxydation. Le <strong>butyrate</strong> est le carburant des colonocytes. Préférence d'oxydation : <strong>AGCM +++ &gt; AGCL ++ &gt; AG très longue chaîne −</strong>.</td></tr>
+          <tr><td><strong>Stockage</strong></td><td>Sous forme de <strong>triglycérides</strong> (foie, tissu adipeux) et de <strong>phospholipides</strong> (toutes les membranes).</td></tr>
+          <tr><td><strong>Substrat métabolique</strong></td><td>Les AGPI sont précurseurs des <strong>prostaglandines, thromboxanes…</strong> (eicosanoïdes).</td></tr>
+          <tr><td><strong>Régulation métabolique</strong></td><td>Second messager (<strong>PIP₂</strong>) ; <strong>modulateurs de l'expression de gènes</strong> (AGPI n-3, CLA via PPAR).</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="box retenir">
+        <span class="label">★ À retenir</span>
+        <p>Retenir la hiérarchie d'<strong>oxydation vs stockage</strong> : un AG est d'autant plus volontiers <em>oxydé</em> (donc peu stocké) qu'il est <strong>insaturé</strong> (<span class="chem">C18:2 &gt; C18:0</span>) ou à <strong>chaîne moyenne</strong> (<span class="chem">AGCM &gt; AGCL</span>) ; les <strong>AG trans</strong> sont mal oxydés. Cette logique « <span class="up">↑</span> oxydation = profil favorable » revient souvent.</p>
+      </div>
+    </section>
+
+    <div class="ornament">✦ ✦ ✦</div>
+
+    <!-- 5 -->
+    <section id="s5">
+      <h2><span class="h2num">05</span>Sources alimentaires : lire un profil d'acides gras</h2>
+      <p class="lead">Savoir comparer la composition de deux matières grasses est un grand classique.</p>
+
+      <div class="twocol">
+        <div>
+          <h4>Origine végétale</h4>
+          <ul class="clean">
+            <li><strong>Colza, noix</strong> : bonnes sources de n-3 (ALA).</li>
+            <li><strong>Olive, arachide</strong> : riches en AGMI (oléique).</li>
+            <li><strong>Tournesol, maïs, soja</strong> : riches en n-6 (linoléique).</li>
+            <li><strong>Beurre de cacao</strong> : très saturé.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Origine animale</h4>
+          <ul class="clean">
+            <li><strong>Hareng, saumon, sardine</strong> : riches en n-3 (EPA/DHA).</li>
+            <li><strong>Beurre, saindoux, agneau, bœuf</strong> : profil très saturé.</li>
+            <li>Produits laitiers / ruminants : petite quantité d'AG <em>trans</em> naturels (ex. acide vaccénique) et de CLA.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="box exam">
+        <span class="label">📝 Examen — exercice type</span>
+        <p><strong>« Lait de soja vs lait de vache demi-écrémé : citez et justifiez 3 avantages santé du soja. »</strong></p>
+        <ul class="clean">
+          <li><strong>Profil lipidique plus favorable</strong> : beaucoup moins d'AG saturés (15 % vs 66 %), présence d'AGPI (dont ALA) → ↓ LDL, ↓ risque CV.</li>
+          <li><strong>Pas de cholestérol</strong> → bénéfique en cas d'hypercholestérolémie.</li>
+          <li><strong>Pas de lactose</strong> → adapté aux intolérants ; <strong>profil glycémique</strong> plus favorable (≈ 2× moins de glucides).</li>
+          <li>Bonus possible : protéine végétale de qualité, phytoœstrogènes (os, risque cancer).</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="ornament">✦ ✦ ✦</div>
+
+    <!-- 6 -->
+    <section id="s6">
+      <h2><span class="h2num">06</span>Lipides &amp; santé cardiovasculaire</h2>
+      <p class="lead">Le cœur de l'examen. Tout se résume à : <strong>quel acide gras fait quoi au LDL, au HDL et à l'inflammation ?</strong></p>
+
+      <h3>Acides gras saturés (AGS) &amp; lipoprotéines athérogènes</h3>
+      <ul class="clean">
+        <li>L'effet athérogène <strong>dépend de la longueur de chaîne</strong> : <span class="chem">C14:0</span> (myristique) et <span class="chem">C16:0</span> (palmitique) sont <strong>plus athérogènes</strong> que <span class="chem">C18:0</span> (stéarique) ou <span class="chem">C12:0</span> (laurique).</li>
+        <li><strong>Mécanisme</strong> : les AGS pro-athérogènes répriment l'expression du <strong>récepteur LDL (LDL-R)</strong> via la voie <strong>SREBP-2</strong> → moins de captation hépatique du cholestérol → <span class="up">↑</span> cholestérol-LDL circulant. À l'inverse, <span class="chem">C18:1</span> (oléique) favorise l'expression du LDL-R.</li>
+      </ul>
+
+      <h3>Acides gras mono-insaturés (AGMI)</h3>
+      <ul class="clean">
+        <li>La <strong>substitution des AGS par des AGMI diminue le cholestérol-LDL</strong> (Mensink &amp; Katan, 1989).</li>
+        <li>Diètes riches en AGMI → <span class="up">↑</span> métabolisation des triglycérides post-prandiaux, <span class="down">↓</span> activité du <strong>facteur VII</strong> (thrombose), <span class="down">↓</span> de l'<strong>ICAM-1</strong> (molécule d'adhésion / inflammation endothéliale).</li>
+      </ul>
+
+      <h3>Acides gras poly-insaturés n-3 : effets &amp; usage « thérapeutique »</h3>
+      <p>À doses plus élevées, les AGPI n-3 sont de véritables <strong>nutriments fonctionnels</strong> à visée préventive/thérapeutique :</p>
+      <ul class="clean">
+        <li>Effets <strong>anti-inflammatoires</strong> : arthrite rhumatoïde, asthme, rechutes de la maladie de Crohn, rejet de greffe (transplantation rénale).</li>
+        <li>Effets <strong>anti-thrombotiques</strong>.</li>
+        <li>Effets centraux (EPA et syndrome schizophrénique) ; effet sur cancer (GLA / cancer du tube digestif).</li>
+      </ul>
+
+      <h4>⚠ Le revers : peroxydation lipidique</h4>
+      <p>Plus un acide gras est insaturé et à longue chaîne, plus il est <strong>sensible à la peroxydation</strong>. Ordre de sensibilité : <strong>n-6 (AA, γ-LA) &gt; n-3 (DHA)</strong>. Les n-3 induisent toutefois la <strong>glutathion-peroxydase</strong> (défense antioxydante).</p>
+
+      <h3>Acides gras <em>trans</em> : les plus délétères</h3>
+      <ul class="clean">
+        <li>Effet sur le bilan lipidique : <span class="up">↑</span> <strong>cholestérol-LDL</strong> ET <span class="down">↓</span> <strong>cholestérol-HDL</strong> (via la <strong>CETP</strong>), <span class="up">↑</span> <strong>Lp(a)</strong> → effet doublement athérogène, pire que les AGS.</li>
+        <li><strong>Origine industrielle</strong> via le <em>processing</em> : <strong>hydrogénation partielle</strong> des huiles (margarines « tartinables »), <strong>désodorisation</strong>, <strong>cuisson à haute température</strong>.</li>
+        <li><strong>Origine naturelle (ruminants)</strong> : petites quantités dans les produits laitiers et la viande (ex. acide vaccénique).</li>
+      </ul>
+
+      <blockquote>Nurses' Health Study : remplacer <strong>2 % de l'énergie</strong> sous forme d'AG trans par des AGPI réduirait le risque de maladies cardiovasculaires d'environ <strong>53 %</strong>.<cite>BMJ 2018</cite></blockquote>
+
+      <div class="box exam">
+        <span class="label">📝 Examen — figure clé (De Souza et al., BMJ 2015)</span>
+        <p>Méta-analyse distinguant trans <strong>industriels</strong> et trans <strong>de ruminants</strong> :</p>
+        <ul class="clean">
+          <li><strong>Trans industriels</strong> : associés à un <span class="up">↑</span> du risque de coronaropathie (CHD totale, RR ≈ <strong>1,42</strong>) et de mortalité coronarienne.</li>
+          <li><strong>Trans de ruminants</strong> : <strong>pas d'association néfaste</strong> avec la coronaropathie ; même un signal <em>protecteur</em> sur le diabète de type 2 (RR ≈ 0,58).</li>
+        </ul>
+        <p style="margin-top:8px;"><strong>Conclusion à savoir formuler :</strong> ce sont surtout les AG <strong>trans d'origine industrielle</strong> qui sont nocifs ; d'où la recommandation de les réduire « au plus faible niveau possible ».</p>
+      </div>
+
+      <h3>CLA — acides linoléiques conjugués</h3>
+      <ul class="clean">
+        <li>= isomères de l'acide linoléique avec <strong>1 liaison trans conjuguée</strong> (isomère majoritaire <span class="chem">C18:2 Δ9cis,11trans</span>). Conformation spatiale différente de l'acide linoléique d'origine.</li>
+        <li>Sources : <strong>lait, beurre, viande</strong> (origine ruminant) ; consommation ≈ 0,3–1 g/personne/jour.</li>
+        <li>Effets évoqués (surtout précliniques) : <span class="down">↓</span> prolifération tumorale, <span class="down">↓</span> triglycéridémie, <span class="down">↓</span> plaque d'athérome, <span class="down">↓</span> masse grasse, effets immunitaires. <em>→ Peu de données probantes chez l'homme.</em></li>
+        <li>Comme les n-3, les CLA sont des <strong>modulateurs de l'expression de gènes</strong> (liaison aux PPAR).</li>
+      </ul>
+
+      <div class="box pitfall">
+        <span class="label">⚠ Piège classique</span>
+        <p>Ne pas tout mettre dans le même sac « trans = mauvais » : les AG <strong>trans naturels (ruminants) et les CLA</strong> n'ont <strong>pas</strong> le même profil de risque que les <strong>trans industriels</strong>. C'est précisément le point que De Souza 2015 met en évidence.</p>
+      </div>
+
+      <div class="box exam">
+        <span class="label">📝 Examen — QCM « acides gras trans »</span>
+        <div class="qa">
+          <div class="a"><span class="verdict v-true">VRAI</span> …sont présents naturellement dans les produits laitiers (ex. acide vaccénique, en petite quantité).</div>
+        </div>
+        <div class="qa">
+          <div class="a"><span class="verdict v-false">FAUX</span> …augmentent le cholestérol véhiculé par les HDL → au contraire, ils <strong>baissent le HDL</strong> et <strong>augmentent le LDL</strong>.</div>
+        </div>
+      </div>
+
+      <div class="box exam">
+        <span class="label">📝 Examen — question ouverte phare</span>
+        <div class="qa">
+          <div class="q">« Pourquoi les AGPI et AGMI sont-ils préférables aux AG saturés et trans ? »</div>
+          <div class="a">
+            <strong>AGMI &amp; AGPI</strong> améliorent le profil lipidique : <span class="down">↓</span> LDL et tendance à <span class="up">↑</span> ou maintien du HDL ; les n-3 ajoutent un effet anti-inflammatoire/anti-thrombotique.<br>
+            <strong>AGS</strong> (surtout C14:0, C16:0) <span class="up">↑</span> le LDL (répression du LDL-R).<br>
+            <strong>AG trans</strong> = les plus délétères : <span class="up">↑</span> LDL <em>et</em> <span class="down">↓</span> HDL, <span class="up">↑</span> Lp(a), pro-inflammatoires.<br>
+            <strong>Recommandation</strong> : remplacer les AGS et trans par des graisses insaturées.
+          </div>
+        </div>
+      </div>
+
+      <div class="box retenir">
+        <span class="label">★ À retenir — le tableau mental</span>
+        <ul>
+          <li><strong>AGMI / AGPI</strong> → <span class="down">↓</span> LDL, profil favorable. ⭐</li>
+          <li><strong>AGS</strong> (C14:0, C16:0) → <span class="up">↑</span> LDL via SREBP-2/LDL-R.</li>
+          <li><strong>Trans industriels</strong> → <span class="up">↑</span> LDL + <span class="down">↓</span> HDL + <span class="up">↑</span> Lp(a) = pires que les saturés.</li>
+          <li><strong>n-3</strong> = anti-inflammatoire ; <strong>n-6</strong> = plutôt pro-inflammatoire et plus sensible à la peroxydation.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="ornament">✦ ✦ ✦</div>
+
+    <!-- 7 -->
+    <section id="s7">
+      <h2><span class="h2num">07</span>Phytostérols &amp; phytostanols</h2>
+      <p class="lead">Quand la ressemblance structurale avec le cholestérol devient un outil thérapeutique.</p>
+
+      <ul class="clean">
+        <li><strong>Définition</strong> : composés <strong>végétaux structurellement proches du cholestérol</strong> (β-sitostérol, campestérol, stigmastérol… ; stanols = formes saturées).</li>
+        <li><strong>Mécanisme</strong> : ils <strong>entrent en compétition avec le cholestérol pour l'absorption intestinale</strong> (incorporation dans les micelles) → <span class="down">↓</span> absorption du cholestérol → <span class="down">↓</span> cholestérol total et LDL sanguins.</li>
+        <li><strong>Effet établi</strong> : <span class="down">↓</span> du <strong>LDL de 7–15 %</strong>, <strong>sans modifier le HDL</strong>, à des doses de <strong>≈ 0,8–3 g/j</strong>.</li>
+        <li><strong>Pharmacocinétique</strong> : très <strong>faible absorption</strong> des phytostérols eux-mêmes (0–5 %) ; les esters de <strong>stanols</strong> sont encore moins absorbés que ceux de stérols (controverse sur l'efficacité comparée stérols vs stanols).</li>
+        <li><strong>Intérêt</strong> : meilleure observance que les régimes restrictifs ; <span class="down">↓</span> du risque cardiovasculaire (le LDL étant un facteur de risque). Utiles en cas d'excès <em>modéré</em> de cholestérol.</li>
+        <li><strong>Produits</strong> : margarines enrichies type <em>Bénécol®</em>, <em>Becel Pro-activ®</em> (esters de stanol/stérol).</li>
+      </ul>
+
+      <div class="box exam">
+        <span class="label">📝 Examen — question ouverte attendue</span>
+        <div class="qa">
+          <div class="q">« Phytostérols / stanols : rôle et mécanismes. »</div>
+          <div class="a">Structure proche du cholestérol → <strong>compétition à l'absorption intestinale</strong> → <span class="down">↓</span> absorption du cholestérol → <span class="down">↓</span> LDL (de 7–15 %) sans toucher au HDL, à ≈ 2 g/j → prévention de l'hypercholestérolémie. Exemple d'<strong>aliment fonctionnel</strong> (margarines enrichies).</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament">✦ ✦ ✦</div>
+
+    <!-- 8 -->
+    <section id="s8">
+      <h2><span class="h2num">08</span>Recommandations pour l'adulte (CSS 2016)</h2>
+      <p class="lead">Les chiffres-repères à savoir citer dans une question de « commentaire de données ».</p>
+
+      <div class="tbl-wrap">
+      <table>
+        <caption>Recommandations nutritionnelles lipides — adulte (CSS 2016)</caption>
+        <thead><tr><th>Nutriment</th><th>% des besoins énergétiques</th><th>Repère</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Lipides totaux</strong></td><td>&gt; 20 % et &lt; 30–35 %</td><td>AGMI + AGPI ≥ 2/3 de l'apport lipidique</td></tr>
+          <tr><td>AG saturés (AGS)</td><td>&lt; 10 %</td><td>AGS athérogènes ≤ 8 %</td></tr>
+          <tr><td>AGMI (MUFA)</td><td>10–20 %</td><td>—</td></tr>
+          <tr><td>AGPI (PUFA)</td><td>5–10 %</td><td>—</td></tr>
+          <tr><td>n-6 (dont LA)</td><td>4–8 % (LA ≈ 4 %)</td><td>—</td></tr>
+          <tr><td>n-3 (dont ALA / EPA+DHA)</td><td>1–2 % (ALA ≈ 1 %)</td><td>EPA+DHA ≈ 0,25–0,50 g/j</td></tr>
+          <tr><td><strong>AG trans industriels</strong></td><td>« le plus faible possible »</td><td>—</td></tr>
+          <tr><td><strong>Cholestérol</strong></td><td>—</td><td>&lt; 300 mg/j</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="box exam">
+        <span class="label">📝 Examen — « commentez ces données »</span>
+        <p>Sur le profil belge type (lipides ≈ 42 % de l'AET dont AGS ≈ 17 %, cholestérol &gt; 400 mg/j…), il faut <strong>comparer aux recommandations</strong> et proposer un tableau de mesures :</p>
+        <ul class="clean">
+          <li><span class="down">↓</span> <strong>lipides totaux</strong> (42 % → &lt; 35 %) et surtout <span class="down">↓</span> <strong>AGS</strong> (17 % → &lt; 10 %).</li>
+          <li>Remplacer AGS/trans par des <strong>AGMI et AGPI</strong> ; <span class="up">↑</span> les <strong>n-3</strong> (poissons gras, colza, lin, noix).</li>
+          <li><span class="down">↓</span> <strong>cholestérol</strong> alimentaire (&lt; 300 mg/j) ; <span class="up">↑</span> <strong>fibres</strong>, fruits &amp; légumes.</li>
+          <li>Limiter l'<strong>alcool</strong> et les <strong>sucres libres</strong> (&lt; 10 %).</li>
+        </ul>
+      </div>
+
+      <div class="box pitfall">
+        <span class="label">⚠ Nuance attendue</span>
+        <p>Ce n'est <strong>pas le cholestérol alimentaire en lui-même</strong> qui est le principal facteur de risque, mais la <strong>qualité globale des lipides et des aliments</strong> (ex. viande rouge / charcuterie = AGS + nitrites + produits de cuisson). Montrer cette nuance rapporte des points.</p>
+      </div>
+    </section>
+
+    <div class="ornament">✦ ✦ ✦</div>
+
+    <!-- 9 -->
+    <section id="s9">
+      <h2><span class="h2num">09</span>Aliments fonctionnels</h2>
+      <p class="lead">Un concept transversal souvent demandé en définition.</p>
+      <p><strong>Définition :</strong> un aliment qui, <strong>en plus de ses apports nutritionnels de base</strong>, présente un <strong>effet bénéfique démontré</strong> sur une ou plusieurs fonctions de l'organisme, contribuant à améliorer la santé ou à réduire le risque de maladie.</p>
+      <p><strong>Exemples (en lien avec le chapitre lipides) :</strong> margarines enrichies en <strong>phytostérols</strong> (<span class="down">↓</span> cholestérol), <strong>poissons gras / produits enrichis en EPA-DHA</strong>, aliments enrichis en <strong>oméga-3</strong> ou en fibres, yaourts probiotiques.</p>
+
+      <div class="box exam">
+        <span class="label">📝 Examen — définition à rédiger</span>
+        <div class="qa">
+          <div class="a">Toujours donner la <strong>définition + un exemple illustré de son intérêt santé</strong>. Pour le chapitre 3 : margarine aux phytostérols → compétition d'absorption → <span class="down">↓</span> LDL → <span class="down">↓</span> risque CV.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament">✦ ✦ ✦</div>
+
+    <!-- 10 -->
+    <section id="s10">
+      <h2><span class="h2num">10</span>Fiche de révision express</h2>
+      <p class="lead">Le minimum vital à pouvoir restituer le jour J.</p>
+
+      <div class="box retenir">
+        <span class="label">★ Les 10 réflexes</span>
+        <ul>
+          <li>Lipides alimentaires = surtout des <strong>triglycérides</strong> ; <strong>9 kcal/g</strong> ; oxydés et/ou stockés.</li>
+          <li>Nomenclature : <span class="chem">C18:1 Δ9cis</span> ; « n-3 » = 1<sup>re</sup> double liaison sur le 3<sup>e</sup> C (extrémité méthyle).</li>
+          <li>Essentiels : <strong>LA (n-6)</strong> et <strong>ALA (n-3)</strong> ; EPA/DHA et AA dérivés via Δ6/Δ5-désaturases + élongase (compétition).</li>
+          <li>n-3 = <strong>anti-inflammatoires</strong> ; n-6 = plutôt <strong>pro-inflammatoires</strong> et plus peroxydables. Viser n-6/n-3 &lt; 4–5:1.</li>
+          <li>AGS pro-athérogènes = <span class="chem">C14:0</span>, <span class="chem">C16:0</span> → <span class="up">↑</span> LDL (répression LDL-R / SREBP-2).</li>
+          <li>AGMI → <span class="down">↓</span> LDL (Mensink &amp; Katan), <span class="down">↓</span> facteur VII, <span class="down">↓</span> ICAM-1.</li>
+          <li>AG <strong>trans</strong> = pires : <span class="up">↑</span> LDL + <span class="down">↓</span> HDL + <span class="up">↑</span> Lp(a). Industriels (hydrogénation, désodorisation, cuisson) nocifs ; ruminants/CLA non (De Souza 2015).</li>
+          <li><strong>Phytostérols</strong> : compétition d'absorption → <span class="down">↓</span> LDL de 7–15 % (≈ 2 g/j), sans toucher au HDL.</li>
+          <li>CSS 2016 : lipides &lt; 30–35 %, AGS &lt; 10 %, cholestérol &lt; 300 mg/j, trans « au minimum ».</li>
+          <li><strong>Aliment fonctionnel</strong> = bénéfice santé démontré au-delà de la nutrition de base (+ exemple).</li>
+        </ul>
+      </div>
+
+      <div class="box exam">
+        <span class="label">📝 Examen — formats à anticiper</span>
+        <ul class="clean">
+          <li><strong>QCM</strong> à justifier (trans, n-3, cholestérol, chocolat…).</li>
+          <li><strong>Définitions + exemple</strong> (nutriment essentiel, aliment fonctionnel, oméga-3 essentiel).</li>
+          <li><strong>Question ouverte</strong> : « AGPI/AGMI vs AGS/trans » ; « phytostérols : rôle &amp; mécanismes ».</li>
+          <li><strong>Commentaire de données</strong> + tableau de mesures (profil belge, comparaison de deux laits/huiles).</li>
+        </ul>
+      </div>
+    </section>
+
+    </main>
+  </div>
+
+  <footer>
+    <p><strong>FARM 2149 — Approche pharmaceutique de la nutrition.</strong> Synthèse du Chapitre 3 « Les lipides » (N.M. Delzenne, UCLouvain) construite à partir des diapositives du cours et des examens des années antérieures (corrections incluses).</p>
+    <p style="font-size:13px;margin-top:8px;color:#8a8170;">Document de révision personnel — vérifie toujours les chiffres-repères et les exceptions directement dans les diapositives officielles avant l'examen. Bon travail. </p>
+  </footer>
+</div>
+
+<script>
+  // subtle active-link highlight in the TOC
+  const links=[...document.querySelectorAll('nav.toc a')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      const a=map.get(e.target.id);
+      if(!a)return;
+      if(e.isIntersecting){links.forEach(l=>l.style.color='');a.style.color='var(--olive-deep)';a.style.fontWeight='600';}
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  document.querySelectorAll('section[id]').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

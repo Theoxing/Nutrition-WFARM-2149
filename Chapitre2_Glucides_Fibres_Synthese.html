@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapitre 2 — Glucides & Fibres alimentaires · Synthèse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f1e7;
+    --paper-2:#fbf8f1;
+    --ink:#241f1a;
+    --ink-soft:#4b4339;
+    --rule:#d8cdb8;
+    --accent:#9a3b2e;       /* terre cuite */
+    --accent-2:#1f6b54;     /* vert botanique */
+    --gold:#b58a36;
+    --exam:#b3402f;
+    --exam-bg:#fceee9;
+    --exam-rule:#e7b3a6;
+    --retain:#1f6b54;
+    --retain-bg:#e7f1ec;
+    --retain-rule:#a9cfc0;
+    --note:#3a5a8c;
+    --note-bg:#eaf0f8;
+    --note-rule:#b6c8e2;
+    --shadow:0 18px 40px -28px rgba(50,35,20,.55);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 80% -5%, #fffdf8 0%, transparent 60%),
+      var(--paper);
+    color:var(--ink);
+    font-family:"Spectral", Georgia, serif;
+    font-size:18px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* subtle paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 24px 120px;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding:64px 0 40px;
+    border-bottom:3px double var(--rule);
+    margin-bottom:8px;
+  }
+  .kicker{
+    font-family:"IBM Plex Mono",monospace;
+    text-transform:uppercase;letter-spacing:.28em;font-size:.72rem;
+    color:var(--accent);font-weight:500;
+  }
+  h1{
+    font-family:"Fraunces",serif;
+    font-weight:800;font-size:clamp(2.4rem,6vw,4.3rem);
+    line-height:1.02;margin:.18em 0 .15em;letter-spacing:-.01em;
+    color:var(--ink);
+  }
+  h1 em{font-style:italic;color:var(--accent);}
+  .subtitle{font-size:1.18rem;color:var(--ink-soft);max-width:62ch;font-style:italic;}
+  .meta{
+    margin-top:22px;font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    color:var(--ink-soft);display:flex;gap:18px;flex-wrap:wrap;
+  }
+  .meta span{padding:5px 11px;border:1px solid var(--rule);border-radius:999px;background:var(--paper-2);}
+
+  /* ---------- TOC ---------- */
+  nav.toc{
+    background:var(--paper-2);border:1px solid var(--rule);border-radius:14px;
+    padding:22px 26px;margin:34px 0 48px;box-shadow:var(--shadow);
+  }
+  nav.toc h2{margin:0 0 12px;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;
+    font-family:"IBM Plex Mono",monospace;color:var(--accent);font-weight:500;}
+  nav.toc ol{margin:0;padding:0;list-style:none;columns:2;column-gap:40px;}
+  nav.toc li{margin:0 0 7px;break-inside:avoid;font-size:.96rem;}
+  nav.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;transition:.2s;}
+  nav.toc a:hover{color:var(--accent);border-color:var(--accent);}
+  nav.toc li b{color:var(--gold);font-family:"IBM Plex Mono",monospace;font-size:.85rem;margin-right:8px;}
+
+  /* ---------- SECTIONS ---------- */
+  section{margin:0 0 18px;scroll-margin-top:24px;}
+  h2.sec{
+    font-family:"Fraunces",serif;font-weight:700;font-size:clamp(1.7rem,3.6vw,2.5rem);
+    margin:54px 0 4px;line-height:1.08;color:var(--ink);letter-spacing:-.01em;
+    display:flex;align-items:baseline;gap:14px;
+  }
+  h2.sec .num{
+    font-family:"IBM Plex Mono",monospace;font-size:1rem;color:#fff;background:var(--accent);
+    width:auto;padding:4px 10px;border-radius:8px;font-weight:500;line-height:1;
+    transform:translateY(-4px);
+  }
+  h2.sec + .lede{color:var(--ink-soft);font-style:italic;margin:0 0 18px;font-size:1.05rem;}
+  h3{font-family:"Fraunces",serif;font-weight:600;font-size:1.3rem;margin:30px 0 6px;color:var(--accent-2);}
+  h4{font-family:"IBM Plex Mono",monospace;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;
+     color:var(--gold);margin:22px 0 4px;}
+  p{margin:.5em 0 1em;}
+  ul,ol{margin:.4em 0 1.2em;padding-left:1.3em;}
+  li{margin:.32em 0;}
+  strong{color:var(--ink);font-weight:600;}
+  .hl{background:linear-gradient(180deg,transparent 58%, #f2d98f 58%);padding:0 2px;}
+  .term{color:var(--accent);font-weight:600;font-style:italic;}
+  code{font-family:"IBM Plex Mono",monospace;font-size:.86em;background:#efe7d6;padding:1px 6px;border-radius:5px;}
+  a.ref{color:var(--note);}
+
+  /* ---------- CALLOUT BOXES ---------- */
+  .box{border-radius:14px;padding:20px 24px 18px;margin:26px 0;position:relative;box-shadow:var(--shadow);}
+  .box .tag{
+    display:inline-flex;align-items:center;gap:8px;font-family:"IBM Plex Mono",monospace;
+    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+    padding:4px 12px;border-radius:999px;margin-bottom:10px;
+  }
+  .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0;}
+
+  .exam{background:var(--exam-bg);border:1px solid var(--exam-rule);border-left:6px solid var(--exam);}
+  .exam .tag{background:var(--exam);color:#fff;}
+  .exam .q{font-style:italic;color:#7a2a1f;border-left:3px solid var(--exam-rule);padding-left:14px;margin:8px 0 12px;}
+  .exam .year{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--exam);font-weight:600;}
+
+  .retain{background:var(--retain-bg);border:1px solid var(--retain-rule);border-left:6px solid var(--retain);}
+  .retain .tag{background:var(--retain);color:#fff;}
+
+  .note{background:var(--note-bg);border:1px solid var(--note-rule);border-left:6px solid var(--note);}
+  .note .tag{background:var(--note);color:#fff;}
+
+  /* ---------- TABLES ---------- */
+  .tablewrap{overflow-x:auto;margin:24px 0;border-radius:12px;box-shadow:var(--shadow);}
+  table{width:100%;border-collapse:collapse;background:var(--paper-2);font-size:.96rem;min-width:520px;}
+  th,td{padding:11px 15px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top;}
+  th{background:var(--ink);color:var(--paper);font-family:"IBM Plex Mono",monospace;
+     font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;}
+  tr:last-child td{border-bottom:none;}
+  tbody tr:nth-child(even){background:#f1ead9;}
+  td .gi-low{color:var(--retain);font-weight:600;}
+  td .gi-high{color:var(--exam);font-weight:600;}
+
+  /* ---------- CHIP / DEFINITION GRID ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:22px 0;}
+  .card{background:var(--paper-2);border:1px solid var(--rule);border-radius:12px;padding:16px 18px;}
+  .card h5{margin:0 0 4px;font-family:"Fraunces",serif;font-size:1.08rem;color:var(--accent-2);font-weight:600;}
+  .card p{margin:0;font-size:.93rem;color:var(--ink-soft);}
+
+  .flow{font-family:"IBM Plex Mono",monospace;font-size:.9rem;background:#efe7d6;border:1px dashed var(--rule);
+        border-radius:10px;padding:12px 16px;margin:14px 0;line-height:1.9;}
+  .flow b{color:var(--accent);}
+
+  hr.soft{border:none;border-top:1px solid var(--rule);margin:40px 0;}
+  footer{margin-top:70px;padding-top:24px;border-top:3px double var(--rule);
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--ink-soft);}
+
+  @media(max-width:640px){
+    body{font-size:17px;}
+    nav.toc ol{columns:1;}
+    h2.sec{flex-direction:column;gap:6px;}
+    h2.sec .num{transform:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">FARM 2149 · Approche pharmaceutique de la nutrition · N.M. Delzenne</div>
+    <h1>Glucides &amp;<br><em>fibres alimentaires</em></h1>
+    <p class="subtitle">Synthèse complète du chapitre 2, articulée autour des questions réellement tombées aux examens (2018 → 2025).</p>
+    <div class="meta">
+      <span>📘 Chapitre 2</span>
+      <span>🎯 Encadrés « Examen »</span>
+      <span>⭐ Encadrés « À retenir »</span>
+      <span>UCLouvain</span>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><b>01</b><a href="#place">Place des glucides dans l'énergie</a></li>
+      <li><b>02</b><a href="#classif">Classification des glucides</a></li>
+      <li><b>03</b><a href="#sucres">Sucres libres, ajoutés &amp; recommandations</a></li>
+      <li><b>04</b><a href="#devenir">Devenir : glucose vs fructose</a></li>
+      <li><b>05</b><a href="#ig">Index &amp; charge glycémiques</a></li>
+      <li><b>06</b><a href="#edulcorants">Goût sucré &amp; édulcorants</a></li>
+      <li><b>07</b><a href="#carie">Sucres &amp; carie dentaire</a></li>
+      <li><b>08</b><a href="#lactose">Intolérance au lactose</a></li>
+      <li><b>09</b><a href="#fibres-def">Fibres : définitions &amp; classifications</a></li>
+      <li><b>10</b><a href="#microbiote">Microbiote &amp; fermentation (SCFA)</a></li>
+      <li><b>11</b><a href="#effets">Effets santé des fibres</a></li>
+      <li><b>12</b><a href="#recap">Tableau récap &amp; auto-test</a></li>
+    </ol>
+  </nav>
+
+  <!-- ============ 01 ============ -->
+  <section id="place">
+    <h2 class="sec"><span class="num">01</span>Place des glucides dans l'énergie</h2>
+    <p class="lede">Avant la chimie, le cadre : pourquoi le cours réunit glucides et fibres.</p>
+
+    <p>Les apports énergétiques proviennent de quatre familles de nutriments, avec des valeurs caloriques distinctes à connaître par cœur :</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Nutriment</th><th>Valeur énergétique</th><th>Remarque</th></tr></thead>
+        <tbody>
+          <tr><td>Glucides <em>digestibles</em></td><td><strong>4 kcal/g</strong></td><td>≠ glucides non digestibles (0 à 2 kcal/g)</td></tr>
+          <tr><td>Lipides</td><td><strong>9 kcal/g</strong></td><td>La plus dense</td></tr>
+          <tr><td>Protéines</td><td><strong>4 kcal/g</strong></td><td></td></tr>
+          <tr><td>Alcool (éthanol)</td><td><strong>7 kcal/g</strong></td><td>Chapitre 5</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Les <strong>dépenses</strong> se répartissent en involontaires (≈ 75 % : métabolisme de base, thermorégulation, thermogenèse alimentaire) et volontaires (≈ 25 %). Le long du tube digestif, les glucides sont d'abord pris en charge par des <span class="term">enzymes</span> (surtout dans l'intestin grêle pour l'absorption), tandis que ce qui n'est pas digéré arrive au <strong>côlon</strong>, lieu de la fermentation bactérienne — d'où le lien direct avec les fibres.</p>
+
+    <div class="box retain">
+      <span class="tag">⭐ À retenir</span>
+      <p><strong>Pourquoi glucides ET fibres dans un seul chapitre ?</strong> Parce que la <span class="hl">digestibilité dépend de la structure chimique</span> du glucide. La majorité des glucides « non digestibles » <em>sont</em> des fibres alimentaires. C'est le fil rouge du chapitre.</p>
+    </div>
+  </section>
+
+  <!-- ============ 02 ============ -->
+  <section id="classif">
+    <h2 class="sec"><span class="num">02</span>Classification des glucides</h2>
+    <p class="lede">Du sucre simple au polysaccharide — et surtout amidon vs cellulose.</p>
+
+    <p>Les glucides se classent selon leur <span class="term">complexité</span> : monosaccharides (glucose, fructose), disaccharides (saccharose, lactose), oligosaccharides, et polysaccharides (amidon, cellulose, glycogène). L'élément structurel décisif pour la digestibilité est le <strong>type de liaison osidique</strong>.</p>
+
+    <h3>Amidon : amylose vs amylopectine</h3>
+    <ul>
+      <li><strong>Amylose</strong> : chaîne <em>linéaire</em> de glucose en liaisons α-1,4. Structure plus cristalline → plus <strong>résistante aux α-amylases</strong>.</li>
+      <li><strong>Amylopectine</strong> : chaîne <em>branchée</em> (α-1,4 + ramifications α-1,6) → plus accessible aux enzymes.</li>
+    </ul>
+    <p>Le <span class="hl">rapport amylose/amylopectine</span> module donc la vitesse de digestion (et l'index glycémique).</p>
+
+    <h3>Amidon vs cellulose : la même brique, une liaison différente</h3>
+    <p>Amidon et cellulose sont tous deux des polymères de glucose. La différence cruciale :</p>
+    <div class="grid">
+      <div class="card"><h5>Amidon</h5><p>Liaisons <strong>α-osidiques</strong> → reconnues et clivées par les α-amylases humaines → <strong>digestible</strong>, 4 kcal/g.</p></div>
+      <div class="card"><h5>Cellulose</h5><p>Liaisons <strong>β-osidiques</strong> → <strong>non clivables</strong> par les α-amylases → fibre alimentaire <strong>non fermentescible</strong> (≈ 0 kcal/g).</p></div>
+    </div>
+
+    <div class="box exam">
+      <span class="tag">🎯 Examen</span>
+      <p class="year">Tombé en juin 2018 — « Associer les chiffres et les lettres »</p>
+      <p class="q">Reliez : amidon · cellulose · inuline · galacto-oligosaccharide … à leur catégorie.</p>
+      <ul>
+        <li><strong>Amidon</strong> → glucide complexe (digestible)</li>
+        <li><strong>Cellulose</strong> → fibre alimentaire <em>non</em> fermentescible</li>
+        <li><strong>Inuline</strong> → fibre alimentaire (hautement) fermentescible</li>
+        <li><strong>Galacto-oligosaccharide (GOS)</strong> → oligosaccharide (fibre du lait maternel)</li>
+        <li><strong>Légumineuses / lentilles</strong> → aliment à index glycémique faible (et source de protéines)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 03 ============ -->
+  <section id="sucres">
+    <h2 class="sec"><span class="num">03</span>Sucres libres, ajoutés &amp; recommandations</h2>
+    <p class="lede">Trois notions à ne jamais confondre — c'est une question classique.</p>
+
+    <div class="grid">
+      <div class="card"><h5>Glucides complexes</h5><p>Polysaccharides (amidon…), à privilégier. Source d'énergie « lente » + fibres + micronutriments.</p></div>
+      <div class="card"><h5>Sucres libres (OMS)</h5><p>Sucres <strong>ajoutés</strong> (boissons, aliments) <em>+</em> sucres naturellement présents dans le <strong>miel, sirops, jus de fruits</strong>.</p></div>
+      <div class="card"><h5>Sucres ajoutés</h5><p>Sous-ensemble des sucres libres : uniquement ceux <strong>incorporés</strong> lors de la fabrication.</p></div>
+    </div>
+
+    <h3>Recommandations nutritionnelles (à citer)</h3>
+    <ul>
+      <li><strong>Belgique</strong> : les glucides (complexes) doivent représenter <span class="hl">&gt; 50 % de l'AET</span> ; apport minimal de <strong>130 g de glucides totaux/j</strong> chez l'adulte.</li>
+      <li><strong>Anses (France)</strong> : glucides digestibles = 40–55 % de l'AET ; sucres (hors lactose/galactose) <strong>≤ 100 g/j</strong>.</li>
+      <li><strong>Sucres libres</strong> : à limiter (surtout boissons sucrées). CSS Belgique : sucres « ajoutés » <strong>&lt; 10 % AET</strong> ; US : &lt; 25 % AET.</li>
+      <li>Sources à privilégier : <strong>riches en fibres et micronutriments</strong> — céréales, légumineuses, fruits &amp; légumes (5/jour, ≈ 200 g), pommes de terre.</li>
+    </ul>
+
+    <div class="box note">
+      <span class="tag">ℹ️ Nuance importante</span>
+      <p>Les effets délétères sur <strong>mortalité, obésité, dyslipidémie, diabète de type 2</strong> sont <span class="hl">clairement démontrés pour les boissons sucrées</span>, mais restent <em>plus controversés</em> pour les aliments solides contenant des sucres. Un excès de sucres libres affecte aussi l'apport en micronutriments (ex. calcium chez l'enfant).</p>
+    </div>
+  </section>
+
+  <!-- ============ 04 ============ -->
+  <section id="devenir">
+    <h2 class="sec"><span class="num">04</span>Devenir des monomères : glucose vs fructose</h2>
+    <p class="lede">Deux hexoses, deux destins métaboliques radicalement différents.</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th></th><th>Glucose</th><th>Fructose</th></tr></thead>
+        <tbody>
+          <tr><td>Trajet</td><td>Veine porte → foie (stockage en <strong>glycogène</strong>)</td><td>Capté surtout par le foie</td></tr>
+          <tr><td>Insuline</td><td>Entrée musculaire/adipeuse <strong>insulino-dépendante</strong> ; stimule la sécrétion d'insuline</td><td>Peu <strong>dépendant</strong> de l'insuline</td></tr>
+          <tr><td>Incrétines</td><td>Stimule indirectement l'insuline via <strong>GLP-1</strong> et <strong>GIP</strong></td><td>—</td></tr>
+          <tr><td>Néoglucogenèse</td><td>—</td><td>Peu gluconéogénique</td></tr>
+          <tr><td>⚠️ Risque</td><td>—</td><td>Excellent <strong>substrat lipogénique</strong> → hypertriglycéridémie, obésité, insulino-résistance</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box retain">
+      <span class="tag">⭐ À retenir</span>
+      <p>Le glucose stimule l'insuline <em>directement</em> et <em>indirectement</em> (incrétines <strong>GLP-1 / GIP</strong>). Le <strong>fructose</strong> est piégeux : peu insulino-dépendant mais <span class="hl">fortement lipogénique</span> — d'où la mauvaise réputation des sirops de fructose et des boissons sucrées.</p>
+    </div>
+  </section>
+
+  <!-- ============ 05 ============ -->
+  <section id="ig">
+    <h2 class="sec"><span class="num">05</span>Index glycémique &amp; charge glycémique</h2>
+    <p class="lede">LA notion-reine du chapitre — elle tombe presque chaque année.</p>
+
+    <h3>Définition de l'index glycémique (IG)</h3>
+    <p>L'IG mesure la <strong>vitesse et l'ampleur d'élévation de la glycémie</strong> après ingestion d'un aliment glucidique. Techniquement :</p>
+    <div class="flow">IG = <b>aire sous la courbe</b> de glycémie après 50 g de glucides de l'aliment ÷ aire après 50 g de <b>glucose</b> (parfois réf. = pain blanc) × 100</div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Classe d'IG</th><th>Valeur</th><th>Exemples</th></tr></thead>
+        <tbody>
+          <tr><td><span class="gi-low">Bas</span></td><td>&lt; 55</td><td>Lentilles, pois chiches, avoine, patate douce, légumineuses</td></tr>
+          <tr><td>Modéré</td><td>56–69</td><td>—</td></tr>
+          <tr><td><span class="gi-high">Élevé</span></td><td>&gt; 70</td><td>Glucose, pain blanc, pommes de terre, sucres rapides</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Hypoglycémie réactionnelle</h3>
+    <p>Un aliment à <strong>IG élevé</strong> provoque un pic glycémique rapide → forte libération d'insuline → le glucose entre massivement dans les cellules → <span class="hl">hypoglycémie réactionnelle</span> possible (le glucagon restaure ensuite la glycémie de base). À l'inverse, un IG bas lisse la courbe.</p>
+
+    <h3>Index glycémique ≠ charge glycémique</h3>
+    <p>L'IG renseigne sur la <em>qualité</em> du glucide ; la <strong>charge glycémique</strong> intègre aussi la <em>quantité</em> réellement consommée (IG × g de glucides ÷ 100). Un aliment à IG élevé mais pauvre en glucides peut avoir une charge faible.</p>
+
+    <h3>Facteurs qui influencent l'IG</h3>
+    <ul>
+      <li><strong>Nature des glucides</strong> : amylose vs amylopectine ; présence d'<strong>amidons résistants</strong>.</li>
+      <li><strong>Caractéristiques de l'aliment</strong> : liquide vs solide ; présence d'autres nutriments (lipides, <strong>fibres</strong>).</li>
+      <li><strong>Vidange gastrique</strong> : tout ce qui la ralentit abaisse l'IG.</li>
+    </ul>
+
+    <h4>Les amidons résistants (RS / AR)</h4>
+    <p>Amidon échappant à la digestion dans l'intestin grêle, donc <strong>fermenté dans le côlon</strong> → effet prébiotique, ↓ glycémie postprandiale, ↑ satiété, production de butyrate.</p>
+    <ul>
+      <li><strong>RS1</strong> : physiquement inaccessible (whole grain, paroi végétale).</li>
+      <li><strong>RS2</strong> : richesse en amylose, structure cristalline résistante aux amylases.</li>
+      <li><strong>RS3</strong> : <span class="hl">rétrogradation</span> de l'amidon (riz/pommes de terre <strong>refroidis</strong>).</li>
+      <li><strong>RS4</strong> : résistance <em>provoquée</em> chimiquement (réticulation).</li>
+    </ul>
+
+    <div class="box exam">
+      <span class="tag">🎯 Examen</span>
+      <p class="year">Récurrent — 2018, 2019-20, liste 2024, etc.</p>
+      <p class="q">« Définissez, citez un exemple et expliquez comment un aliment à index glycémique bas est susceptible d'intervenir dans le développement ou le contrôle de certaines pathologies. »</p>
+      <p><strong>Réponse type :</strong> un aliment à IG bas (ex. lentilles, légumineuses) élève lentement la glycémie → <span class="hl">↓ pic glycémique et ↓ réponse insulinique postprandiale</span>, ↑ satiété, ↓ insulino-résistance. Bénéfique dans le <strong>diabète de type 2</strong>, le <strong>syndrome métabolique</strong> et la prévention de l'<strong>obésité</strong>. À l'inverse, l'IG élevé favorise l'hypoglycémie réactionnelle et le stockage.</p>
+    </div>
+  </section>
+
+  <!-- ============ 06 ============ -->
+  <section id="edulcorants">
+    <h2 class="sec"><span class="num">06</span>Goût sucré &amp; édulcorants</h2>
+    <p class="lede">La référence du pouvoir sucrant = le saccharose.</p>
+
+    <p>Le goût sucré active des <strong>récepteurs gustatifs couplés aux protéines G</strong> (voies AMPc / IP3-DAG). Le <strong>saccharose</strong> sert de référence (pouvoir sucrant = 1). Les <span class="term">édulcorants intenses</span> (saccharine, cyclamate, aspartame, sucralose) miment ce signal pour limiter l'apport en sucres.</p>
+
+    <h3>Les édulcorants en tant qu'additifs alimentaires</h3>
+    <ul>
+      <li>Ce sont des <strong>additifs</strong> : ajoutés intentionnellement pour modifier goût, apparence, conservation.</li>
+      <li>Origine : synthèse chimique <em>ou</em> extraction (plantes, sources animales/minérales).</li>
+      <li>Réglementés au niveau européen selon le principe d'une <strong>liste positive</strong>.</li>
+      <li><span class="hl">Exception : aucun édulcorant dans les aliments pour bébés.</span></li>
+      <li>Soumis à des études toxicologiques → fixation d'une <strong>DJA</strong> (dose journalière admissible), basée sur le <strong>NOAEL ÷ facteur de sécurité (100)</strong>.</li>
+    </ul>
+
+    <div class="box note">
+      <span class="tag">ℹ️ Point clé EFSA</span>
+      <p>D'après une évaluation <strong>EFSA 2011</strong>, les édulcorants <span class="hl">ne permettent pas de maintenir ou d'atteindre un poids corporel normal</span>. Certains édulcorants (saccharine, sucralose) peuvent aussi induire une <strong>dysbiose</strong> → intolérance au glucose chez certaines personnes.</p>
+    </div>
+
+    <div class="box exam">
+      <span class="tag">🎯 Examen</span>
+      <p class="q">« Définition + exemple : <em>additif alimentaire</em> / <em>édulcorant</em>. »</p>
+      <p>Sache <strong>définir la DJA</strong> (dérivée du NOAEL / 100), citer un exemple (aspartame) et nuancer leur efficacité réelle sur le poids (EFSA 2011).</p>
+    </div>
+  </section>
+
+  <!-- ============ 07 ============ -->
+  <section id="carie">
+    <h2 class="sec"><span class="num">07</span>Sucres &amp; carie dentaire</h2>
+    <p class="lede">Une application directe et facilement interrogeable.</p>
+    <p>Les <strong>sucres fermentescibles</strong> (notamment le saccharose) sont métabolisés par les bactéries de la plaque dentaire, qui produisent des <strong>acides</strong> déminéralisant l'émail → <span class="hl">carie dentaire</span>. C'est l'un des arguments en faveur de la limitation des sucres libres, surtout via les boissons et grignotages sucrés répétés.</p>
+  </section>
+
+  <!-- ============ 08 ============ -->
+  <section id="lactose">
+    <h2 class="sec"><span class="num">08</span>Intolérance au lactose</h2>
+    <p class="lede">Un cas concret de glucide mal digéré — souvent lié à une interaction médicament.</p>
+
+    <ul>
+      <li><strong>Cause</strong> : l'activité de la <strong>lactase</strong> décroît avec l'âge (dans une moindre mesure chez les Caucasiens).</li>
+      <li><strong>Teneur en lactose</strong> : élevée dans le lait ; <strong>plus faible</strong> dans les laits fermentés et yaourts (enzymes + micro-organismes) ; faible dans le fromage.</li>
+      <li><strong>Symptômes</strong> : le lactose non digéré est <strong>fermenté</strong> dans le côlon → flatulences, <strong>borborygmes</strong> (gaz), diarrhée osmotique.</li>
+      <li><strong>Associations</strong> : maladie cœliaque, malnutrition protéino-énergétique, altération de la muqueuse.</li>
+      <li><strong>Traitement</strong> : limiter les produits riches en lactose ; administration de <strong>lactase</strong> en prévention.</li>
+    </ul>
+
+    <div class="box exam">
+      <span class="tag">🎯 Examen</span>
+      <p class="year">Interaction aliment–médicament (2019-20)</p>
+      <p class="q">« Un médicament (ex. <em>Miglitol® / acarbose</em>) diminue l'absorption des polysaccharides complexes. Expliquez l'interaction et pourquoi la diarrhée s'accompagne de borborygmes. »</p>
+      <p><strong>Réponse :</strong> ce sont des <strong>inhibiteurs de l'α-glucosidase</strong> (ADO) → ↓ digestion/absorption intestinale des glucides → davantage de glucides arrivent au côlon → <strong>fermentation bactérienne</strong> → production de gaz = <strong>borborygmes</strong> + diarrhée. Mêmes symptômes possibles dans l'intolérance au lactose ou la maladie cœliaque.</p>
+    </div>
+  </section>
+
+  <!-- ============ 09 ============ -->
+  <section id="fibres-def">
+    <h2 class="sec"><span class="num">09</span>Fibres : définitions &amp; classifications</h2>
+    <p class="lede">Le cœur du chapitre. Soigne ta définition — elle vaut des points faciles.</p>
+
+    <h3>Définition</h3>
+    <p>Les fibres alimentaires sont des <span class="hl">oligomères ou polymères, souvent (mais pas toujours) glucidiques, qui résistent à la digestion par les enzymes de l'intestin grêle humain</span>, mais peuvent être <strong>fermentés — partiellement ou totalement — par le microbiote intestinal</strong>. Beaucoup, mais pas toutes, sont des glucides : la <strong>lignine</strong> en est un contre-exemple (dérivé de phényl-propane, non glucidique).</p>
+
+    <h4>Définition réglementaire (Directive européenne 2008)</h4>
+    <p>Polymères glucidiques de <strong>≥ 3 unités monomériques</strong>, ni digérés ni absorbés dans l'intestin grêle, qu'ils soient : présents naturellement, obtenus de matières premières alimentaires, ou synthétiques — ces deux derniers devant montrer un <strong>effet physiologique bénéfique démontré</strong>.</p>
+
+    <div class="box note">
+      <span class="tag">ℹ️ Histoire / nuance</span>
+      <p>1972 : Burkitt &amp; Trowell associent les régimes riches en fibres à une <strong>protection contre le cancer du côlon</strong>. La définition « physiologique » (non-digestibilité) précède une classification analytique. <strong>Problème actuel</strong> : les recommandations (30 g/j) et les tables de composition reposent sur des définitions hétérogènes → biais possible dans les études épidémiologiques.</p>
+    </div>
+
+    <h3>Les trois grilles de classification</h3>
+    <div class="grid">
+      <div class="card"><h5>① Botanique (1970)</h5><p>Polysaccharides de paroi (cellulose, hémicelluloses, pectines), dérivés glucidiques/non-glucidiques, polysaccharides résistants, <strong>lignine</strong>.</p></div>
+      <div class="card"><h5>② Analytique</h5><p><strong>Solubles</strong> (inuline, pectines, β-glucanes) vs <strong>insolubles</strong> (cellulose, lignine). Critère pratique des tables.</p></div>
+      <div class="card"><h5>③ Physiologique</h5><p>Selon <strong>non-digestibilité + fermentescibilité</strong> : oligosaccharides résistants (FOS, GOS), polysaccharides résistants, amidons résistants, inuline, hydrocolloïdes…</p></div>
+    </div>
+
+    <h4>Solubles vs insolubles · fermentescibles vs non</h4>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Type</th><th>Exemples</th><th>Comportement</th><th>kcal/g</th></tr></thead>
+        <tbody>
+          <tr><td>Soluble &amp; fermentescible</td><td>Inuline, FOS, pectines, β-glucanes, amidon résistant</td><td>Fermentée → SCFA, effet prébiotique</td><td>≈ 2</td></tr>
+          <tr><td>Insoluble, peu/non fermentescible</td><td><strong>Cellulose</strong>, lignine</td><td>Effet « bulking » mécanique, transit</td><td>≈ 0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="box retain">
+      <span class="tag">⭐ À retenir</span>
+      <p>Piège classique : <span class="hl">la cellulose n'est PAS fermentée</span> par les bactéries du tractus humain → ce n'est <strong>pas</strong> un bon exemple de fibre fermentescible/prébiotique. Pour « fibre fermentescible », cite plutôt <strong>inuline, FOS, pectine, amidon résistant</strong>. Recommandation d'apport : <strong>30 g/j</strong> (objectif rarement atteint).</p>
+    </div>
+
+    <div class="box exam">
+      <span class="tag">🎯 Examen</span>
+      <p class="year">Juin 2025, question 1.1</p>
+      <p class="q">« Définissez : <em>Fibre alimentaire fermentescible</em>. Donnez un exemple en illustrant son intérêt santé. »</p>
+      <p><strong>Réponse modèle :</strong> oligomère/polymère (souvent glucidique) résistant à la digestion dans l'intestin grêle (structure chimique, propriétés physicochimiques) mais <strong>fermenté par le microbiote</strong>. Exemple : <strong>inuline</strong> (ou amidon résistant, pectine — <span class="hl">pas la cellulose</span>) → régulation du transit, de la glycémie ou de la lipémie, effet prébiotique.</p>
+    </div>
+  </section>
+
+  <!-- ============ 10 ============ -->
+  <section id="microbiote">
+    <h2 class="sec"><span class="num">10</span>Microbiote &amp; fermentation : les SCFA</h2>
+    <p class="lede">Là où le chapitre devient « pharmaceutique » : l'écosystème intestinal.</p>
+
+    <h3>Le microbiote intestinal</h3>
+    <ul>
+      <li>≈ <strong>10<sup>14</sup> cellules bactériennes</strong>, jusqu'à <strong>1000 espèces</strong>, dominées par 3 phyla : <strong>Firmicutes</strong>, <strong>Bacteroidetes</strong>, <strong>Actinobacteria</strong> (dont <em>Bifidobacterium</em>).</li>
+      <li>Bien plus de gènes microbiens (microbiome) que de gènes humains → « second génome ».</li>
+      <li>On partage un « <strong>core microbiome</strong> » mais chacun a sa signature ; système en constante évolution.</li>
+      <li><strong>L'alimentation est le facteur principal de modulation</strong> du microbiote.</li>
+    </ul>
+
+    <h3>Symbiose hôte–microbiote</h3>
+    <p>« On offre le gîte et le couvert ; en retour » :</p>
+    <ul>
+      <li><strong>Éducation du système immunitaire</strong> (reconnaissance).</li>
+      <li>Les bactéries se nourrissent de ce que nous n'avons pas digéré.</li>
+      <li>Production de molécules bioactives — <strong>bénéfiques</strong> : vitamines <strong>K, B12</strong>, SCFA (butyrate), peptides antimicrobiens, acides aminés ; <strong>potentiellement néfastes</strong> : phénols, H₂S, éthanol.</li>
+    </ul>
+
+    <h3>Fermentation → acides gras à chaîne courte (SCFA / AGCC)</h3>
+    <p>Les fibres fermentescibles sont transformées en <strong>gaz</strong> (CH₄, CO₂, H₂) + <strong>lactate</strong> + <strong>SCFA</strong> :</p>
+    <div class="flow"><b>Fibre fermentescible</b> → microbiote → <b>acétate</b> + <b>propionate</b> + <b>butyrate</b> (+ lactate, gaz)</div>
+    <p>Les SCFA servent de substrat aux colonocytes (<strong>butyrate</strong> ++) et se lient à des récepteurs régulant le métabolisme. Première fibre utilisée par le microbiote du nourrisson : les <strong>galacto-oligosaccharides du lait maternel</strong>.</p>
+
+    <h3>Prébiotiques vs probiotiques</h3>
+    <div class="grid">
+      <div class="card"><h5>Prébiotique</h5><p>Fibre fermentescible non digestible qui <strong>modifie le microbiote au profit de bactéries bénéfiques</strong> (ex. ↑ <em>Bifidobacteria</em> exprimant la β-fructosidase). Ex : inuline, FOS — aussi présents dans ail, oignon, poireau.</p></div>
+      <div class="card"><h5>Probiotique</h5><p><strong>Micro-organismes vivants</strong> apportés par l'alimentation (<em>Lactobacillus, Bifidobacterium</em>) → renforcent la barrière intestinale, modulent l'immunité.</p></div>
+    </div>
+    <p><strong>Synergie (symbiotique)</strong> : les prébiotiques « nourrissent » les probiotiques → effet bénéfique combiné.</p>
+
+    <div class="box exam">
+      <span class="tag">🎯 Examen</span>
+      <p class="year">Liste de révision officielle + 2024</p>
+      <p class="q">« Fibres alimentaires – Prébiotiques – Probiotiques – Fermentation bactérienne : faites le lien entre ces termes et leur impact sur la santé. »</p>
+      <p>Chaîne logique à dérouler : <strong>fibre prébiotique</strong> → <strong>fermentation</strong> par le microbiote → <strong>SCFA (butyrate…)</strong> → effets santé (barrière, immunité, métabolisme). Cite 2 interactions microbiote–alimentation : (1) synthèse bactérienne de la <strong>vitamine K2 / B12</strong> ; (2) fermentation des fibres → SCFA bénéfiques (transit, biodisponibilité du glucose, anti-inflammation).</p>
+    </div>
+  </section>
+
+  <!-- ============ 11 ============ -->
+  <section id="effets">
+    <h2 class="sec"><span class="num">11</span>Effets santé des fibres alimentaires</h2>
+    <p class="lede">Le « pourquoi 30 g/j » — chaque effet a un mécanisme à connaître.</p>
+
+    <h3>① Transit intestinal &amp; effet « bulking »</h3>
+    <p>Augmentation de la masse fécale, soit par <strong>propriétés physicochimiques</strong> (effet gélifiant de la pectine, gomme guar), soit par la <strong>formation de gaz et de SCFA</strong> via la fermentation. Renouvellement épithélial, vitesse de vidange gastrique.</p>
+
+    <h3>② Régulation de la glycémie</h3>
+    <p>Ralentissement de la vidange gastrique + « trapping » des glucides → <strong>↓ glycémie postprandiale</strong>, ↓ charge glycémique, ↑ sensibilité à l'insuline (effet renforcé par les incrétines type GLP-1).</p>
+
+    <h3>③ Homéostasie lipidique (cholestérol)</h3>
+    <p>Deux mécanismes distincts :</p>
+    <ul>
+      <li><strong>Indépendant de la fermentation</strong> : les fibres à groupes <strong>–COOH</strong> (psyllium) et les <strong>β-glucanes</strong> ↓ l'absorption du cholestérol et des <strong>acides biliaires</strong> (entraînés dans les fèces) → <strong>↓ LDL-cholestérol</strong> (≈ 0,5–2 %).</li>
+      <li><strong>Dépendant de la fermentation</strong> : métabolisme bactérien des acides biliaires + ↑ <strong>propionate</strong> → <strong>↓ synthèse hépatique de cholestérol</strong>.</li>
+    </ul>
+
+    <h3>④ Risque cardiométabolique</h3>
+    <p>↓ hypertension, effets sur la lipémie et la glycémie, effets sur le métabolisme énergétique (<strong>satiété</strong>, hormones gastro-intestinales).</p>
+
+    <h3>⑤ Cancer colorectal</h3>
+    <p>Accélération du transit → ↓ temps de contact des carcinogènes ; production de <strong>butyrate</strong> (SCFA) <strong>pro-apoptotique et anti-inflammatoire / antiprolifératif</strong>.</p>
+    <div class="box retain">
+      <span class="tag">⭐ À retenir (chiffre clé)</span>
+      <p>Le risque de cancer du côlon <span class="hl">diminue de ≈ 10 % par tranche de 10 g de fibres ingérées en plus par jour</span>. Chiffre fréquemment demandé.</p>
+    </div>
+
+    <h3>⑥ Absorption des minéraux (effet à double tranchant)</h3>
+    <ul>
+      <li><strong>Effet négatif</strong> : certaines fibres (acides uroniques) et les <strong>phytates / oxalates</strong> fixent les cations bivalents (Ca²⁺, Mg²⁺) → complexes insolubles → <span class="hl">↓ absorption du calcium</span>. Les fibres très visqueuses ralentissent aussi la diffusion.</li>
+      <li><strong>Effet positif</strong> : les fibres <strong>fermentescibles</strong> (fructanes, amidons résistants) produisent des SCFA → <strong>↓ pH colique</strong> → solubilisation des ions → <strong>↑ absorption de Ca²⁺ et Mg²⁺</strong> dans le côlon.</li>
+    </ul>
+
+    <h3>⑦ Mortalité, dépression &amp; autres</h3>
+    <p>Relation inverse entre consommation de fibres et <strong>mortalité toutes causes</strong> ; effets émergents sur la <strong>dépression / anxiété</strong> (axe intestin-cerveau).</p>
+
+    <div class="box exam">
+      <span class="tag">🎯 Examen — LA question phare</span>
+      <p class="year">Tombée presque chaque année (2018, 2019-20, 2024…)</p>
+      <p class="q">« Définissez les fibres alimentaires (+ 2 exemples) et expliquez leur impact sur le <strong>diabète de type 2</strong>, le <strong>cardiovasculaire</strong> et le <strong>cancer du côlon</strong>, en ajoutant les mécanismes moléculaires. »</p>
+      <p><strong>Plan de réponse :</strong></p>
+      <ul>
+        <li><strong>Définition</strong> + 2 exemples (ex. soluble : <em>inuline / pectine</em> ; insoluble : <em>cellulose / lignine</em>).</li>
+        <li><strong>Diabète T2</strong> : ralentissent la vidange gastrique → ↓ glycémie postprandiale, ↑ sensibilité à l'insuline ; amidon résistant ↓ l'IG ; voie GLP-1 → ↑ insuline → ↓ glycémie.</li>
+        <li><strong>Cardiovasculaire</strong> : fibres à –COOH / β-glucanes captent cholestérol + acides biliaires → ↓ LDL ; propionate → ↓ synthèse hépatique de cholestérol.</li>
+        <li><strong>Cancer du côlon</strong> : ↑ transit (↓ contact carcinogènes) + <strong>butyrate</strong> pro-apoptotique/anti-inflammatoire ; –10 % de risque / +10 g de fibres.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 12 ============ -->
+  <section id="recap">
+    <h2 class="sec"><span class="num">12</span>Tableau récap &amp; auto-test</h2>
+    <p class="lede">À relire la veille de l'examen.</p>
+
+    <h3>Mémo express</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Notion</th><th>À retenir absolument</th></tr></thead>
+        <tbody>
+          <tr><td>Énergie</td><td>Glucides digestibles 4 · lipides 9 · protéines 4 · alcool 7 kcal/g</td></tr>
+          <tr><td>Amidon vs cellulose</td><td>α-osidique (digestible) vs β-osidique (fibre, non digestible)</td></tr>
+          <tr><td>Sucres libres (OMS)</td><td>ajoutés + miel/sirops/jus ; CSS Belgique &lt; 10 % AET</td></tr>
+          <tr><td>Recommandation glucides</td><td>&gt; 50 % AET (BE) ; ≥ 130 g/j ; fibres 30 g/j</td></tr>
+          <tr><td>Fructose</td><td>peu insulino-dépendant mais lipogénique</td></tr>
+          <tr><td>IG bas</td><td>&lt; 55 → ↓ pic glycémique, bénéfique diabète/obésité</td></tr>
+          <tr><td>Amidons résistants</td><td>RS1 inaccessible · RS2 amylose · RS3 rétrogradation · RS4 chimique</td></tr>
+          <tr><td>Édulcorants</td><td>DJA = NOAEL/100 ; EFSA 2011 : pas d'aide au poids ; pas pour bébés</td></tr>
+          <tr><td>Lactose</td><td>↓ lactase avec l'âge ; fermentation → borborygmes/diarrhée</td></tr>
+          <tr><td>α-glucosidase (acarbose)</td><td>↓ absorption glucides → fermentation colique → gaz</td></tr>
+          <tr><td>SCFA</td><td>acétate · propionate · <strong>butyrate</strong> (colonocytes, anti-cancer)</td></tr>
+          <tr><td>Prébiotique</td><td>fibre fermentescible favorisant les bonnes bactéries (≠ probiotique = micro-organismes vivants)</td></tr>
+          <tr><td>Fibres &amp; cholestérol</td><td>–COOH/β-glucanes (↓ absorption) ; propionate (↓ synthèse hépatique)</td></tr>
+          <tr><td>Fibres &amp; cancer côlon</td><td>–10 % de risque par +10 g/j ; butyrate pro-apoptotique</td></tr>
+          <tr><td>Microbiote</td><td>synthèse vitamines K2/B12 ; modulé surtout par l'alimentation</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Auto-test (réponds avant de regarder le mémo)</h3>
+    <ol>
+      <li>Pourquoi la cellulose n'est-elle pas un bon exemple de fibre prébiotique ?</li>
+      <li>Quels sont les 3 SCFA produits par fermentation, et lequel nourrit les colonocytes ?</li>
+      <li>Différence entre index glycémique et charge glycémique ?</li>
+      <li>Comment un inhibiteur d'α-glucosidase provoque-t-il des borborygmes ?</li>
+      <li>Cite les deux mécanismes par lesquels les fibres abaissent le cholestérol.</li>
+      <li>Quel hexose est lipogénique, et pourquoi est-ce problématique ?</li>
+      <li>DJA : comment est-elle calculée ?</li>
+      <li>De combien le risque de cancer du côlon baisse-t-il par +10 g de fibres/j ?</li>
+    </ol>
+
+    <div class="box retain">
+      <span class="tag">⭐ Stratégie d'examen</span>
+      <p>Trois blocs reviennent <em>systématiquement</em> pour ce chapitre : (1) <strong>définition d'une fibre / fibre fermentescible + exemple</strong>, (2) <strong>IG bas et pathologies</strong>, (3) <strong>fibres → diabète/CV/cancer + mécanismes</strong>. Maîtrise ces trois-là parfaitement, avec les mécanismes moléculaires (SCFA, GLP-1, acides biliaires, butyrate) : ce sont les points les plus rentables.</p>
+    </div>
+  </section>
+
+  <footer>
+    Synthèse — Chapitre 2 « Glucides &amp; fibres alimentaires », FARM 2149 (N.M. Delzenne).<br>
+    Construite à partir du support de cours et des corrigés d'examens 2018 → 2025. Document de révision personnel.
+  </footer>
+
+</div>
+</body>
+</html>

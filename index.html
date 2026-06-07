@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FARM 2149 — Réviser la nutrition ensemble</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f1e6;
+    --paper-2:#fdf9f1;
+    --ink:#2a2118;
+    --ink-soft:#5c5044;
+    --line:#e4d8c4;
+    --amber:#c8761f;      /* examen */
+    --amber-bg:#fbeede;
+    --green:#4f7a3f;      /* à retenir */
+    --green-bg:#eaf1e3;
+    --red:#b14430;        /* piège */
+    --red-bg:#f8e6e1;
+    --plum:#6d4b6b;
+    --gold:#a8852c;
+    --shadow:rgba(60,42,20,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Spectral',Georgia,serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(200,118,31,.06), transparent 42%),
+      radial-gradient(circle at 84% 78%, rgba(79,122,63,.06), transparent 45%);
+    background-attachment:fixed;
+  }
+  /* subtle paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;overflow:hidden;
+    padding:74px 0 60px;
+    border-bottom:1px solid var(--line);
+    background:
+      linear-gradient(180deg, var(--paper-2), var(--paper));
+  }
+  .overline{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.74rem;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--amber);font-weight:600;margin-bottom:22px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .overline::before{content:"";width:38px;height:2px;background:var(--amber);display:inline-block}
+  h1.title{
+    font-family:'Fraunces',serif;font-weight:900;
+    font-size:clamp(2.7rem,7vw,5.2rem);line-height:.98;
+    letter-spacing:-.02em;color:var(--ink);max-width:14ch;
+  }
+  h1.title em{font-style:italic;color:var(--amber);font-weight:500}
+  .hero-sub{
+    font-size:clamp(1.05rem,2vw,1.32rem);color:var(--ink-soft);
+    max-width:56ch;margin-top:26px;font-weight:400;
+  }
+  .hero-meta{
+    margin-top:34px;display:flex;flex-wrap:wrap;gap:10px;
+  }
+  .pill{
+    font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.05em;
+    padding:7px 14px;border:1px solid var(--line);border-radius:999px;
+    background:var(--paper-2);color:var(--ink-soft);
+  }
+  .pill strong{color:var(--ink)}
+  /* decorative big number */
+  .hero-mark{
+    position:absolute;right:-30px;top:-26px;
+    font-family:'Fraunces',serif;font-weight:900;font-style:italic;
+    font-size:22rem;line-height:1;color:rgba(168,133,44,.07);
+    pointer-events:none;user-select:none;z-index:0;
+  }
+
+  /* ---------- INTRO STRIP ---------- */
+  .intro{padding:54px 0 8px}
+  .intro-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px}
+  .intro-card{
+    border-top:3px solid var(--ink);padding-top:16px;
+  }
+  .intro-card:nth-child(2){border-top-color:var(--amber)}
+  .intro-card:nth-child(3){border-top-color:var(--green)}
+  .intro-card h3{
+    font-family:'Fraunces',serif;font-size:1.18rem;font-weight:600;margin-bottom:6px;
+  }
+  .intro-card p{color:var(--ink-soft);font-size:.98rem}
+  .intro-card .num{
+    font-family:'IBM Plex Mono',monospace;font-size:.74rem;color:var(--gold);
+    letter-spacing:.12em;display:block;margin-bottom:8px;
+  }
+
+  /* ---------- SECTION TITLES ---------- */
+  .section{padding:60px 0 14px}
+  .sec-head{margin-bottom:34px}
+  .sec-kicker{
+    font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px;
+  }
+  .sec-head h2{
+    font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.8rem,4vw,2.5rem);
+    letter-spacing:-.01em;
+  }
+  .sec-head h2 em{font-style:italic;color:var(--amber)}
+
+  /* ---------- CHAPTER CARDS ---------- */
+  .chapters{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .chap{
+    position:relative;display:block;text-decoration:none;color:inherit;
+    background:var(--paper-2);border:1px solid var(--line);border-radius:14px;
+    padding:26px 26px 24px;overflow:hidden;
+    transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s, border-color .25s;
+  }
+  .chap::after{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:5px;
+    background:var(--accent,var(--amber));opacity:.85;transition:width .25s;
+  }
+  .chap:hover{transform:translateY(-4px);box-shadow:0 16px 34px var(--shadow);border-color:var(--accent,var(--amber))}
+  .chap:hover::after{width:8px}
+  .chap-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px}
+  .chap-no{
+    font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.16em;
+    color:var(--accent,var(--amber));font-weight:600;text-transform:uppercase;
+  }
+  .chap-go{
+    font-family:'IBM Plex Mono',monospace;font-size:.9rem;color:var(--ink-soft);
+    transition:transform .25s;
+  }
+  .chap:hover .chap-go{transform:translateX(4px);color:var(--accent,var(--amber))}
+  .chap h3{
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.42rem;
+    line-height:1.12;letter-spacing:-.01em;margin-bottom:8px;
+  }
+  .chap p{color:var(--ink-soft);font-size:.97rem;margin-bottom:16px}
+  .chap-tags{display:flex;flex-wrap:wrap;gap:6px}
+  .chap-tags span{
+    font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.02em;
+    padding:4px 9px;border-radius:6px;background:var(--paper);
+    border:1px solid var(--line);color:var(--ink-soft);
+  }
+  .chap.soon{opacity:.62;cursor:default}
+  .chap.soon:hover{transform:none;box-shadow:none;border-color:var(--line)}
+  .chap.soon:hover .chap-go{transform:none}
+  .badge-soon{
+    font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.1em;
+    background:var(--ink);color:var(--paper-2);padding:3px 8px;border-radius:5px;text-transform:uppercase;
+  }
+  /* accent palette per card */
+  .c-amber{--accent:var(--amber)} .c-green{--accent:var(--green)}
+  .c-red{--accent:var(--red)} .c-plum{--accent:var(--plum)}
+  .c-gold{--accent:var(--gold)} .c-ink{--accent:#3c5a6b}
+
+  /* ---------- REVISION PLAN (sessions) ---------- */
+  .plan-band{
+    background:linear-gradient(120deg,#3a2c1c,#5a3d22 62%,#7a4a1d);
+    border-radius:20px;padding:38px 34px 34px;position:relative;overflow:hidden;
+  }
+  .plan-band::before{
+    content:"";position:absolute;right:-40px;top:-60px;width:260px;height:260px;
+    background:radial-gradient(circle,rgba(200,118,31,.4),transparent 70%);pointer-events:none;
+  }
+  .plan-band .sec-kicker{color:var(--gold)}
+  .plan-band h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,3.6vw,2.3rem);color:#fff;margin-bottom:6px;position:relative}
+  .plan-band h2 em{font-style:italic;color:var(--gold)}
+  .plan-intro{color:#e9ddcb;max-width:60ch;margin-bottom:26px;position:relative;font-size:1rem}
+  .sessions{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+  .sess{
+    display:flex;flex-direction:column;text-decoration:none;color:var(--paper-2);
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+    border-radius:13px;padding:18px 18px 16px;min-height:160px;
+    transition:transform .22s cubic-bezier(.2,.8,.2,1), background .22s, border-color .22s;
+  }
+  .sess:hover{transform:translateY(-4px);background:rgba(255,255,255,.11);border-color:var(--gold)}
+  .sess-when{
+    font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:10px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .sess-when .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none}
+  .sess h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.12rem;line-height:1.12;color:#fff;margin-bottom:7px}
+  .sess p{font-size:.85rem;color:#ddcfba;margin:0;flex:1}
+  .sess .sess-go{align-self:flex-end;font-family:'IBM Plex Mono',monospace;color:var(--gold);margin-top:10px;transition:transform .22s}
+  .sess:hover .sess-go{transform:translateX(4px)}
+  .sess.is-drill{background:rgba(200,118,31,.16);border-color:rgba(220,150,60,.5)}
+  .sess .star{
+    font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+    background:var(--gold);color:#33240f;padding:2px 7px;border-radius:5px;margin-left:auto;font-weight:600;
+  }
+  @media(max-width:860px){.sessions{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.sessions{grid-template-columns:1fr}}
+
+  /* ---------- LEGEND ---------- */
+  .legend{padding:60px 0 14px}
+  .legend-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .box{
+    border-radius:12px;padding:22px 22px 20px;border:1px solid;
+    position:relative;
+  }
+  .box .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:10px;
+  }
+  .box h4{font-family:'Fraunces',serif;font-size:1.12rem;font-weight:600;margin-bottom:6px}
+  .box p{font-size:.95rem;color:var(--ink-soft)}
+  .box.exam{background:var(--amber-bg);border-color:#eccfa6}
+  .box.exam .tag{color:var(--amber)}
+  .box.keep{background:var(--green-bg);border-color:#cadcb9}
+  .box.keep .tag{color:var(--green)}
+  .box.trap{background:var(--red-bg);border-color:#eec4ba}
+  .box.trap .tag{color:var(--red)}
+
+  /* ---------- METHOD / EXAM NOTE ---------- */
+  .method{padding:60px 0 20px}
+  .method-card{
+    background:var(--ink);color:var(--paper-2);border-radius:18px;
+    padding:40px 40px 36px;position:relative;overflow:hidden;
+  }
+  .method-card::before{
+    content:"";position:absolute;right:-40px;bottom:-60px;width:240px;height:240px;
+    background:radial-gradient(circle,rgba(200,118,31,.4),transparent 70%);
+  }
+  .method-card .sec-kicker{color:var(--gold)}
+  .method-card h2{font-family:'Fraunces',serif;font-size:clamp(1.7rem,3.6vw,2.3rem);font-weight:600;margin-bottom:18px;position:relative}
+  .method-card h2 em{font-style:italic;color:var(--gold)}
+  .method-list{list-style:none;display:grid;gap:14px;position:relative}
+  .method-list li{display:flex;gap:14px;align-items:flex-start;font-size:1.02rem;color:#e9ddcb}
+  .method-list b{color:#fff}
+  .method-list .k{
+    font-family:'IBM Plex Mono',monospace;color:var(--gold);font-size:.82rem;
+    flex:none;width:34px;padding-top:3px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{margin-top:64px;border-top:1px solid var(--line);background:var(--paper-2)}
+  footer .wrap{padding:40px 28px 50px}
+  footer strong{font-family:'Fraunces',serif;font-size:1.2rem}
+  footer .disclaimer{
+    margin-top:16px;font-size:.85rem;color:var(--ink-soft);max-width:64ch;
+    font-style:italic;line-height:1.55;
+  }
+  footer .credit{
+    margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;
+    letter-spacing:.05em;color:var(--gold);
+  }
+
+  /* ---------- entrance animation ---------- */
+  .reveal{opacity:0;transform:translateY(18px);animation:rise .7s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .d1{animation-delay:.05s}.d2{animation-delay:.13s}.d3{animation-delay:.21s}
+  .d4{animation-delay:.29s}.d5{animation-delay:.37s}
+
+  @media(max-width:760px){
+    .intro-grid,.chapters,.legend-grid{grid-template-columns:1fr}
+    .hero-mark{font-size:13rem;right:-10px;top:10px}
+    .method-card{padding:30px 24px}
+    header.hero{padding:54px 0 44px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-mark">N</div>
+  <div class="wrap">
+    <div class="overline reveal d1">FARM 2149 · UCLouvain · Pr N. M. Delzenne</div>
+    <h1 class="title reveal d2">Approche <em>pharmaceutique</em> de la nutrition</h1>
+    <p class="hero-sub reveal d3">
+      Un point de départ pour réviser le cours ensemble&nbsp;: des synthèses claires,
+      construites à partir des diapositives et de l'analyse des examens de 2018 à 2025.
+      Chaque chapitre va droit à l'essentiel — et surtout à ce qui tombe vraiment.
+    </p>
+    <div class="hero-meta reveal d4">
+      <span class="pill"><strong>9</strong> chapitres &amp; thèmes</span>
+      <span class="pill">Annales <strong>2018 → 2025</strong></span>
+      <span class="pill">Encadrés <strong>Examen · À retenir · Piège</strong></span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div class="intro-card reveal d1">
+        <span class="num">01 / À QUOI ÇA SERT</span>
+        <h3>Réviser plus vite</h3>
+        <p>Le contenu des diapos est trié, hiérarchisé et reformulé pour aller à l'essentiel sans relire 300 slides.</p>
+      </div>
+      <div class="intro-card reveal d2">
+        <span class="num">02 / CE QUI CHANGE</span>
+        <h3>Centré sur l'examen</h3>
+        <p>Les questions réellement posées les années passées sont signalées et accompagnées de réponses modèles.</p>
+      </div>
+      <div class="intro-card reveal d3">
+        <span class="num">03 / POUR QUI</span>
+        <h3>Pour toute la promo</h3>
+        <p>Partage le lien à tes camarades&nbsp;: chacun ouvre le chapitre qu'il veut bosser, sur ordi comme sur téléphone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAPTERS ============ -->
+<section class="section" id="chapitres">
+  <div class="wrap">
+    <div class="sec-head reveal d1">
+      <div class="sec-kicker">Les synthèses</div>
+      <h2>Choisis un <em>chapitre</em></h2>
+    </div>
+
+    <div class="chapters">
+
+      <a class="chap c-ink reveal d1" href="Synthese_Chapitre_1_Nutrition.html">
+        <div class="chap-top"><span class="chap-no">Chapitre 1</span><span class="chap-go">→</span></div>
+        <h3>Évaluation de l'état &amp; des besoins</h3>
+        <p>Bromatologie, BMR, RDA, IMC, méthodes de mesure et besoins énergétiques.</p>
+        <div class="chap-tags"><span>BMR</span><span>RDA</span><span>IMC / DEXA</span></div>
+      </a>
+
+      <a class="chap c-amber reveal d2" href="Chapitre2_Glucides_Fibres_Synthese.html">
+        <div class="chap-top"><span class="chap-no">Chapitre 2</span><span class="chap-go">→</span></div>
+        <h3>Glucides &amp; fibres alimentaires</h3>
+        <p>Index glycémique, sucres libres, amidon résistant, microbiote &amp; AGCC.</p>
+        <div class="chap-tags"><span>Index glycémique</span><span>AGCC</span><span>DJA</span></div>
+      </a>
+
+      <a class="chap c-gold reveal d3" href="Chapitre_3_Lipides_synthese.html">
+        <div class="chap-top"><span class="chap-no">Chapitre 3</span><span class="chap-go">→</span></div>
+        <h3>Lipides</h3>
+        <p>Acides gras saturés/insaturés, oméga-3/6, cholestérol et santé cardiométabolique.</p>
+        <div class="chap-tags"><span>Oméga-3</span><span>9 kcal/g</span><span>Cholestérol</span></div>
+      </a>
+
+      <a class="chap c-green reveal d4" href="Chapitre_4_Proteines_Synthese.html">
+        <div class="chap-top"><span class="chap-no">Chapitre 4</span><span class="chap-go">→</span></div>
+        <h3>Protéines</h3>
+        <p>Besoins 0,8 g/kg/j, acides aminés limitants, PDCAAS/DIAAS, marasme vs kwashiorkor.</p>
+        <div class="chap-tags"><span>0,8 g/kg/j</span><span>PDCAAS</span><span>Kwashiorkor</span></div>
+      </a>
+
+      <a class="chap c-red reveal d1" href="chapitre5_ethanol.html">
+        <div class="chap-top"><span class="chap-no">Chapitre 5</span><span class="chap-go">→</span></div>
+        <h3>Éthanol (alcool)</h3>
+        <p>Métabolisme ADH / CYP2E1, 7 kcal/g, cancers (CIRC groupe 1), dépendance.</p>
+        <div class="chap-tags"><span>CYP2E1</span><span>7 kcal/g</span><span>Polyphénols</span></div>
+      </a>
+
+      <a class="chap c-plum reveal d2" href="WFARM2149_synthese_micronutriments_obesite_cancer_interactions.html#ch6">
+        <div class="chap-top"><span class="chap-no">Chapitre 6</span><span class="chap-go">→</span></div>
+        <h3>Micronutriments</h3>
+        <p>Minéraux, oligo-éléments &amp; vitamines&nbsp;: rôles, carences et apports recommandés.</p>
+        <div class="chap-tags"><span>Fer / Ca</span><span>Vitamines</span><span>Oligo-éléments</span></div>
+      </a>
+
+      <a class="chap c-amber reveal d3" href="WFARM2149_synthese_micronutriments_obesite_cancer_interactions.html#ch7">
+        <div class="chap-top"><span class="chap-no">Thème</span><span class="chap-go">→</span></div>
+        <h3>Obésité</h3>
+        <p>Bilan énergétique, tissu adipeux, complications et approches thérapeutiques.</p>
+        <div class="chap-tags"><span>Bilan énergétique</span><span>Tissu adipeux</span></div>
+      </a>
+
+      <a class="chap c-green reveal d4" href="WFARM2149_synthese_micronutriments_obesite_cancer_interactions.html#cancer">
+        <div class="chap-top"><span class="chap-no">Thème</span><span class="chap-go">→</span></div>
+        <h3>Nutrition &amp; cancer</h3>
+        <p>Facteurs alimentaires, antioxydants, recommandations de prévention.</p>
+        <div class="chap-tags"><span>Prévention</span><span>Antioxydants</span></div>
+      </a>
+
+      <a class="chap c-ink reveal d5" href="WFARM2149_synthese_micronutriments_obesite_cancer_interactions.html#inter">
+        <div class="chap-top"><span class="chap-no">Thème</span><span class="chap-go">→</span></div>
+        <h3>Interactions aliments–médicaments</h3>
+        <p>Pamplemousse/CYP3A4, tyramine/IMAO, vitamine K/AVK et autres cas classiques.</p>
+        <div class="chap-tags"><span>CYP3A4</span><span>IMAO</span><span>Vitamine K</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVISION PLAN ============ -->
+<section class="section" id="revision">
+  <div class="wrap">
+    <div class="plan-band reveal d1">
+      <div class="sec-kicker">Pressé·e ? Le mode blocus</div>
+      <h2>Réviser en <em>2 jours</em></h2>
+      <p class="plan-intro">
+        Quatre fiches interactives qui condensent l'essentiel du cours pour un sprint de dernière minute.
+        Chaque définition et vrai/faux est une carte à cliquer (tu réponds, puis tu vérifies), et ta progression
+        est sauvegardée dans le navigateur. À faire dans l'ordre.
+      </p>
+      <div class="sessions">
+
+        <a class="sess reveal d1" href="J1-matin_fondations-glucides.html">
+          <span class="sess-when"><span class="dot"></span>J1 · Matin</span>
+          <h4>Fondations &amp; glucides</h4>
+          <p>Composition corporelle, BMI, BMR, RDA, Nutri-Score/NOVA, index glycémique, fibres &amp; AGCC.</p>
+          <span class="sess-go">→</span>
+        </a>
+
+        <a class="sess reveal d2" href="J1-apresmidi_lipides-proteines.html">
+          <span class="sess-when"><span class="dot"></span>J1 · Après-midi</span>
+          <h4>Lipides &amp; protéines</h4>
+          <p>Hiérarchie des acides gras, oméga-3, phytostérols, valeur biologique, AA limitant, marasme/kwashiorkor.</p>
+          <span class="sess-go">→</span>
+        </a>
+
+        <a class="sess reveal d3" href="J2-matin_micronutriments-obesite.html">
+          <span class="sess-when"><span class="dot"></span>J2 · Matin</span>
+          <h4>Micronutriments &amp; le reste</h4>
+          <p>La session la plus dense : vitamines, calcium/phytates, leptine, NPY/POMC, anti-cancer, interactions.</p>
+          <span class="sess-go">→</span>
+        </a>
+
+        <a class="sess is-drill reveal d4" href="J2-apresmidi_drill-examens.html">
+          <span class="sess-when"><span class="dot"></span>J2 · Après-midi<span class="star">★ Top rentab.</span></span>
+          <h4>🎯 Drill examens</h4>
+          <p>Entraînement pur : « donnez le terme », vrai/faux à justifier, et les anciens examens à refaire.</p>
+          <span class="sess-go">→</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEGEND ============ -->
+<section class="legend">
+  <div class="wrap">
+    <div class="sec-head reveal d1">
+      <div class="sec-kicker">Comment lire les fiches</div>
+      <h2>Trois types d'<em>encadrés</em></h2>
+    </div>
+    <div class="legend-grid">
+      <div class="box exam reveal d1">
+        <span class="tag">📝 Examen</span>
+        <h4>Tombé à l'examen</h4>
+        <p>Une question réellement posée (2018–2025) avec une réponse modèle. C'est ici qu'il faut concentrer ton attention.</p>
+      </div>
+      <div class="box keep reveal d2">
+        <span class="tag">✅ À retenir</span>
+        <h4>L'essentiel à mémoriser</h4>
+        <p>Les chiffres, définitions et concepts clés qu'il faut connaître par cœur pour ne pas perdre de points faciles.</p>
+      </div>
+      <div class="box trap reveal d3">
+        <span class="tag">⚠️ Piège</span>
+        <h4>Erreur fréquente</h4>
+        <p>Les confusions classiques (kcal vs kJ, polyphénols vs éthanol, marasme vs kwashiorkor…) à éviter le jour J.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHOD / EXAM ============ -->
+<section class="method">
+  <div class="wrap">
+    <div class="method-card reveal d1">
+      <div class="sec-kicker">Le format d'examen de Delzenne</div>
+      <h2>Ce qu'il faut savoir <em>faire</em></h2>
+      <ul class="method-list">
+        <li><span class="k">01</span><span><b>Donner une définition + un exemple</b> — bromatologie, aliment fonctionnel, acide aminé limitant, additif…</span></li>
+        <li><span class="k">02</span><span><b>« Citez X et justifiez »</b> — effets santé, exemples de fibres, problèmes liés à l'alcool, etc.</span></li>
+        <li><span class="k">03</span><span><b>Calculs</b> — besoins protéiques (0,8 g/kg/j), valeurs caloriques (4/9/7 kcal/g), DJA / NOAEL.</span></li>
+        <li><span class="k">04</span><span><b>Vrai / Faux à argumenter</b> — affirmations à valider ou corriger en justifiant clairement.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <strong>FARM 2149 — Approche pharmaceutique de la nutrition</strong><br>
+    Portail de révision · Pr N. M. Delzenne · UCLouvain
+    <p class="disclaimer">
+      Synthèses d'étude réalisées à partir des diapositives du cours et des examens des sessions 2018–2025.
+      Les encadrés « examen » reflètent des questions effectivement posées ; vérifie toujours avec la matière
+      officielle la plus récente. Ce site est un outil d'entraide étudiant, sans valeur officielle.
+    </p>
+    <p class="credit">Fait entre camarades · Bon courage pour le blocus ✦</p>
+  </div>
+</footer>
+
+</body>
+</html>

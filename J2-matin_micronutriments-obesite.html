@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>J2 Matin · Micronutriments, Alcool, Obésité &amp; Cancer — Nutrition WFARM2149</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4eef0; --paper-2:#e9dde2; --ink:#221a1e; --ink-soft:#564a50;
+  --accent:#7a2e4a; --accent-deep:#561e34; --accent-soft:#dcc0cb;
+  --line:#d6c4cc; --gold:#9c7b2e;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.6;background-image:radial-gradient(circle at 12% 8%,rgba(122,46,74,.06),transparent 40%),radial-gradient(circle at 88% 92%,rgba(156,123,46,.06),transparent 45%);}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 120px}
+header.hero{padding:64px 0 40px;border-bottom:3px double var(--line);margin-bottom:8px}
+.kicker{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-deep);font-weight:700}
+.hero h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(38px,7vw,68px);line-height:.98;margin:14px 0 10px;letter-spacing:-.01em}
+.hero .sub{font-style:italic;font-size:21px;color:var(--ink-soft);max-width:62ch}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.pill{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--ink-soft);background:rgba(255,255,255,.4)}
+.pill.hot{background:var(--accent);color:#fff;border-color:var(--accent)}
+section{margin-top:54px}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:22px}
+.sec-num{font-family:"Fraunces",serif;font-weight:900;font-size:36px;color:var(--accent);line-height:1;opacity:.85}
+.sec-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:28px;margin:0;letter-spacing:-.01em}
+.sec-head .tag{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--gold);padding:5px 10px;border-radius:4px;align-self:center}
+.card{background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:16px 0;box-shadow:0 2px 0 rgba(0,0,0,.02)}
+.card h3{font-family:"Fraunces",serif;font-weight:600;font-size:21px;margin:0 0 8px}
+.card p{margin:8px 0}
+.term{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.92em}
+mark{background:linear-gradient(transparent 55%,var(--accent-soft) 55%);color:inherit;padding:0 1px;font-weight:500}
+.num{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--gold)}
+ul.clean{margin:8px 0;padding-left:22px}ul.clean li{margin:5px 0}
+.callout{border-left:4px solid var(--accent);background:rgba(122,46,74,.06);padding:12px 18px;border-radius:0 8px 8px 0;margin:14px 0;font-size:16.5px}
+.callout b{color:var(--accent-deep)}
+.reveal{border:1px dashed var(--accent);border-radius:10px;padding:0;margin:12px 0;overflow:hidden;background:rgba(255,255,255,.4)}
+.reveal summary{cursor:pointer;list-style:none;padding:16px 20px;font-family:"Fraunces",serif;font-weight:600;font-size:18px;display:flex;align-items:center;gap:12px}
+.reveal summary::-webkit-details-marker{display:none}
+.reveal summary::before{content:"?";font-family:"JetBrains Mono",monospace;font-weight:700;color:#fff;background:var(--accent);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:14px;flex:0 0 auto}
+.reveal[open] summary::before{content:"✓";background:var(--gold)}
+.reveal .body{padding:0 20px 18px 58px;font-size:16.5px;color:var(--ink-soft)}
+.reveal .body p:first-child{margin-top:0}
+.check{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.check:last-child{border-bottom:none}
+.check input{appearance:none;width:24px;height:24px;border:2px solid var(--accent);border-radius:6px;flex:0 0 auto;margin-top:2px;cursor:pointer;position:relative;transition:.15s}
+.check input:checked{background:var(--accent)}
+.check input:checked::after{content:"✓";color:#fff;position:absolute;inset:0;display:grid;place-items:center;font-family:"JetBrains Mono";font-weight:700;font-size:14px}
+.check label{cursor:pointer;flex:1}.check input:checked + label{opacity:.5;text-decoration:line-through}
+.progress-box{position:sticky;top:0;z-index:5;background:var(--paper-2);border:1px solid var(--line);border-radius:0 0 12px 12px;padding:12px 20px;margin:0 -24px 0;display:flex;align-items:center;gap:14px;font-family:"JetBrains Mono",monospace;font-size:13px}
+.bar{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--gold));transition:width .4s}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:16px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-deep)}
+tr:last-child td{border-bottom:none}
+footer{margin-top:70px;padding-top:24px;border-top:3px double var(--line);font-style:italic;color:var(--ink-soft);font-size:15px}
+.nav{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.nav a{font-family:"JetBrains Mono",monospace;font-size:12px;text-decoration:none;color:var(--accent-deep);border:1px solid var(--line);padding:8px 14px;border-radius:8px;background:rgba(255,255,255,.4)}
+.nav a:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="progress-box"><span>RÉVISÉ</span><div class="bar"><i id="barfill"></i></div><span id="pct">0%</span></div>
+<div class="wrap">
+<header class="hero">
+  <div class="kicker">WFARM2149 · Approche pharmaceutique de la nutrition</div>
+  <h1>Jour 2 — Matin</h1>
+  <p class="sub">Le gros bloc : micronutriments, alcool, obésité &amp; cancer, et interactions aliments–médicaments. Beaucoup de définitions et de V/F, peu de raisonnement complexe.</p>
+  <div class="meta">
+    <span class="pill hot">~2 h 30</span>
+    <span class="pill">Chap. 6 · Micronutriments</span>
+    <span class="pill">Chap. 5 · Alcool</span>
+    <span class="pill">Obésité &amp; cancer</span>
+    <span class="pill">Interactions</span>
+  </div>
+</header>
+
+<!-- MICRONUTRIMENTS -->
+<section id="m1">
+  <div class="sec-head"><span class="sec-num">1</span><h2>Micronutriments</h2><span class="tag">dense en V/F</span></div>
+  <div class="card">
+    <h3>Vitamines : liposolubles vs hydrosolubles</h3>
+    <table>
+      <tr><th></th><th>Liposolubles (A D E K)</th><th>Hydrosolubles (B, C)</th></tr>
+      <tr><td>Absorption</td><td>liée aux lipides (↓ si Orlistat)</td><td>indépendante</td></tr>
+      <tr><td>Stockage</td><td>tissu adipeux (importante)</td><td>faible, <strong>sauf B12</strong></td></tr>
+      <tr><td>Excrétion</td><td>lente</td><td>urinaire</td></tr>
+      <tr><td>Carences</td><td>—</td><td>pellagre (B3), anémie (B6/B12), scorbut (C)</td></tr>
+    </table>
+    <p class="callout"><b>V/F classique :</b> «&nbsp;la vitamine A est influencée par les lipides&nbsp;» → <strong>VRAI</strong>, stockée dans le tissu adipeux (structure proche). · B12 : rôle dans maturation des GR &amp; méthylation, <strong>pas</strong> la coagulation.</p>
+  </div>
+
+  <details class="reveal">
+    <summary>Vitamines antioxydantes (C, E, β-carotène) — mécanisme</summary>
+    <div class="body"><p>Neutralisent les <mark>radicaux libres</mark> → ↓ stress oxydatif (prévention CV, cancers, vieillissement). <strong>Vit E</strong> (liposoluble) protège les membranes lipidiques ; en agissant elle devient un radical. <strong>Vit C</strong> (hydrosoluble) la <strong>régénère</strong> → synergie. β-carotène = précurseur de la vit A, anti-oxydant (empêche l'oxydation des LDL).</p></div>
+  </details>
+
+  <div class="card">
+    <h3>Minéraux essentiels</h3>
+    <ul class="clean">
+      <li><span class="term">Calcium ~950 mg/j</span> — os, contraction musculaire, coagulation. Absorption adulte ≈ <span class="num">20 %</span>. <strong>↑</strong> par vitamine D, AG à chaîne moyenne, fibres fermentescibles, phosphoprotéines du lait. <strong>↓</strong> par phytates &amp; oxalates.</li>
+      <li><span class="term">Phosphore ~800 mg/j</span> · <span class="term">Magnésium 300–350 mg/j</span> (recommandations selon âge/sexe, <strong>pas</strong> selon l'AET).</li>
+      <li><span class="term">Fer</span> — héminique (viande, bien absorbé) vs non héminique (végétal, moins absorbé → associer à la vitamine C).</li>
+    </ul>
+  </div>
+
+  <details class="reveal">
+    <summary>Anti-nutriment &amp; lien Ca–phytates–activité physique</summary>
+    <div class="body">
+      <p><span class="term">Anti-nutriment</span> = substance qui réduit la biodisponibilité d'autres nutriments. <strong>Phytates</strong> (céréales complètes, légumineuses) chélatent Ca, Zn, Fer → complexes insolubles → ↓ absorption. <strong>Oxalates</strong> (épinards, rhubarbe) lient le calcium.</p>
+      <p><strong>Activité physique :</strong> stimule la minéralisation osseuse (ostéoblastes) → besoins en Ca accrus chez sportifs/adolescents. Si alimentation riche en phytates → risque de déficit calcique.</p>
+    </div>
+  </details>
+
+  <details class="reveal">
+    <summary>Orlistat → fragilité osseuse (V/F à justifier)</summary>
+    <div class="body"><p>Orlistat = inhibiteur des lipases → ↓ absorption des graisses → ↓ absorption des <mark>vitamines liposolubles A, D, E, K</mark>. Carence en <strong>vit D</strong> → ↓ absorption du calcium → ostéomalacie/ostéoporose → <strong>fragilité osseuse</strong>. ⇒ <strong>VRAI</strong>.</p></div>
+  </details>
+</section>
+
+<!-- ALCOOL -->
+<section id="al">
+  <div class="sec-head"><span class="sec-num">2</span><h2>Alcool &amp; santé</h2></div>
+  <div class="card">
+    <ul class="clean">
+      <li>Valeur énergétique : <span class="num">7 kcal/g</span> (≈ 29 kJ/g) — «&nbsp;calories vides&nbsp;».</li>
+      <li>Induit le <span class="term">CYP2E1</span> → interactions médicamenteuses ; produit de l'<strong>acétaldéhyde</strong> toxique pour la mitochondrie.</li>
+      <li>Métabolique : <strong>inhibe la gluconéogenèse hépatique</strong> → hypoglycémie ; acidocétose.</li>
+      <li>Filiation hépatique : <strong>stéatose → stéatohépatite → cirrhose</strong>. Carences en vitamines B fréquentes.</li>
+    </ul>
+    <div class="callout"><b>Le piège-vedette :</b> l'éthanol n'a <em>pas</em> d'effet protecteur antioxydant — au contraire, il <strong>provoque le cancer de l'œsophage</strong>. «&nbsp;Boire 1–2 verres de vin pour éviter le cancer&nbsp;» → <strong>FAUX</strong>. Max conseillé : ~25 g/j (femme) / 50 g/j (homme), ≤ 4 % de l'AET.</div>
+  </div>
+</section>
+
+<!-- OBESITE -->
+<section id="ob">
+  <div class="sec-head"><span class="sec-num">3</span><h2>Obésité, syndrome métabolique &amp; cancer</h2><span class="tag">questions Cani</span></div>
+
+  <div class="card">
+    <h3>Critères &amp; syndrome métabolique</h3>
+    <p>Critères d'obésité = <mark>BMI &gt; 30</mark> + % masse grasse + tour de taille. <span class="term">Syndrome métabolique</span> : résistance à l'insuline + inflammation chronique de bas grade (TNF-α, IL-6) + dyslipidémie athérogène (↑ TG, ↓ HDL, LDL petites &amp; denses) + tissu adipeux viscéral hyperactif.</p>
+  </div>
+
+  <details class="reveal">
+    <summary>Tissu adipeux = organe endocrine (rôle dans l'insulino-résistance)</summary>
+    <div class="body">
+      <p>Pas un simple stock de TG : sécrète des <mark>adipokines</mark>. En obésité → ↑ leptine (résistance), ↑ résistine, ↑ TNF-α / IL-6 (pro-inflammatoires) et <strong>↓ adiponectine</strong> (normalement anti-inflammatoire &amp; ↑ sensibilité à l'insuline).</p>
+      <p>⇒ altération des voies de signalisation de l'insuline (IRS-1, PI3K) = <strong>résistance à l'insuline</strong>, + HTA (SRAA), dyslipidémie.</p>
+    </div>
+  </details>
+
+  <details class="reveal">
+    <summary>Contrôle central de l'appétit : NPY/AgRP, POMC/CART, GLP-1</summary>
+    <div class="body">
+      <p><strong>NPY/AgRP</strong> = neurones <mark>orexigènes</mark> (stimulent la faim). <strong>POMC/CART</strong> = neurones <mark>anorexigènes</mark> (coupent la faim via α-MSH). La <strong>leptine</strong> (et l'insuline) inhibent NPY/AgRP et activent POMC/CART.</p>
+      <p><strong>GLP-1</strong> = incrétine intestinale : ↓ vidange gastrique, ↑ sécrétion d'insuline, ↓ appétit → cible pharmacologique (obésité/diabète).</p>
+      <p><em>V/F :</em> «&nbsp;la plupart des obésités sont monogéniques&nbsp;» → <strong>FAUX</strong> (&lt; 5 % ; multifactoriel). «&nbsp;la leptine contrôle le poids uniquement par voie directe&nbsp;» → <strong>FAUX</strong> (action sur la satiété, voie indirecte).</p>
+    </div>
+  </details>
+
+  <details class="reveal">
+    <summary>Lien obésité ↔ alimentation (qualité &amp; quantité)</summary>
+    <div class="body"><p><strong>Quantité :</strong> apports &gt; besoins → stockage. <strong>Qualité :</strong> sucres simples → hyperinsulinisme → stockage ; AGS/trans → inflammation, résistance à l'insuline. Stratégie évoquée : régime <span class="term">BLM/BLD</span> (Bien Loin du Micro-ondes / du Drive) = frais, cuisiné maison, non ultra-transformé.</p></div>
+  </details>
+
+  <div class="card">
+    <h3>Nutrition &amp; cancer (du côlon)</h3>
+    <p><strong>Facteurs de risque :</strong> viande rouge, cuisson à haute température → <mark>acrylamide, HAP, amines hétérocycliques</mark> (effet mutagène). <strong>Protecteur :</strong> fibres (−10 % cancer côlon / 10 g/j).</p>
+    <p><strong>Les 10 mesures anti-cancer — à pouvoir en citer ~3 avec justification :</strong></p>
+    <ul class="clean">
+      <li>IMC <span class="num">21–23</span> kg/m² · activité physique (PAL &gt; 1,6)</li>
+      <li><span class="num">600 g</span> fruits/légumes + &gt; 25 g de polysaccharides par jour</li>
+      <li>Viande rouge <span class="num">&lt; 300 g/sem</span> · limiter charcuteries</li>
+      <li>Limiter l'alcool · &lt; 2 g sodium/j · pas de compléments alimentaires</li>
+    </ul>
+  </div>
+</section>
+
+<!-- INTERACTIONS -->
+<section id="in">
+  <div class="sec-head"><span class="sec-num">4</span><h2>Interactions aliments–médicaments</h2><span class="tag">survol</span></div>
+  <div class="card">
+    <table>
+      <tr><th>Type</th><th>Mécanisme</th></tr>
+      <tr><td>I</td><td>galénique / ex vivo (avant absorption)</td></tr>
+      <tr><td>II</td><td>absorption (chélation, complexes insolubles, pH gastrique)</td></tr>
+      <tr><td>III</td><td>métabolisme &amp; distribution/transport/stockage</td></tr>
+      <tr><td>IV</td><td>excrétion (ex : pH urinaire modifie l'élimination des acides/bases faibles)</td></tr>
+    </table>
+    <p>Exemples : aliments modifiant les OFM/CYP (induction CYP2E1 par l'éthanol, CYP1A1 par les HAP) ; chélation Ca/Fer–antibiotiques ; Orlistat ↓ vitamines liposolubles. Malnutrition/obésité → adaptation des posologies (antibiotiques, anticoagulants).</p>
+  </div>
+</section>
+
+<!-- checklist -->
+<section id="done">
+  <div class="sec-head"><span class="sec-num">✓</span><h2>Auto-contrôle</h2></div>
+  <div class="card" id="checklist">
+    <div class="check"><input type="checkbox" id="c1"><label for="c1">Liposolubles vs hydrosolubles : tableau complet (B12 = exception)</label></div>
+    <div class="check"><input type="checkbox" id="c2"><label for="c2">Vit C régénère vit E ; β-carotène = précurseur vit A</label></div>
+    <div class="check"><input type="checkbox" id="c3"><label for="c3">Calcium : absorption, ce qui ↑ et ce qui ↓ (phytates/oxalates)</label></div>
+    <div class="check"><input type="checkbox" id="c4"><label for="c4">Anti-nutriment + lien Ca–phytates–activité physique</label></div>
+    <div class="check"><input type="checkbox" id="c5"><label for="c5">Orlistat → vit liposolubles → vit D → fragilité osseuse</label></div>
+    <div class="check"><input type="checkbox" id="c6"><label for="c6">Alcool : 7 kcal/g, CYP2E1, cancer œsophage (pas protecteur)</label></div>
+    <div class="check"><input type="checkbox" id="c7"><label for="c7">Tissu adipeux = organe endocrine → insulino-résistance</label></div>
+    <div class="check"><input type="checkbox" id="c8"><label for="c8">NPY/AgRP vs POMC/CART, rôle de la leptine, GLP-1</label></div>
+    <div class="check"><input type="checkbox" id="c9"><label for="c9">3 mesures anti-cancer justifiées + acrylamide/HAP</label></div>
+    <div class="check"><input type="checkbox" id="c10"><label for="c10">Les 4 types d'interactions aliments–médicaments</label></div>
+  </div>
+</section>
+
+<footer>
+  <p>Fiche 3/4 · C'est la session la plus chargée — le reste est de l'entraînement. Enchaîne avec le drill examens.</p>
+  <div class="nav">
+    <a href="J1-matin_fondations-glucides.html">← J1 Matin</a>
+    <a href="J1-apresmidi_lipides-proteines.html">← J1 Après-midi</a>
+    <a href="J2-apresmidi_drill-examens.html">→ J2 Après-midi · Drill examens</a>
+  </div>
+</footer>
+</div>
+<script>
+(function(){var KEY="nutri_j2am";var boxes=document.querySelectorAll('#checklist input');
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||"{}");boxes.forEach(function(b){if(s[b.id])b.checked=true;});}catch(e){}}
+function save(){try{var s={};boxes.forEach(function(b){s[b.id]=b.checked;});localStorage.setItem(KEY,JSON.stringify(s));}catch(e){}}
+function upd(){var n=0;boxes.forEach(function(b){if(b.checked)n++;});var p=boxes.length?Math.round(n/boxes.length*100):0;document.getElementById('barfill').style.width=p+"%";document.getElementById('pct').textContent=p+"%";}
+load();upd();boxes.forEach(function(b){b.addEventListener('change',function(){save();upd();});});})();
+</script>
+</body>
+</html>

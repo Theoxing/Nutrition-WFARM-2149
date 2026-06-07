@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapitre 1 — Évaluation de l'état et des besoins nutritionnels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Spline+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF5EC;
+    --paper:#FFFDF8;
+    --ink:#20302A;
+    --ink-soft:#4A5A52;
+    --green:#2E5E40;
+    --green-deep:#1E4630;
+    --green-tint:#E6EFE5;
+    --green-line:#BcD3BE;
+    --amber:#B5621F;
+    --amber-deep:#8F4A12;
+    --amber-tint:#FBEBD9;
+    --amber-line:#EAC79A;
+    --gold:#C99A2E;
+    --shadow:0 18px 40px -24px rgba(30,50,38,.45);
+    --radius:18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    background-image:radial-gradient(circle at 12% 8%, rgba(46,94,64,.05), transparent 42%),
+                     radial-gradient(circle at 88% 4%, rgba(181,98,31,.05), transparent 38%);
+    color:var(--ink);
+    font-family:'Spline Sans',system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 26px;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    padding:74px 0 54px;
+    overflow:hidden;
+  }
+  .hero .wrap{position:relative;z-index:2;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:600;color:var(--amber-deep);
+    background:var(--amber-tint);border:1px solid var(--amber-line);
+    padding:7px 16px;border-radius:100px;
+  }
+  .hero h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(2.4rem,6vw,4.1rem);
+    line-height:1.04;
+    margin:24px 0 12px;
+    letter-spacing:-.01em;
+    color:var(--green-deep);
+  }
+  .hero h1 em{font-style:italic;color:var(--amber);}
+  .hero .sub{
+    font-size:1.18rem;max-width:640px;color:var(--ink-soft);
+  }
+  .meta-row{
+    margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;
+  }
+  .chip{
+    font-size:.84rem;font-weight:500;
+    background:var(--paper);border:1px solid var(--green-line);
+    color:var(--green-deep);padding:6px 14px;border-radius:100px;
+  }
+  .hero-deco{
+    position:absolute;top:-60px;right:-40px;width:340px;height:340px;
+    background:conic-gradient(from 140deg, var(--green-tint), var(--amber-tint), var(--green-tint));
+    filter:blur(8px);opacity:.5;border-radius:50%;z-index:1;
+  }
+
+  /* ---------- TOC ---------- */
+  nav.toc{
+    background:var(--green-deep);
+    color:#EAF1E6;
+    border-radius:var(--radius);
+    padding:26px 30px;
+    margin:8px 0 50px;
+    box-shadow:var(--shadow);
+  }
+  nav.toc h2{
+    font-family:'Fraunces',serif;font-weight:500;font-size:1.05rem;
+    letter-spacing:.04em;margin:0 0 14px;color:#fff;
+    text-transform:uppercase;font-size:.82rem;letter-spacing:.2em;
+  }
+  nav.toc ol{
+    margin:0;padding:0;list-style:none;
+    columns:2;column-gap:38px;
+  }
+  nav.toc li{margin:0 0 9px;break-inside:avoid;}
+  nav.toc a{
+    color:#D6E4D0;text-decoration:none;font-size:.96rem;
+    display:flex;gap:11px;align-items:baseline;transition:color .2s;
+  }
+  nav.toc a:hover{color:#fff;}
+  nav.toc .num{color:var(--gold);font-family:'Fraunces',serif;font-weight:600;min-width:22px;}
+  @media(max-width:680px){nav.toc ol{columns:1;}}
+
+  /* ---------- SECTIONS ---------- */
+  section{margin:0 0 56px;scroll-margin-top:20px;}
+  .sec-head{display:flex;align-items:center;gap:16px;margin:0 0 22px;}
+  .sec-head .idx{
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;
+    width:54px;height:54px;flex:none;display:grid;place-items:center;
+    background:var(--green);color:#fff;border-radius:14px;
+    box-shadow:0 8px 18px -10px rgba(46,94,64,.7);
+  }
+  h2.title{
+    font-family:'Fraunces',serif;font-weight:600;
+    font-size:clamp(1.6rem,3.4vw,2.15rem);line-height:1.1;
+    margin:0;color:var(--green-deep);letter-spacing:-.01em;
+  }
+  h3{
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;
+    color:var(--ink);margin:34px 0 10px;
+  }
+  h4{
+    font-weight:600;font-size:1.02rem;color:var(--green-deep);
+    margin:22px 0 6px;letter-spacing:.01em;
+  }
+  p{margin:0 0 14px;}
+  strong{color:var(--green-deep);font-weight:600;}
+  .lead{font-size:1.08rem;color:var(--ink-soft);}
+  ul,ol.list{margin:0 0 16px;padding-left:1.25em;}
+  li{margin:0 0 7px;}
+  hr.soft{border:none;border-top:1px solid var(--green-line);opacity:.5;margin:40px 0;}
+
+  /* ---------- CALLOUT BOXES ---------- */
+  .box{
+    border-radius:var(--radius);padding:22px 26px;margin:24px 0;
+    position:relative;box-shadow:var(--shadow);
+  }
+  .box .tag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    padding:5px 13px;border-radius:100px;margin-bottom:12px;
+  }
+  .box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0;}
+
+  .exam{background:var(--amber-tint);border:1px solid var(--amber-line);}
+  .exam .tag{background:var(--amber);color:#fff;}
+  .exam h4{color:var(--amber-deep);}
+  .exam strong{color:var(--amber-deep);}
+
+  .retain{background:var(--green-tint);border:1px solid var(--green-line);}
+  .retain .tag{background:var(--green);color:#fff;}
+
+  .box .qlist{margin:6px 0 0;padding-left:0;list-style:none;}
+  .box .qlist li{
+    position:relative;padding-left:26px;margin-bottom:9px;
+  }
+  .box .qlist li::before{
+    content:"›";position:absolute;left:6px;top:-1px;
+    color:var(--amber);font-weight:700;font-size:1.15rem;
+  }
+  .retain .qlist li::before{color:var(--green);content:"✦";font-size:.85rem;top:2px;}
+
+  /* ---------- TABLES ---------- */
+  .table-wrap{overflow-x:auto;margin:22px 0;border-radius:14px;box-shadow:var(--shadow);}
+  table{width:100%;border-collapse:collapse;background:var(--paper);font-size:.95rem;min-width:480px;}
+  caption{caption-side:top;text-align:left;font-family:'Fraunces',serif;font-weight:600;
+    font-size:1.05rem;color:var(--green-deep);padding:0 0 10px;}
+  th,td{padding:11px 16px;text-align:left;border-bottom:1px solid #EFE7D7;}
+  thead th{background:var(--green);color:#fff;font-weight:600;font-size:.9rem;letter-spacing:.02em;}
+  tbody tr:nth-child(even){background:#FBF7EE;}
+  tbody tr:hover{background:var(--green-tint);}
+  td.num{font-variant-numeric:tabular-nums;font-weight:600;color:var(--amber-deep);white-space:nowrap;}
+
+  /* ---------- DEFINITION CARDS ---------- */
+  .defgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:20px 0;}
+  .defcard{
+    background:var(--paper);border:1px solid var(--green-line);border-radius:14px;
+    padding:16px 18px;transition:transform .18s,box-shadow .18s;
+  }
+  .defcard:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+  .defcard .term{font-family:'Fraunces',serif;font-weight:600;color:var(--green-deep);font-size:1.05rem;display:block;margin-bottom:5px;}
+  .defcard p{font-size:.9rem;color:var(--ink-soft);margin:0;}
+  .defcard .ex{display:block;margin-top:7px;font-size:.82rem;color:var(--amber-deep);font-style:italic;}
+
+  /* ---------- FORMULA ---------- */
+  .formula{
+    background:var(--green-deep);color:#F0F5EC;border-radius:14px;
+    padding:18px 22px;margin:18px 0;font-variant-numeric:tabular-nums;
+    box-shadow:var(--shadow);
+  }
+  .formula .lbl{font-size:.74rem;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);display:block;margin-bottom:8px;}
+  .formula code{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:500;color:#fff;font-style:italic;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--green-deep);color:#C9DAC4;padding:38px 0;margin-top:60px;
+    text-align:center;font-size:.9rem;
+  }
+  footer strong{color:#fff;}
+  .disclaimer{font-size:.82rem;color:#9FB89A;max-width:620px;margin:14px auto 0;}
+
+  ::selection{background:var(--amber);color:#fff;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-deco"></div>
+  <div class="wrap">
+    <span class="eyebrow">● FARM 2149 — Approche pharmaceutique de la nutrition</span>
+    <h1>Chapitre 1<br>Évaluation de l'<em>état</em> &amp; des <em>besoins</em> nutritionnels</h1>
+    <p class="sub">Synthèse complète d'étude, structurée autour des quatre grands thèmes du cours et enrichie de ce qui tombe réellement à l'examen (sessions 2018 à 2025).</p>
+    <div class="meta-row">
+      <span class="chip">N.M. Delzenne</span>
+      <span class="chip">Composition corporelle</span>
+      <span class="chip">État nutritionnel</span>
+      <span class="chip">Besoins énergétiques</span>
+      <span class="chip">Recommandations</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="toc">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><a href="#intro"><span class="num">0</span><span>Concepts d'introduction &amp; vocabulaire</span></a></li>
+      <li><a href="#compo"><span class="num">1</span><span>La composition corporelle</span></a></li>
+      <li><a href="#etat"><span class="num">2</span><span>Apprécier l'état nutritionnel</span></a></li>
+      <li><a href="#energie"><span class="num">3</span><span>Les besoins énergétiques</span></a></li>
+      <li><a href="#reco"><span class="num">4</span><span>Les recommandations nutritionnelles</span></a></li>
+      <li><a href="#malnut"><span class="num">5</span><span>Malnutrition (OMS)</span></a></li>
+      <li><a href="#glossaire"><span class="num">★</span><span>Glossaire express «&nbsp;définitions d'examen&nbsp;»</span></a></li>
+      <li><a href="#fiche"><span class="num">✔</span><span>Fiche de révision finale</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- ============ SECTION 0 ============ -->
+  <section id="intro">
+    <div class="sec-head">
+      <div class="idx">0</div>
+      <h2 class="title">Concepts d'introduction &amp; vocabulaire</h2>
+    </div>
+
+    <p class="lead">Avant les méthodes, le cours pose un cadre : qu'est-ce qu'un aliment, qu'est-ce qu'un nutriment, et pourquoi la nutrition est une affaire de <strong>dose</strong> et d'<strong>équilibre</strong>.</p>
+
+    <h3>Nutriments : deux grandes familles</h3>
+    <ul>
+      <li><strong>Macronutriments</strong> (= nutriments énergétiques) : glucides (+ fibres), lipides, protéines et alcool.</li>
+      <li><strong>Micronutriments</strong> (= non énergétiques) : eau, minéraux, vitamines, oligo-éléments et substances phytochimiques.</li>
+    </ul>
+
+    <h3>L'aliment est plus qu'un nutriment</h3>
+    <p>Quand on relie nutrition et santé, l'alimentation se lit comme :</p>
+    <div class="formula">
+      <span class="lbl">Composition d'une denrée alimentaire</span>
+      <code>Alimentation = nutriments + substances phytochimiques + additifs + contaminants</code>
+    </div>
+    <p>Un aliment est aussi <strong>conditionné, stocké et préparé</strong>, ce qui modifie le risque et l'apport. Il peut être modifié <strong>volontairement</strong> (fortification, aliments fonctionnels) ou <strong>involontairement</strong> (maturation, migration de constituants d'emballage…).</p>
+
+    <h3>La notion de dose (Paracelse)</h3>
+    <p>«&nbsp;C'est la dose qui fait le poison&nbsp;» : un même constituant peut être bénéfique, neutre ou toxique selon la quantité. C'est la clé de lecture de tout le cours (vitamines, sel, alcool, compléments…).</p>
+
+    <div class="box retain">
+      <span class="tag">★ À retenir</span>
+      <p>La <strong>bromatologie</strong> = science qui étudie l'aliment sous tous ses aspects (composition chimique, valeur nutritionnelle, innocuité, qualité), de la récolte/abattage jusqu'à la cuisine. C'est une <em>définition régulièrement demandée</em> en début d'examen.</p>
+    </div>
+
+    <div class="box exam">
+      <span class="tag">📝 À l'examen</span>
+      <p>Le chapitre 1 fournit la <strong>matière première des questions «&nbsp;définitions + exemple&nbsp;»</strong> et des questions «&nbsp;donnez le terme correspondant à la définition&nbsp;». Termes effectivement tombés&nbsp;:</p>
+      <ul class="qlist">
+        <li><strong>Bromatologie</strong> ; <strong>aliment fonctionnel</strong> ; <strong>nutriment / micronutriment essentiel</strong> ; <strong>contaminant alimentaire</strong> ; <strong>additif alimentaire</strong>.</li>
+        <li><strong>Classification NOVA</strong> (degré de transformation des aliments) et <strong>aliment ultra-transformé</strong>.</li>
+        <li>«&nbsp;Substance ajoutée volontairement dont la teneur max est évaluée sur base toxicologique&nbsp;» → <strong>additif alimentaire</strong> (juin 2025).</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="soft">
+
+  <!-- ============ SECTION 1 ============ -->
+  <section id="compo">
+    <div class="sec-head">
+      <div class="idx">1</div>
+      <h2 class="title">La composition corporelle</h2>
+    </div>
+
+    <h3>Les 5 niveaux d'analyse</h3>
+    <p>Le corps peut être décrit à différentes échelles, de l'atome à l'individu entier :</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Niveau</th><th>Échelle</th><th>Ce qu'on observe</th></tr></thead>
+        <tbody>
+          <tr><td class="num">5</td><td>L'ensemble</td><td>Poids, taille, aspect, sexe…</td></tr>
+          <tr><td class="num">4</td><td>Tissulaire</td><td>Tissu adipeux, muscle, os</td></tr>
+          <tr><td class="num">3</td><td>Cellulaire</td><td>Cellules &amp; liquides</td></tr>
+          <tr><td class="num">2</td><td>Moléculaire</td><td>Eau, lipides, protéines, minéraux, glucides</td></tr>
+          <tr><td class="num">1</td><td>Atomique</td><td>C, H, O, N, Ca…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Niveau moléculaire : la composition «&nbsp;type&nbsp;»</h3>
+    <p>Répartition pondérale moyenne et réserves énergétiques associées :</p>
+    <div class="table-wrap">
+      <table>
+        <caption>Composition moléculaire moyenne (% poids/poids)</caption>
+        <thead><tr><th>Constituant</th><th>% du poids</th><th>Réserve énergétique</th></tr></thead>
+        <tbody>
+          <tr><td>Eau</td><td class="num">60 %</td><td>— (26 % extra- / 34 % intracellulaire)</td></tr>
+          <tr><td>Lipides</td><td class="num">19 %</td><td class="num">≈ 110 000 kcal</td></tr>
+          <tr><td>Protéines</td><td class="num">15 %</td><td class="num">≈ 50 000 kcal</td></tr>
+          <tr><td>Minéraux</td><td class="num">5 %</td><td>—</td></tr>
+          <tr><td>Glucides</td><td class="num">1 %</td><td class="num">≈ 2 500 kcal</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box retain">
+      <span class="tag">★ À retenir</span>
+      <p>Les <strong>lipides sont la réserve énergétique massive</strong> (110 000 kcal) alors que les <strong>glucides sont une réserve minime</strong> (2 500 kcal, dont le glycogène). Cela explique pourquoi, en cas de jeûne, le corps puise surtout dans la graisse — mais entame aussi la masse maigre (protéolyse).</p>
+    </div>
+
+    <h3>Masse grasse vs masse maigre (relation niveau 2 / niveau 4)</h3>
+    <ul>
+      <li><strong>Masse maigre = masse totale − tissu adipeux.</strong> Surtout les muscles ; composée d'eau (80 % chez le nouveau-né, 73 % chez l'adulte), de protéines et de glycogène.</li>
+      <li><strong>Masse grasse (tissu adipeux)</strong> = majoritairement lipides + protéines, <strong>peu d'eau</strong>. Permet de définir l'<strong>anorexie (&lt; 5 % MG)</strong> et l'<strong>obésité morbide (≈ 55 % MG)</strong>.</li>
+    </ul>
+    <h4>Influences sur la composition</h4>
+    <ul>
+      <li><strong>Âge</strong> : la masse maigre diminue au profit de la masse grasse.</li>
+      <li><strong>Sexe</strong> : Homme ≈ 85 % de masse maigre (≈ 92 % d'eau) ; Femme ≈ 75 % de masse maigre (≈ 55 % d'eau).</li>
+    </ul>
+  </section>
+
+  <hr class="soft">
+
+  <!-- ============ SECTION 2 ============ -->
+  <section id="etat">
+    <div class="sec-head">
+      <div class="idx">2</div>
+      <h2 class="title">Apprécier l'état nutritionnel</h2>
+    </div>
+    <p class="lead">Quatre méthodes principales, chacune avec ses forces et ses biais. <strong>Savoir laquelle mesure quoi est le réflexe d'examen.</strong></p>
+
+    <h3>① Anthropométrie</h3>
+    <ul>
+      <li><strong>Poids &amp; taille</strong> → calcul de l'<strong>IMC / BMI = poids (kg) / taille² (m²)</strong>. Influencé par l'âge et l'hydratation. <strong>Mauvais indice de la masse grasse</strong> (un sportif musclé et une personne obèse peuvent avoir le même BMI).</li>
+      <li><strong>Densité</strong> : graisse ≈ 0,9 g/ml ; masse maigre ≈ 1,1 g/ml.</li>
+      <li><strong>Circonférences</strong> : bras, mollet, <strong>tour de taille</strong> (indicateur de graisse viscérale), hanche.</li>
+    </ul>
+
+    <h3>② Mesure des plis cutanés</h3>
+    <p>Somme des plis tricipital, bicipital, sous-scapulaire et supra-iliaque, traduite en % de masse grasse via des tables. <strong>Ne mesure que la masse grasse.</strong> Limites : morphotypes extrêmes, âge.</p>
+
+    <h3>③ Impédancemétrie</h3>
+    <p>Basée sur l'intensité d'un courant électrique selon la teneur en eau et électrolytes des tissus :</p>
+    <ul>
+      <li><strong>Masse maigre = résistance faible</strong> (muscles + eau, bons conducteurs).</li>
+      <li><strong>Masse grasse + tissu osseux = isolants.</strong></li>
+    </ul>
+    <p><em>Biais / précautions :</em> qualité des électrodes, hygrométrie de la pièce, état nutritionnel, activité physique (eau libre/liée), traitements médicamenteux.</p>
+
+    <h3>④ Absorptiométrie biphotonique (DEXA / RX)</h3>
+    <ul>
+      <li>Faible irradiation (&lt; 3–5 mrem).</li>
+      <li><strong>Mesure simultanée des trois compartiments</strong> : masse grasse, masse maigre <em>et</em> masse osseuse (intérêt en corticothérapie).</li>
+      <li>Adaptée à l'évaluation des morphotypes extrêmes.</li>
+    </ul>
+
+    <h3>Les critères de l'obésité (3 indicateurs)</h3>
+    <div class="table-wrap">
+      <table>
+        <caption>Risque de morbidité / mortalité selon 3 critères</caption>
+        <thead><tr><th>Critère</th><th>Normal</th><th>Surpoids</th><th>Obésité</th></tr></thead>
+        <tbody>
+          <tr><td><strong>BMI</strong> (kg/m²)</td><td class="num">18,5–25</td><td class="num">25–30</td><td class="num">&gt; 30</td></tr>
+          <tr><td><strong>Graisse</strong> H / F (%)</td><td class="num">H 15–22 · F 18–32</td><td class="num">H &gt; 22 · F &gt; 32</td><td class="num">H &gt; 25 · F &gt; 35</td></tr>
+          <tr><td><strong>Tour de taille</strong> H / F (cm)</td><td class="num">H &lt; 94 · F &lt; 80</td><td class="num">H 94–102 · F 80–88</td><td class="num">H &gt; 102 · F &gt; 88</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.92rem;color:var(--ink-soft)">Sous-poids (<em>underweight</em>) : BMI &lt; 18,5 kg/m².</p>
+
+    <div class="box exam">
+      <span class="tag">📝 À l'examen</span>
+      <p>Questions «&nbsp;donnez le terme correspondant à la définition&nbsp;» tombées plusieurs fois&nbsp;:</p>
+      <ul class="qlist">
+        <li>«&nbsp;Méthode qui détermine le % de masse grasse et de masse maigre&nbsp;» → <strong>impédancemétrie</strong> (ou DEXA).</li>
+        <li>«&nbsp;Méthode pour estimer le % de masse grasse&nbsp;» → <strong>plis cutanés</strong> / <strong>absorptiométrie biphotonique</strong> / <strong>impédancemétrie</strong> (juin 2025).</li>
+        <li>«&nbsp;Méthode anthropométrique qui définit surpoids et obésité&nbsp;» → <strong>IMC (BMI)</strong>.</li>
+        <li>Définition de l'<strong>obésité</strong> : excès de masse grasse (&gt; 30 %), BMI &gt; 30 kg/m². Définir le <strong>BMI + son unité</strong> (kg/m²).</li>
+      </ul>
+    </div>
+    <div class="box retain">
+      <span class="tag">★ À retenir</span>
+      <p>Le piège classique : <strong>le BMI seul ne dit rien de la masse grasse.</strong> Pour la masse grasse, on utilise plis cutanés, impédancemétrie ou DEXA. Seule la <strong>DEXA mesure aussi l'os</strong>.</p>
+    </div>
+  </section>
+
+  <hr class="soft">
+
+  <!-- ============ SECTION 3 ============ -->
+  <section id="energie">
+    <div class="sec-head">
+      <div class="idx">3</div>
+      <h2 class="title">Les besoins énergétiques</h2>
+    </div>
+
+    <h3>L'équation apports / dépenses</h3>
+    <div class="table-wrap">
+      <table>
+        <caption>Valeur énergétique des macronutriments</caption>
+        <thead><tr><th>Macronutriment</th><th>Valeur calorique</th></tr></thead>
+        <tbody>
+          <tr><td>Glucides <em>(digestibles)</em></td><td class="num">4 kcal/g</td></tr>
+          <tr><td>Protéines</td><td class="num">4 kcal/g</td></tr>
+          <tr><td>Alcool</td><td class="num">7 kcal/g</td></tr>
+          <tr><td>Lipides</td><td class="num">9 kcal/g</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Les <strong>dépenses</strong> se répartissent en : métabolisme de base (la plus grosse part), thermorégulation, thermogenèse post-prandiale, et activité physique — auxquelles s'ajoutent des situations particulières (grossesse, infections, froid…). On distingue les dépenses <strong>involontaires (~75 %)</strong> des dépenses <strong>volontaires (~25 %)</strong>.</p>
+
+    <h3>Le métabolisme de base (BMR)</h3>
+    <p><strong>BMR</strong> = énergie minimale du métabolisme oxydatif pour maintenir les fonctions physiologiques vitales (gradients chimiques/électrochimiques, biosynthèse, contraction musculaire) + perte de chaleur, <strong>au repos complet</strong>. Il représente <strong>60–75 % de la dépense énergétique quotidienne</strong> et dépend surtout de la <strong>masse maigre</strong>, de l'âge (↓ avec l'âge), du sexe et de la température.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>Contribution des organes au métabolisme de base</caption>
+        <thead><tr><th>Organe</th><th>Poids (kg)</th><th>% du MB</th></tr></thead>
+        <tbody>
+          <tr><td>Foie</td><td class="num">1,6</td><td class="num">27 %</td></tr>
+          <tr><td>Cerveau</td><td class="num">1,4</td><td class="num">19 %</td></tr>
+          <tr><td>Muscles</td><td class="num">30 (43 %)</td><td class="num">18 %</td></tr>
+          <tr><td>Cœur</td><td class="num">0,3</td><td class="num">10 %</td></tr>
+          <tr><td>Tissu adipeux</td><td class="num">10 (14 %)</td><td class="num">2 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box retain">
+      <span class="tag">★ À retenir</span>
+      <p>Le foie, le cerveau et le cœur sont de tout petits organes mais d'énormes consommateurs d'énergie. À l'inverse, le <strong>tissu adipeux ne «&nbsp;coûte&nbsp;» presque rien (2 %)</strong> → l'essentiel du BMR vient de la <strong>masse maigre</strong>, d'où l'intérêt de la maintenir.</p>
+    </div>
+
+    <h3>Comment mesurer la dépense énergétique ?</h3>
+    <ul>
+      <li><strong>Calorimétrie directe</strong> : mesure de la perte de chaleur du corps (sudation, perspiration, transpiration) dans une chambre fermée → estimation du BMR. Précise mais coûteuse et complexe.</li>
+      <li><strong>Calorimétrie indirecte</strong> : mesure de la consommation d'O₂ (ml/min) et de la production de CO₂ (ml/min) — c'est-à-dire les <strong>gaz inhalés et expirés</strong>.</li>
+    </ul>
+    <div class="formula">
+      <span class="lbl">Dépense énergétique de repos &amp; calcul</span>
+      <code>DER = 110 % du BMR</code><br><br>
+      <code>kcal/24 h = 1,44 × (3,9 · VO₂ + 1,1 · VCO₂)</code>
+    </div>
+    <h4>Quotient respiratoire (QR)</h4>
+    <div class="formula">
+      <span class="lbl">Quotient respiratoire</span>
+      <code>QR = Volume CO₂ produit / Volume O₂ consommé</code><br><br>
+      <code>QR = 1 → oxydation de glucides &nbsp;|&nbsp; QR &lt; 1 → oxydation de lipides</code>
+    </div>
+
+    <h3>Calculer sa dépense énergétique : BMR × PAL</h3>
+    <h4>Estimation du BMR (kcal/j)</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Profil</th><th>Formule</th></tr></thead>
+        <tbody>
+          <tr><td>Homme 18–30 ans</td><td class="num">15,3 × poids + 679</td></tr>
+          <tr><td>Homme 30–60 ans</td><td class="num">11,6 × poids + 879</td></tr>
+          <tr><td>Femme 18–30 ans</td><td class="num">14,7 × poids + 496</td></tr>
+          <tr><td>Femme 30–60 ans</td><td class="num">10,5 × poids + 596</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h4>Niveau d'activité physique (PAL)</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Activité physique</th><th>PAL Homme</th><th>PAL Femme</th></tr></thead>
+        <tbody>
+          <tr><td>Légère (employé, tâches ménagères)</td><td class="num">1,55</td><td class="num">1,56</td></tr>
+          <tr><td>Moyenne (entretien)</td><td class="num">1,78</td><td class="num">1,64</td></tr>
+          <tr><td>Lourde (agriculture…)</td><td class="num">2,10</td><td class="num">1,82</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>La <strong>thermogenèse</strong> représente env. 10 % de la dépense. La dépense totale = <strong>BMR × PAL</strong>. Surcoûts : grossesse <strong>+ 200 kcal/24 h</strong>, allaitement <strong>+ 500 kcal/24 h</strong>. Objectif santé : atteindre un PAL de ~1,75 (≈ 1 h de marche/jour).</p>
+
+    <div class="box exam">
+      <span class="tag">📝 À l'examen</span>
+      <ul class="qlist">
+        <li><strong>Définition de la calorimétrie directe</strong> (mesure de la chaleur dégagée) — tombée plusieurs fois.</li>
+        <li>«&nbsp;Manière de calculer la dépense énergétique qui prend en compte les gaz inhalés et expirés&nbsp;» → <strong>calorimétrie indirecte</strong> (juin 2018).</li>
+        <li><strong>Définir le métabolisme de base (BMR)</strong> et ses déterminants.</li>
+        <li>Question ouverte vrai/faux : «&nbsp;<strong>La pratique régulière d'un exercice physique peut augmenter la dépense énergétique au repos</strong>&nbsp;» → <strong>VRAI</strong> : l'exercice ↑ la masse musculaire, donc ↑ le BMR (+ meilleure sensibilité à l'insuline, modulation leptine/GLP-1).</li>
+        <li>Calculs sur étiquette : convertir g de lipides/glucides/protéines en kcal (×9 / ×4 / ×4) pour dire d'où vient l'énergie d'un plat.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="soft">
+
+  <!-- ============ SECTION 4 ============ -->
+  <section id="reco">
+    <div class="sec-head">
+      <div class="idx">4</div>
+      <h2 class="title">Les recommandations nutritionnelles</h2>
+    </div>
+
+    <h3>Recommandations en énergie (% de l'AET)</h3>
+    <p>L'<strong>AET</strong> = apport énergétique total. La répartition recommandée :</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Nutriment</th><th>% de l'AET recommandé</th></tr></thead>
+        <tbody>
+          <tr><td>Glucides</td><td class="num">&gt; 50–55 % (dont max 10 % de sucres libres)</td></tr>
+          <tr><td>Lipides</td><td class="num">&lt; 30–35 %</td></tr>
+          <tr><td>Protéines</td><td class="num">9–11 % <em>(mais calculé par kg de poids)</em></td></tr>
+          <tr><td>Alcool</td><td class="num">à limiter</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Apports en nutriments «&nbsp;non énergétiques&nbsp;» (vitamines, minéraux…)</h3>
+    <p>Principe-clé : l'apport recommandé doit couvrir les besoins de la <strong>majorité de la population, et non de la moyenne</strong>. On utilise donc <strong>moyenne + 2 écarts-types (m + 2 SD)</strong>, ce qui couvre <strong>≈ 97,5 % de la population</strong>. Ces valeurs sont établies pour <strong>éviter les carences</strong> (adultes), permettre une <strong>croissance optimale</strong> (enfant) et le <strong>maintien de la santé</strong>, à partir d'études épidémiologiques, expérimentales et de marqueurs biochimiques.</p>
+
+    <div class="formula">
+      <span class="lbl">Le principe du calcul de l'apport recommandé</span>
+      <code>Apport recommandé (RDA / AJR / RNP) = besoin moyen (m) + 2 SD ≈ 97,5 % de la population</code>
+    </div>
+
+    <h4>Terminologie EFSA (à reconnaître)</h4>
+    <div class="defgrid">
+      <div class="defcard"><span class="term">BNM</span><p>Besoin nutritionnel moyen (= <em>m</em>) : couvre les besoins de la moitié d'une population en bonne santé.</p></div>
+      <div class="defcard"><span class="term">RNP / RDA / AJR</span><p>Besoin moyen + 2 SD : couvre presque toute la population saine (≈ 97,5 %).</p></div>
+      <div class="defcard"><span class="term">AS</span><p>Apport adéquat : utilisé quand les données sont insuffisantes pour fixer un BNM.</p></div>
+      <div class="defcard"><span class="term">IR</span><p>Intervalle de référence : propre aux macronutriments énergétiques, exprimé en % de l'AET.</p></div>
+      <div class="defcard"><span class="term">LSS / AMT / UL</span><p>Limite supérieure de sécurité : apport chronique maximal sans risque (critère d'innocuité, pas de besoin).</p></div>
+    </div>
+
+    <div class="box exam">
+      <span class="tag">📝 À l'examen</span>
+      <ul class="qlist">
+        <li>Définir l'<strong>apport nutritionnel conseillé (RDA / AJR)</strong> : quantité quotidienne couvrant 97,5 % de la population (m + 2 SD), pour éviter carences, assurer la croissance et maintenir la santé.</li>
+        <li>«&nbsp;Recommandations nutritionnelles pour les vitamines&nbsp;» → basées sur la prévention des carences et l'optimisation des fonctions ; besoins ↑ en grossesse, allaitement, âge, maladie, malabsorption.</li>
+        <li>Vrai/faux sur étiquette : un apport de 30 % de l'AET en lipides et max 10 % en sucres libres respecté ? → faire le calcul à partir des grammes.</li>
+        <li>«&nbsp;Nutriment dont l'excès ↑ le risque CV, apport max conseillé 5 g/j&nbsp;» → <strong>NaCl (sel)</strong> (juin 2025).</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="soft">
+
+  <!-- ============ SECTION 5 ============ -->
+  <section id="malnut">
+    <div class="sec-head">
+      <div class="idx">5</div>
+      <h2 class="title">Malnutrition (définition OMS)</h2>
+    </div>
+    <p><strong>Malnutrition</strong> = problème de santé en présence d'un <strong>déséquilibre</strong> des éléments nutritifs (calories, vitamines, minéraux) nécessaires à la croissance et aux fonctions de l'organisme. Elle désigne aussi bien un <strong>manque (sous-alimentation)</strong> qu'un <strong>excès (suralimentation)</strong> — l'<strong>obésité est donc un versant de la malnutrition</strong>.</p>
+
+    <h4>Malnutrition protéino-énergétique</h4>
+    <div class="defgrid">
+      <div class="defcard">
+        <span class="term">Marasme</span>
+        <p>Forme extrême par <strong>carence calorique globale</strong> → atrophie musculaire et tissulaire importante.</p>
+      </div>
+      <div class="defcard">
+        <span class="term">Kwashiorkor</span>
+        <p>Forme aiguë par <strong>carence surtout protéique</strong> → œdème, irritabilité, anorexie, troubles des cheveux, hépatomégalie.</p>
+      </div>
+      <div class="defcard">
+        <span class="term">Insuffisance pondérale</span>
+        <p>Faible poids pour l'âge, comparé à une population de référence bien nourrie.</p>
+      </div>
+    </div>
+    <div class="box exam">
+      <span class="tag">📝 À l'examen</span>
+      <p><strong>Malnutrition selon l'OMS</strong> et <strong>kwashiorkor</strong> sont des définitions déjà tombées (juin 2023, juin 2024 dans l'exercice d'association). Retenir que la malnutrition <strong>englobe carence ET excès</strong>.</p>
+    </div>
+  </section>
+
+  <hr class="soft">
+
+  <!-- ============ GLOSSAIRE ============ -->
+  <section id="glossaire">
+    <div class="sec-head">
+      <div class="idx">★</div>
+      <h2 class="title">Glossaire express «&nbsp;définitions d'examen&nbsp;»</h2>
+    </div>
+    <p class="lead">Les définitions du chapitre 1 (et des notions transversales abordées dès l'intro) les plus fréquemment demandées. Réviser ces cartes = sécuriser facilement plusieurs points.</p>
+    <div class="defgrid">
+      <div class="defcard"><span class="term">BMI / IMC</span><p>Indice de masse corporelle = poids / taille².</p><span class="ex">Unité : kg/m²</span></div>
+      <div class="defcard"><span class="term">Obésité</span><p>Excès de masse grasse (&gt; 30 %), BMI &gt; 30 kg/m².</p></div>
+      <div class="defcard"><span class="term">Bromatologie</span><p>Science qui étudie tous les aspects de l'aliment (composition, valeur, innocuité, qualité).</p></div>
+      <div class="defcard"><span class="term">Métabolisme de base (BMR)</span><p>Énergie minimale des fonctions vitales au repos ; 60–75 % de la dépense quotidienne.</p></div>
+      <div class="defcard"><span class="term">Calorimétrie directe</span><p>Mesure de la chaleur dégagée par le corps (sudation/perspiration) → estime le BMR.</p></div>
+      <div class="defcard"><span class="term">Calorimétrie indirecte</span><p>Mesure de l'O₂ consommé et du CO₂ produit (gaz inhalés/expirés).</p></div>
+      <div class="defcard"><span class="term">RDA / AJR</span><p>Apport couvrant 97,5 % de la population (m + 2 SD) ; évite carences, soutient croissance/santé.</p></div>
+      <div class="defcard"><span class="term">Aliment fonctionnel</span><p>Aliment enrichi d'ingrédients bioactifs, avec un bénéfice santé démontré sur une fonction.</p><span class="ex">Ex. : produit enrichi en stérols végétaux</span></div>
+      <div class="defcard"><span class="term">Nutriment essentiel</span><p>Nutriment non synthétisable, à rôle physiologique clé, qui doit venir de l'alimentation.</p><span class="ex">Ex. : AA essentiels, vitamines</span></div>
+      <div class="defcard"><span class="term">Contaminant alimentaire</span><p>Substance indésirable : chimique (pesticide), biologique (mycotoxine), physique.</p><span class="ex">Ex. : aflatoxine, nitrites</span></div>
+      <div class="defcard"><span class="term">Additif alimentaire</span><p>Substance ajoutée volontairement, teneur max fixée sur base toxicologique.</p></div>
+      <div class="defcard"><span class="term">Classification NOVA</span><p>Classe les aliments selon leur degré de transformation (jusqu'aux ultra-transformés).</p></div>
+      <div class="defcard"><span class="term">Anti-nutriment</span><p>Substance d'un aliment qui réduit la biodisponibilité d'un nutriment.</p><span class="ex">Ex. : phytates → ↓ Ca, Zn, Fe</span></div>
+      <div class="defcard"><span class="term">Malnutrition (OMS)</span><p>Déséquilibre nutritionnel par manque (dénutrition) ou excès (obésité).</p></div>
+    </div>
+  </section>
+
+  <hr class="soft">
+
+  <!-- ============ FICHE FINALE ============ -->
+  <section id="fiche">
+    <div class="sec-head">
+      <div class="idx">✔</div>
+      <h2 class="title">Fiche de révision finale</h2>
+    </div>
+
+    <div class="box retain">
+      <span class="tag">★ Les chiffres à connaître par cœur</span>
+      <ul class="qlist">
+        <li><strong>kcal/g</strong> : glucides 4 · protéines 4 · alcool 7 · lipides 9.</li>
+        <li><strong>BMI</strong> : &lt; 18,5 maigre · 18,5–25 normal · 25–30 surpoids · &gt; 30 obésité.</li>
+        <li><strong>BMR = 60–75 %</strong> de la dépense ; <strong>DER = 110 % BMR</strong> ; thermogenèse ≈ 10 %.</li>
+        <li><strong>QR = VCO₂/VO₂</strong> ; = 1 (glucides), &lt; 1 (lipides).</li>
+        <li><strong>Composition</strong> : eau 60 %, lipides 19 %, protéines 15 %, minéraux 5 %, glucides 1 %.</li>
+        <li><strong>Réserves</strong> : lipides ≈ 110 000 kcal ≫ glucides ≈ 2 500 kcal.</li>
+        <li><strong>Recommandations</strong> : glucides &gt; 50–55 % · lipides &lt; 30–35 % · protéines 9–11 % · sucres libres &lt; 10 %.</li>
+        <li><strong>RDA = m + 2 SD ≈ 97,5 %</strong> de la population. Grossesse + 200 kcal ; allaitement + 500 kcal.</li>
+      </ul>
+    </div>
+
+    <div class="box exam">
+      <span class="tag">📝 Format type de l'examen (chap. 1)</span>
+      <ul class="qlist">
+        <li><strong>Définitions + exemple</strong> (bromatologie, BMR, RDA, aliment fonctionnel, obésité, BMI…).</li>
+        <li><strong>«&nbsp;Donnez le terme&nbsp;»</strong> : impédancemétrie / DEXA (% masse grasse), IMC (surpoids), calorimétrie indirecte (gaz), additif, NOVA…</li>
+        <li><strong>Question ouverte vrai/faux à justifier</strong> : exercice ↑ dépense au repos (vrai) ; valeur énergétique des lipides…</li>
+        <li><strong>QCM / vrai-faux sur une étiquette alimentaire</strong> : calculs de kcal, suffisance protéique (0,8 g/kg/j), seuil de sel belge (&lt; 5 g/j), classement NOVA.</li>
+      </ul>
+    </div>
+
+    <p class="lead" style="margin-top:30px">Bon à savoir pour relier les chapitres : le chapitre 1 donne le <strong>cadre de mesure</strong> (composition, dépenses, recommandations) que tous les chapitres suivants viennent remplir (glucides, lipides, protéines, alcool, micronutriments, obésité, cancer…). Maîtriser ce vocabulaire rend tout le reste du cours plus lisible.</p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <strong>FARM 2149 — Approche pharmaceutique de la nutrition</strong><br>
+    Chapitre 1 · Évaluation de l'état et des besoins nutritionnels
+    <p class="disclaimer">Synthèse d'étude réalisée à partir des diapositives du cours (N.M. Delzenne) et des examens des sessions 2018–2025. Les encadrés «&nbsp;examen&nbsp;» reflètent des questions effectivement posées ; vérifie toujours avec la matière officielle la plus récente.</p>
+  </div>
+</footer>
+
+</body>
+</html>

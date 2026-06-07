@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WFARM2149 · Synthèse — Micronutriments, Obésité, Cancer, Interactions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6f1e7;
+  --paper-2:#efe7d7;
+  --ink:#2b2722;
+  --ink-soft:#5a5247;
+  --line:#d8cdb8;
+  --exam:#b4451f;       /* terracotta */
+  --exam-bg:#fbeee6;
+  --exam-line:#e6c3ad;
+  --keep:#1f6b53;       /* sapin */
+  --keep-bg:#e7f1ea;
+  --keep-line:#b8d8c7;
+  --warn:#9a6a00;       /* ambre foncé */
+  --warn-bg:#f7eecf;
+  --warn-line:#e3cf94;
+  --accent:#7a4ea3;
+  --c6:#b4451f; --c7:#1f6b53; --cc:#9a3b52; --ci:#3a5a8c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Spectral',Georgia,serif;font-size:18px;line-height:1.62;
+  background-image:radial-gradient(circle at 12% -10%,#fff7ea 0,transparent 38%),radial-gradient(circle at 100% 0,#f0e3cc 0,transparent 30%);
+}
+::selection{background:#e7c9b4;color:#2b2722}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:248px 1fr;gap:48px}
+@media(max-width:920px){.wrap{grid-template-columns:1fr;gap:0}}
+
+/* ---------- header ---------- */
+header.hero{
+  border-bottom:2px solid var(--ink);
+  padding:54px 24px 30px;max-width:1180px;margin:0 auto;
+}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--exam);margin:0 0 14px}
+.hero h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.3rem,6vw,4.2rem);line-height:.98;margin:0 0 16px;letter-spacing:-.015em}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--ink-soft)}
+.hero p.lede{font-size:1.12rem;max-width:62ch;color:var(--ink-soft);margin:0}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.hero .meta span{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:6px 13px;background:#fffdf8}
+
+/* ---------- nav ---------- */
+nav.toc{position:sticky;top:0;align-self:start;padding:36px 0 40px;max-height:100vh;overflow-y:auto}
+@media(max-width:920px){nav.toc{position:static;max-height:none;padding:24px 0;border-bottom:1px solid var(--line)}}
+nav.toc h2{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 14px}
+nav.toc ol{list-style:none;margin:0 0 22px;padding:0;counter-reset:c}
+nav.toc>ol{counter-reset:chap}
+nav.toc a{display:block;text-decoration:none;color:var(--ink);font-size:.92rem;padding:5px 0 5px 14px;border-left:2px solid var(--line);transition:.18s}
+nav.toc a:hover{border-color:var(--exam);color:var(--exam);padding-left:18px}
+nav.toc .lvl1{font-weight:600;font-family:'Fraunces',serif;font-size:1rem;border-left-color:var(--ink);margin-top:10px}
+nav.toc .lvl1[data-c="6"]:hover{border-color:var(--c6);color:var(--c6)}
+nav.toc .lvl1[data-c="7"]:hover{border-color:var(--c7);color:var(--c7)}
+nav.toc .lvl1[data-c="c"]:hover{border-color:var(--cc);color:var(--cc)}
+nav.toc .lvl1[data-c="i"]:hover{border-color:var(--ci);color:var(--ci)}
+
+/* ---------- content ---------- */
+main{padding:36px 0 90px;min-width:0}
+section.chapter{margin-bottom:64px;scroll-margin-top:20px}
+.chap-head{margin:0 0 8px}
+.chap-num{font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;display:inline-block;padding:5px 12px;border-radius:6px;color:#fff;margin-bottom:14px}
+.chap-num.c6{background:var(--c6)} .chap-num.c7{background:var(--c7)} .chap-num.cc{background:var(--cc)} .chap-num.ci{background:var(--ci)}
+section.chapter h2{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(1.9rem,4.5vw,2.9rem);line-height:1.02;margin:0 0 10px;letter-spacing:-.01em}
+section.chapter>p.intro{font-size:1.06rem;color:var(--ink-soft);max-width:64ch;margin:0 0 26px}
+h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.45rem;margin:38px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.12rem;margin:24px 0 6px;color:var(--ink)}
+p{margin:0 0 14px}
+strong{font-weight:600;color:var(--ink)}
+em.term{font-style:normal;font-weight:600;color:var(--exam)}
+.chapter[data-c="7"] em.term{color:var(--c7)}
+.chapter[data-c="c"] em.term{color:var(--cc)}
+.chapter[data-c="i"] em.term{color:var(--ci)}
+ul,ol.body{margin:6px 0 16px;padding-left:1.3em}
+li{margin:5px 0}
+ul.tight li{margin:2px 0}
+a.ext{color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent)}
+
+/* ---------- callouts ---------- */
+.box{border-radius:12px;padding:18px 20px 16px;margin:22px 0;position:relative;border:1px solid}
+.box .tag{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;display:inline-flex;align-items:center;gap:7px;margin-bottom:9px}
+.box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
+.box.exam{background:var(--exam-bg);border-color:var(--exam-line)}
+.box.exam .tag{color:var(--exam)}
+.box.keep{background:var(--keep-bg);border-color:var(--keep-line)}
+.box.keep .tag{color:var(--keep)}
+.box.warn{background:var(--warn-bg);border-color:var(--warn-line)}
+.box.warn .tag{color:var(--warn)}
+.box .qx{font-style:italic;color:var(--ink);display:block;margin:3px 0;padding-left:12px;border-left:2px solid var(--exam-line)}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;margin:18px 0}
+table{border-collapse:collapse;width:100%;font-size:.93rem;background:#fffdf8;border:1px solid var(--line)}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;background:var(--paper-2);color:var(--ink-soft)}
+tr:last-child td{border-bottom:none}
+td strong{color:var(--ink)}
+
+/* ---------- misc ---------- */
+.pill{font-family:'IBM Plex Mono',monospace;font-size:.74rem;background:var(--paper-2);border:1px solid var(--line);border-radius:5px;padding:1px 6px;white-space:nowrap}
+hr.soft{border:none;border-top:1px dashed var(--line);margin:30px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:680px){.two{grid-template-columns:1fr}}
+.card{background:#fffdf8;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card h4{margin-top:0}
+footer{border-top:2px solid var(--ink);padding:30px 24px 60px;max-width:1180px;margin:0 auto;font-size:.86rem;color:var(--ink-soft)}
+.top{display:inline-block;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--exam);text-decoration:none}
+.reveal{opacity:0;transform:translateY(14px);transition:.6s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="kicker">WFARM2149 · Approche pharmaceutique de la nutrition · N.M. Delzenne</p>
+  <h1>Synthèse de fin de cours<br><em>micronutriments → interactions médicamenteuses</em></h1>
+  <p class="lede">La suite du programme après les chapitres 1 à 5 : minéraux &amp; vitamines, obésité, nutrition &amp; cancer, et interactions aliments-médicaments. Chaque section est complétée d'encadrés <strong style="color:var(--exam)">Examen</strong> (tirés des annales 2018–2025) et <strong style="color:var(--keep)">À retenir</strong>.</p>
+  <div class="meta">
+    <span>Ch. 6 · Micronutriments</span>
+    <span>Ch. 7 · Obésité</span>
+    <span>Nutrition &amp; cancer</span>
+    <span>Interactions aliments-médic.</span>
+    <span>Annales 2018 → juin 2025</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="toc">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><a class="lvl1" data-c="6" href="#ch6">6 · Minéraux &amp; vitamines</a></li>
+      <li><a href="#ch6-reco">Critères des recommandations</a></li>
+      <li><a href="#ch6-eau">Eau &amp; minéraux</a></li>
+      <li><a href="#ch6-oligo">Oligoéléments</a></li>
+      <li><a href="#ch6-vit">Vitamines</a></li>
+      <li><a href="#ch6-comp">Compléments &amp; allégations</a></li>
+      <li><a href="#ch6-malnut">Malnutrition mondiale</a></li>
+
+      <li><a class="lvl1" data-c="7" href="#ch7">7 · Obésité</a></li>
+      <li><a href="#ch7-def">Définitions &amp; classification</a></li>
+      <li><a href="#ch7-adipeux">Tissu adipeux</a></li>
+      <li><a href="#ch7-causes">Causes &amp; appétit</a></li>
+      <li><a href="#ch7-balance">Balance énergétique</a></li>
+      <li><a href="#ch7-ttt">Traitements &amp; régimes</a></li>
+      <li><a href="#ch7-nova">NOVA &amp; Nutri-Score</a></li>
+
+      <li><a class="lvl1" data-c="c" href="#cancer">Nutrition &amp; cancer</a></li>
+      <li><a href="#ca-tox">Cancérigènes alimentaires</a></li>
+      <li><a href="#ca-defav">Facteurs défavorables</a></li>
+      <li><a href="#ca-fav">Facteurs protecteurs</a></li>
+      <li><a href="#ca-patient">Patient atteint de cancer</a></li>
+
+      <li><a class="lvl1" data-c="i" href="#inter">Interactions aliments-médic.</a></li>
+      <li><a href="#in-pk">Pharmacocinétique</a></li>
+      <li><a href="#in-cyp">Métabolisme &amp; CYP</a></li>
+      <li><a href="#in-pd">Pharmacodynamie</a></li>
+      <li><a href="#in-medvers">Médicaments → nutriments</a></li>
+
+      <li><a class="lvl1" href="#exam">Stratégie d'examen</a></li>
+    </ol>
+  </nav>
+
+  <main>
+<!-- ====================== CHAPITRE 6 ====================== -->
+<section class="chapter reveal" id="ch6" data-c="6">
+  <div class="chap-head">
+    <span class="chap-num c6">Chapitre 6</span>
+    <h2>Minéraux, oligoéléments &amp; vitamines</h2>
+  </div>
+  <p class="intro">Comment fixe-t-on un apport recommandé ? Quels sont les rôles, sources, carences et toxicités des micronutriments ? Et où se situe la frontière entre le besoin physiologique et la dose dangereuse ?</p>
+
+  <h3 id="ch6-reco">Les critères d'établissement des recommandations</h3>
+  <p>Toute la logique du chapitre tient en une phrase : <strong>atteindre une dose minimale active tout en évitant une dose potentiellement toxique</strong>. Les valeurs de référence (EFSA, recommandations nordiques, ANSES, Conseil Supérieur de la Santé belge) s'articulent autour de cette fourchette.</p>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Sigle</th><th>Nom</th><th>Définition opérationnelle</th></tr></thead>
+    <tbody>
+      <tr><td><strong>BNM</strong> (m)</td><td>Besoin nutritionnel moyen</td><td>Apport couvrant les besoins de <strong>50 %</strong> de la population en bonne santé.</td></tr>
+      <tr><td><strong>RNP / AJR</strong></td><td>Référence nutritionnelle pour la population / Apport journalier recommandé</td><td><strong>m + 2 écarts-types</strong> → couvre <strong>97,5 %</strong> des individus (y compris groupes à besoins particuliers : âge, grossesse…).</td></tr>
+      <tr><td><strong>AA / AS</strong></td><td>Apport adéquat</td><td>Valeur retenue <strong>quand les données sont insuffisantes</strong> pour établir un BNM : apport moyen observé dans une population saine, jugé adéquat.</td></tr>
+      <tr><td><strong>IR</strong></td><td>Intervalle de référence</td><td>Spécifique aux <strong>macronutriments énergétiques</strong>, exprimé en <strong>% de l'apport énergétique total (AET)</strong>.</td></tr>
+      <tr><td><strong>AMT / LSS / UL</strong></td><td>Apport maximal tolérable</td><td>Apport chronique maximal <strong>peu susceptible de présenter un risque</strong>. ⚠ critère de <strong>sécurité (absence de danger)</strong> — ce n'est <em class="term">pas</em> un besoin.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Les apports réels de la population belge sont mesurés par l'<strong>enquête de consommation Sciensano</strong> (3<sup>e</sup> édition 2022-2023, ~3 777 personnes), qui compare la consommation aux valeurs de référence EFSA/nordiques.</p>
+
+  <div class="box keep">
+    <span class="tag">★ À retenir</span>
+    <p>L'<strong>AJR (RNP) = besoin moyen + 2 SD</strong> et couvre <strong>97,5 %</strong> de la population. L'<strong>AMT</strong> répond à une logique <strong>toxicologique</strong> et non à un besoin. Cette distinction tombe presque chaque année (Vrai/Faux ou définition).</p>
+  </div>
+  <div class="box exam">
+    <span class="tag">📝 Examen — annales</span>
+    <p>Juin 2025, Q2.2 : « Les recommandations en vitamine B12… »</p>
+    <span class="qx">a) sont calculées sur base du BMI → <strong>FAUX</strong> (par âge/sexe, pas anthropométrique).</span>
+    <span class="qx">b) correspondent à la moyenne des besoins → <strong>FAUX</strong> (moyenne <strong>+ 2 SD</strong>, pour 97,5 %).</span>
+    <span class="qx">c) assurent une coagulation adéquate → <strong>FAUX</strong> (B12 = maturation des globules rouges &amp; méthylation, pas coagulation → c'est la vitamine K).</span>
+  </div>
+
+  <h3 id="ch6-eau">Eau &amp; macrominéraux</h3>
+  <h4>Eau</h4>
+  <p>Solvant des nutriments et déchets, support de l'activité enzymatique et des échanges ioniques, maintien de la pression sanguine. Besoins : <strong>1 L par 1 000 kcal dépensées</strong> (1,5 L chez l'enfant) ; +30 ml/j en grossesse, +750 ml/j en lactation. Une déshydratation devient fatale à 10–25 % de perte du poids corporel. ⚠ L'<strong>intoxication à l'eau</strong> existe (potomanie, réhydratation forcée) : troubles électrolytiques → troubles cérébraux ou arythmies.</p>
+
+  <h4>Définitions</h4>
+  <ul class="tight">
+    <li><strong>Macrominéraux</strong> (99 % des composés non organiques du corps) : Na, K, Mg, Ca, Cl, P, S.</li>
+    <li><strong>Oligoéléments / éléments traces</strong> (&lt; 0,01 % du poids corporel) : Fe, F, Si, Zn, Cu, V, Mn, I, Se, Ni, Mo.</li>
+    <li><strong>Ultratraces</strong> (&lt; 10 mg) : Cr, Li, As, Ge…</li>
+  </ul>
+
+  <h4>Sodium (chlorure de sodium)</h4>
+  <p>Principal cation <strong>extracellulaire</strong>, homéostasie des liquides. Sources : <strong>plats préparés / ultra-transformés</strong>, pain et céréales (1/3), viande, produits laitiers. Effets néfastes : <strong>hypertension</strong> et <strong>cancer gastrique</strong>. Recommandation OMS : <strong>≤ 2 g de sodium/j, soit 5 g de NaCl</strong>. Or la consommation belge moyenne est de <strong>~10,5 g de NaCl/j</strong> (Europe : 8–11 g).</p>
+  <p><strong>Chlore</strong> : besoins ≈ Na (anion extracellulaire). <strong>Potassium</strong> : principal cation <strong>intracellulaire</strong> (fruits &amp; légumes, ~3,5 g/j) ; risque d'<strong>hyperkaliémie</strong> chez les insulino-résistants et personnes âgées ; hypokaliémie sévère (laxatifs, diurétiques) → arythmie.</p>
+
+  <h4>Calcium &amp; phosphates</h4>
+  <p>Squelette, coagulation, contraction musculaire, signalisation intracellulaire. Chez l'adulte, <strong>seulement ~20 % du Ca ingéré est absorbé</strong> (60 % chez le nourrisson). Modulateurs : <strong>+</strong> vitamine D, AG à chaîne moyenne, fibres fermentescibles, phosphoprotéines du lait ; <strong>–</strong> phytates et acide oxalique (anti-nutriments). Le rapport <strong>Ca/phosphate doit être &gt; 1</strong> pour éviter la résorption osseuse ; ne pas dépasser 2 500 mg/j. Reco : 450–600 ml de lait/j (consommation belge inférieure).</p>
+  <p><strong>Magnésium</strong> : rôle dans l'ATP, l'influx nerveux. Allégation EFSA « réduit la fatigue » autorisée pour autant que l'aliment soit <strong>source de magnésium</strong>.</p>
+
+  <div class="box exam">
+    <span class="tag">📝 Examen — récurrent</span>
+    <p>Le <strong>lien Calcium ↔ phytates</strong> (anti-nutriment) et <strong>Calcium ↔ activité physique</strong> est une question type. Réponse : les phytates (céréales complètes, légumineuses) forment des complexes insolubles avec le Ca → ↓ absorption ; l'activité physique stimule les ostéoblastes et la minéralisation → besoins accrus. <em>Le NaCl ≤ 5 g/j</em> tombe aussi comme « terme à définir » (juin 2025, Q4.6).</p>
+  </div>
+
+  <h3 id="ch6-oligo">Oligoéléments essentiels</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Élément</th><th>Rôle clé</th><th>Carence / Excès</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fer</strong></td><td>Transport d'O₂ (Hb, myoglobine), cofacteur. <em>Hémique</em> bien absorbé ; <em>non-hémique</em> peu (+ vit C ; – phytates, polyphénols, Ca).</td><td><strong>Anémie ferriprive</strong> = carence n°1 (femmes en âge de reproduction, jeune enfant). Excès : hémochromatose secondaire / hémosidérose.</td></tr>
+      <tr><td><strong>Zinc</strong></td><td>Catalytique (« doigts de Zn », SOD), stockage/sécrétion d'insuline, immunité.</td><td>Carence : retard de croissance, immunité, lésions cutanées, perte de goût. AMT 25 mg/j. Antagonisme avec le <strong>cuivre</strong>.</td></tr>
+      <tr><td><strong>Cuivre</strong></td><td>Céruloplasmine (indispensable à l'<strong>utilisation du fer</strong>), équilibre rédox, immunité.</td><td>Carence rare. AMT 5 mg/j.</td></tr>
+      <tr><td><strong>Sélénium</strong></td><td>Sélénocystéine = <strong>21<sup>e</sup> AA</strong> ; GSH-peroxydases, désiodases (T3).</td><td>Carence : <strong>maladie de Keshan</strong> (cardiomyopathie, sols pauvres). Excès : ↑ cancer de la prostate.</td></tr>
+      <tr><td><strong>Iode</strong></td><td>Synthèse de T3/T4 (croissance osseuse, SNC).</td><td><strong>Goitre, crétinisme, retard mental</strong>. Goitrigènes : choux, manioc. Fortification du pain en Belgique.</td></tr>
+      <tr><td><strong>Fluor</strong></td><td>Fluoroapatite → dents/os, protection anti-caries.</td><td>Excès : <strong>fluorose</strong> (fractures).</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="ch6-vit">Vitamines</h3>
+  <p>Substance <strong>essentielle, organique, requise en quantité infinitésimale</strong> (apport calorique négligeable), dont le manque entraîne une <strong>pathologie de carence</strong> et que l'organisme ne peut synthétiser en quantité suffisante.</p>
+
+  <h4>Liposolubles (A, D, E, K)</h4>
+  <p>Stockage important, <strong>absorption dépendante des lipides</strong>, excrétion biliaire/fécale.</p>
+  <ul>
+    <li><strong>Vitamine A</strong> (rétinol / β-carotène) — vision nocturne (rhodopsine), différenciation épithéliale, immunité, fertilité ; les caroténoïdes sont aussi antioxydants. Carence : <strong>xérophtalmie</strong>, infections. Toxicité : hépatotoxique, <strong>tératogène</strong>, ostéoporose. ⚠ Mégadoses de β-carotène + <strong>tabac → cancer du poumon</strong>.</li>
+    <li><strong>Vitamine D</strong> (D3 cholécalciférol via UV ; D2 ergocalciférol) — métabolite actif <strong>1,25-(OH)₂-vitamine D</strong> ; absorption du calcium, immunité. Carence fréquente (enfant, personne âgée, absence de soleil). Toxicité : hypercalcémie, lithiase rénale. ⚠ Débat sur l'AMT : la Belgique fixe <strong>50 µg/j</strong> alors que l'EFSA propose <strong>100 µg/j</strong>.</li>
+    <li><strong>Vitamine K</strong> (K1 phylloquinone végétale / K2 ménaquinone bactérienne) — synthèse de la <strong>prothrombine</strong> et facteurs de coagulation, ostéocalcine. Carence rare sauf nouveau-né (<strong>2 mg à la naissance</strong>). ⚠ Interaction majeure avec les <strong>anticoagulants coumariniques</strong>.</li>
+    <li><strong>Vitamine E</strong> (tocophérols) — <strong>antioxydant</strong> membranaire (besoins ≈ 0,6 mg/g d'AGPI). Excès : étude SELECT → ↑ cancer prostate.</li>
+  </ul>
+
+  <h4>Hydrosolubles (groupe B, C)</h4>
+  <p>Peu de stockage (sauf B12), excrétion <strong>urinaire</strong>, sensibles à l'oxygène/chaleur/lumière ; agissent surtout comme <strong>coenzymes</strong>. Carences fréquentes chez les personnes alcoolodépendantes.</p>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Vitamine</th><th>Coenzyme / rôle</th><th>Carence emblématique</th></tr></thead>
+    <tbody>
+      <tr><td><strong>B1</strong> thiamine</td><td>TPP</td><td><strong>Béri-béri</strong> (riz « poli »), alcoolisme chronique</td></tr>
+      <tr><td><strong>B3</strong> niacine</td><td>NAD⁺</td><td><strong>Pellagre — 4D</strong> : Dermatitis, Diarrhea, Dementia, Death (maïs mal préparé)</td></tr>
+      <tr><td><strong>B8</strong> biotine</td><td>—</td><td>Blanc d'œuf cru (complexe avidine-biotine)</td></tr>
+      <tr><td><strong>B9</strong> folates / <strong>B12</strong></td><td>Méthylation, hématopoïèse</td><td><strong>Anémie</strong> ; B12 → végétaliens, désordres neurologiques</td></tr>
+      <tr><td><strong>C</strong> ac. ascorbique</td><td>Antioxydant (synergie vit E)</td><td><strong>Scorbut</strong> (marins au long cours)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><strong>Microbiote &amp; vitamines :</strong> certaines bactéries du côlon portent les gènes de synthèse des vitamines B (bactéries <em>prototrophes</em> nourrissant les <em>auxotrophes</em>), mais leur <strong>contribution réelle au statut vitaminique reste incertaine</strong> (manque de preuves de biodisponibilité).</p>
+
+  <div class="box keep">
+    <span class="tag">★ À retenir — couple vit C / vit E</span>
+    <p>La <strong>vitamine E</strong> (liposoluble) protège les lipides membranaires ; en neutralisant un radical elle devient elle-même radicalaire, et la <strong>vitamine C</strong> (hydrosoluble) la <strong>régénère</strong>. Synergie antioxydante classique — question d'examen quasi annuelle.</p>
+  </div>
+  <div class="box exam">
+    <span class="tag">📝 Examen — « terme correspondant à la définition »</span>
+    <span class="qx">« Vitamine liposoluble synthétisée par le microbiote intestinal » → <strong>vitamine K</strong> (K2 / ménaquinone).</span>
+    <span class="qx">« Vitamine hydrosoluble » → ex. vitamine C, B9…</span>
+    <span class="qx">Associations à connaître (juin 2024) : acide ascorbique = vit C ; tocophérol = vit E ; acide folique = B9 ; thiamine = B1 ; anémie ↔ fer/B9/B12 ; iode, sélénium = oligoéléments.</span>
+  </div>
+
+  <h3 id="ch6-comp">Compléments alimentaires &amp; allégations</h3>
+  <p>Encadrés par la <strong>directive 2002/46/CE</strong> : denrées pré-dosées (capsules, ampoules…) complétant l'alimentation. Les quantités <strong>maximales</strong> sont fixées en tenant compte des <strong>limites supérieures de sécurité (AMT)</strong> et des apports venant d'autres sources. <strong>Dépasser 2 à 3 fois l'AJR ne se justifie que rarement</strong> (déficits prononcés, malabsorption) → se méfier des « mégadoses » de la « micronutrition » ou « médecine orthomoléculaire ». Les <strong>aliments enrichis</strong> doivent être notifiés au SPF Santé publique.</p>
+  <p><strong>Deux types d'allégations</strong> (règlement n° 1924/2006) :</p>
+  <ul class="tight">
+    <li><strong>Nutritionnelle</strong> — porte sur la <em>composition</em> : « riche en fibres », « sans sucre ajouté », « enrichi en calcium ». Seuils : <em>« source de »</em> ≥ 15 % de l'AJR · <em>« riche en »</em> ≥ 30 % · <em>« enrichi »</em> = +30 % vs un produit similaire.</li>
+    <li><strong>De santé</strong> — porte sur une <em>fonction physiologique</em> : « diminue le LDL-cholestérol », « renforce l'immunité ».</li>
+  </ul>
+
+  <h3 id="ch6-malnut">Carences nutritionnelles : cartographie mondiale</h3>
+  <p>La <strong>malnutrition</strong> couvre aussi bien le <strong>manque (sous-alimentation)</strong> que l'<strong>excès (suralimentation)</strong> — c'est le pont vers le chapitre obésité. Le concept de <strong>syndémie</strong> décrit l'agrégation de plusieurs problèmes de santé qui s'exacerbent.</p>
+  <div class="two">
+    <div class="card"><h4>Malnutrition protéino-énergétique</h4>
+      <ul class="tight"><li><strong>Marasme</strong> : déficit calorique → atrophie musculaire/tissulaire.</li><li><strong>Kwashiorkor</strong> : déficit <strong>protéique</strong> → œdème, irritabilité, hépatomégalie, dépigmentation des cheveux.</li></ul></div>
+    <div class="card"><h4>Carences les plus fréquentes</h4>
+      <ul class="tight"><li><strong>Fer</strong> — anémie : ~30 % de la population mondiale.</li><li><strong>Vitamine A</strong> — xérophtalmie : la plus <strong>meurtrière</strong>.</li><li><strong>Iode</strong>, <strong>folates (B9)</strong>, <strong>vitamine B12</strong>, <strong>zinc</strong>.</li></ul></div>
+  </div>
+  <p>Réponses : diversification, <strong>fortification</strong> (« riz doré » au β-carotène), supplémentation. Organisations : OMS, FAO, UNICEF — <strong>ODD 2030</strong> visant la fin de toutes les formes de malnutrition.</p>
+  <div class="box exam">
+    <span class="tag">📝 Examen</span>
+    <p>« <strong>Malnutrition</strong> (déf. OMS) » et « maladie due à une <strong>carence en protéines</strong> » (= kwashiorkor) sont des définitions récurrentes (juin 2023, juin 2024). Pensez à <strong>relier carence ↔ immunité</strong> (Zn, Fe, vit A/D/C) — autre question type.</p>
+  </div>
+  <a class="top" href="#ch6">↑ Haut du chapitre</a>
+</section>
+<!-- ====================== CHAPITRE 7 — OBÉSITÉ ====================== -->
+<section class="chapter reveal" id="ch7" data-c="7">
+  <div class="chap-head">
+    <span class="chap-num c7">Chapitre 7</span>
+    <h2>Obésité : un versant de la malnutrition</h2>
+  </div>
+  <p class="intro">L'obésité comme maladie multifactorielle — épidémiologie, classification, mécanismes métaboliques du tissu adipeux, déterminants individuels et sociétaux, et leviers thérapeutiques.</p>
+
+  <h3 id="ch7-def">Épidémiologie &amp; classification</h3>
+  <p>« Fléau du XXI<sup>e</sup> siècle » : <strong>1,9 milliard</strong> d'adultes en surpoids, &gt; 600 millions d'obèses dans le monde. En Belgique (2025) : <strong>2 millions d'obèses</strong>, BMI moyen 25,5 kg/m², <strong>49,3 % en surpoids</strong> (BMI ≥ 25), <strong>15,9 % obèses</strong> (BMI ≥ 30) ; coût direct + indirect &gt; <strong>9 milliards €/an</strong>. Un BMI &gt; 30 réduit l'espérance de vie de ~7 ans (femme).</p>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Critère</th><th>Normal</th><th>Surpoids</th><th>Obèse</th></tr></thead>
+    <tbody>
+      <tr><td><strong>BMI (kg/m²)</strong></td><td>18,5–24,9</td><td>25–29,9</td><td>≥ 30</td></tr>
+      <tr><td><strong>Masse grasse</strong></td><td>H 15–22 % · F 18–32 %</td><td>H &gt; 22 · F &gt; 32</td><td>H &gt; 25 · F &gt; 35</td></tr>
+      <tr><td><strong>Tour de taille (cm)</strong></td><td>H &lt; 94 · F &lt; 80</td><td>H 94–102 · F 80–88</td><td>H &gt; 102 · F &gt; 88</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><strong>Nouveau classement</strong> (<em>Lancet Diab. Endocrinol.</em> 2025) : on distingue l'<strong>obésité clinique</strong> (= pathologie, avec dysfonction d'organe ou limitation des activités quotidiennes) de l'<strong>obésité préclinique</strong> (simple facteur de risque). <strong>Le BMI seul ne suffit plus</strong> (sauf &gt; 40) : on lui adjoint des mesures d'adiposité (tour de taille, impédancemétrie, densitométrie). Objectif : orienter les traitements (ex. agonistes du R-GLP-1).</p>
+  <p><strong>Pathologies associées</strong> à l'excès de masse grasse : diabète, dyslipidémie, hypertension, hyperuricémie, stéatose hépatique, apnée du sommeil, ostéoarthrite, asthme, et plusieurs <strong>cancers</strong> (utérus, sein, prostate, côlon).</p>
+
+  <div class="box exam">
+    <span class="tag">📝 Examen — quasi systématique</span>
+    <span class="qx">« Définir le BMI + unité » → poids(kg)/taille²(m²), en <strong>kg/m²</strong>.</span>
+    <span class="qx">« Critères de l'obésité » → BMI ≥ 30, % masse grasse, tour de taille.</span>
+    <span class="qx">« Méthode anthropométrique définissant le surpoids/l'obésité » → <strong>l'IMC/BMI</strong> ; « méthode pour estimer la masse grasse » → plis cutanés, <strong>impédancemétrie</strong>, absorptiométrie biphotonique (DEXA).</span>
+    <span class="qx">Calcul type : H 180 cm / 95 kg → BMI 29,3 = <strong>surpoids</strong> (pas obèse !).</span>
+  </div>
+
+  <h3 id="ch7-adipeux">Le tissu adipeux : bien plus qu'un réservoir</h3>
+  <p>Le tissu adipeux <strong>blanc</strong> stocke les lipides (protège le foie) ; le tissu adipeux <strong>brun</strong>, riche en mitochondries, oxyde les AG (thermogenèse). Le <strong>« browning / beiging »</strong> du tissu blanc sous stress est une piste thérapeutique. Surtout, c'est un véritable <strong>organe endocrine</strong> : il sécrète des <strong>adipokines</strong> — leptine, adiponectine, résistine — et des cytokines pro-inflammatoires (<strong>TNF-α, IL-6</strong>).</p>
+  <p>L'<strong>adiposité viscérale</strong> (vs sous-cutanée) est métaboliquement délétère. La <strong>lipotoxicité</strong> — accumulation ectopique de lipides dans le foie, le muscle et le pancréas (TG, céramides, DAG…) — provoque un stress du réticulum endoplasmique et mitochondrial → <strong>altération de la réponse à l'insuline</strong> (le « diabesity »). En obésité : ↑ molécules pro-inflammatoires et résistine, ↓ <strong>adiponectine</strong> (protectrice) → insulino-résistance.</p>
+
+  <div class="box keep">
+    <span class="tag">★ À retenir — réponses Vrai/Faux pièges</span>
+    <ul class="tight" style="margin-bottom:0">
+      <li>« Le tissu adipeux n'est pas un simple organe de stockage » → <strong>VRAI</strong> (organe endocrine, sécrète la leptine, peptide <em>anorexigène</em>).</li>
+      <li>« L'obésité est <em>toujours</em> associée à l'insulino-résistance » → <strong>FAUX</strong> : l'obésité <em>gynoïde</em>/sous-cutanée ou « métaboliquement saine » l'est moins ; c'est surtout l'obésité <em>viscérale</em>.</li>
+      <li>« La plupart des obésités sont monogéniques » → <strong>FAUX</strong> : &lt; 5 % (leptine, leptine-R, MC4R, PPARγ) ; la majorité est multifactorielle (gènes × environnement).</li>
+    </ul>
+  </div>
+
+  <h3 id="ch7-causes">Causes &amp; contrôle de l'appétit</h3>
+  <p>La génétique explique <strong>25 à 40 %</strong> des différences de BMI (~200 gènes), mais l'obésité est <strong>rarement monogénique</strong>. S'y ajoutent l'<strong>épigénétique</strong> (effet de l'environnement, transmissible via les gamètes), le sommeil, le milieu social et l'histoire psychologique.</p>
+  <p>Le contrôle central se joue dans l'<strong>hypothalamus</strong> : la <strong>leptine</strong> (sécrétée par le tissu adipeux) <strong>inhibe les neurones orexigènes NPY/AgRP</strong> et <strong>active les neurones anorexigènes POMC/CART</strong> (→ α-MSH). En obésité, une <strong>résistance à la leptine</strong> maintient l'appétit malgré une leptine élevée. Autres acteurs : ghréline (orexigène), <strong>GLP-1</strong> (incrétine : ↓ vidange gastrique, ↑ insulinosécrétion, ↓ appétit — cible pharmacologique majeure).</p>
+
+  <h3 id="ch7-balance">Balance énergétique</h3>
+  <p><strong>Apport ≈ BMR × PAL</strong> (basal metabolic rate × physical activity level). Le <strong>métabolisme de base</strong> représente 60–75 % de la dépense ; s'y ajoutent l'activité physique (≈ 25 % volontaire / 75 % involontaire) et la thermogenèse alimentaire. Valeurs caloriques : <span class="pill">glucides 4</span> <span class="pill">protéines 4</span> <span class="pill">lipides 9</span> <span class="pill">alcool 7 kcal/g</span>.</p>
+  <p>L'OMS recommande <strong>30 min d'activité modérée ≥ 5×/sem</strong> (ou 10 000 pas/j). Un <strong>polymorphisme du récepteur β2-adrénergique</strong> associé à l'obésité ne s'exprime <strong>que chez les sujets inactifs</strong> : l'exercice compense un patrimoine génétique défavorable (lipolyse accrue).</p>
+
+  <div class="box exam">
+    <span class="tag">📝 Examen — questions ouvertes fréquentes</span>
+    <span class="qx">« L'exercice physique régulier augmente-t-il la dépense énergétique au repos ? » → <strong>VRAI</strong> : ↑ masse musculaire → ↑ BMR, + sensibilité à l'insuline, modulation leptine/GLP-1.</span>
+    <span class="qx">« Systèmes NPY/AgRP et POMC/CART, GLP-1 » → schéma du contrôle hypothalamique de l'appétit (orexigène vs anorexigène).</span>
+    <span class="qx">« Le tissu adipeux est un organe sécrétoire jouant un rôle dans le syndrome métabolique » → TNF-α/IL-6 (inflammation), résistine (insulino-R), ↓ adiponectine.</span>
+  </div>
+
+  <h3 id="ch7-ttt">Traitements, régimes &amp; jeûne</h3>
+  <p>Première ligne : <strong>intervention nutritionnelle &amp; comportementale</strong>. Réduire l'apport de ~<strong>500 kcal/j</strong> permet une perte d'environ <strong>8 % du poids en 3–12 mois</strong> ; « faible en glucides » vs « faible en lipides » ne diffèrent pas à long terme.</p>
+  <ul class="tight">
+    <li><strong>Médicaments</strong> : inhibiteurs de lipases (<strong>Orlistat</strong>) ; <strong>analogues du GLP-1</strong> (<strong>sémaglutide / Ozempic</strong>) ou inhibiteurs de la DPP-IV (effet satiétogène).</li>
+    <li><strong>Chirurgie bariatrique</strong> : pour les cas extrêmes à haut risque de comorbidités → mais <strong>carences nutritionnelles</strong> à surveiller.</li>
+  </ul>
+  <p>⚠ Méfiance envers les <strong>régimes « tendance »</strong> (cétogène, paléo, jeûne intermittent…). Le <strong>« yoyo dieting » augmente la masse grasse</strong> (reprogrammation épigénétique du tissu adipeux). Le <strong>jeûne</strong> n'implique pas toujours une restriction calorique ; risques : perte de masse maigre, déshydratation, lithiases ; contre-indiqué chez l'enfant, le sujet âgé, en sous-poids.</p>
+  <p>Origine développementale : <strong>« fetal origin hypothesis »</strong> (Barker) — la malnutrition intra-utérine programme un <strong>« thrifty phenotype »</strong> (adiposité centrale, risque de diabète de type 2 et de maladies CV à l'âge adulte).</p>
+
+  <div class="box exam">
+    <span class="tag">📝 Examen — Orlistat (piège fréquent)</span>
+    <p>« Sous Orlistat au long cours, on pourrait observer une <strong>fragilité osseuse</strong> » → <strong>VRAI</strong> : inhibition des lipases → ↓ absorption des graisses → ↓ absorption des <strong>vitamines liposolubles A, D, E, K</strong> → carence en <strong>vitamine D</strong> → ↓ absorption du calcium → ostéomalacie/ostéoporose. (Relie obésité, lipides et micronutriments.)</p>
+  </div>
+
+  <h3 id="ch7-nova">Aliments ultra-transformés, NOVA &amp; étiquetage</h3>
+  <p>La <strong>classification NOVA</strong> ordonne les aliments par degré de transformation : <strong>(1)</strong> non/peu transformés → <strong>(2)</strong> ingrédients culinaires → <strong>(3)</strong> transformés → <strong>(4) ultra-transformés (UPF)</strong>. Les UPF (ex. Big Mac : 503 kcal, additifs E160a, E471…) sont associés à un risque cardiométabolique accru et à un lourd impact environnemental (agriculture intensive → concept <strong>One Health</strong>).</p>
+  <h4>Étiquetages nutritionnels frontaux (FOPL)</h4>
+  <ul class="tight">
+    <li><strong>Keyhole</strong> (Suède, 1989) : le 1<sup>er</sup> FOPL de l'UE — promeut fibres, limite graisses/sucres/sel ; peu informatif.</li>
+    <li><strong>Multiple Traffic Lights</strong> (UK, 2013) : feux vert/orange/rouge par nutriment ; transparent mais ne reflète que les nutriments « négatifs ».</li>
+    <li><strong>Nutri-Score</strong> (France, 2017 ; adopté en Belgique) : score global A→E.</li>
+  </ul>
+  <p>Le <strong>Nutri-Score</strong> oppose <strong>composantes défavorables</strong> (énergie, sucres, AG saturés, sodium — 0 à 10 pts chacune) aux <strong>composantes favorables</strong> (% fruits/légumes/légumineuses, fibres, protéines — 0 à 5 pts). Calculé pour 100 g de produit. ⚠ Il se base sur la <strong>composition en nutriments</strong> — <em>pas</em> sur la présence de contaminants ou d'additifs.</p>
+  <p>L'<strong>EAT-Lancet 2025</strong> propose une « assiette idéale » à dominante végétale : ≥ 500 g de fruits/légumes/j, céréales complètes, légumineuses, noix, viande rouge limitée à 0–200 g/sem.</p>
+
+  <div class="box exam">
+    <span class="tag">📝 Examen — analyse d'un produit (burger / plat préparé)</span>
+    <p>Chaque année, un <strong>tableau de valeurs nutritionnelles + liste d'ingrédients</strong> est fourni avec des Vrai/Faux à justifier. À maîtriser :</p>
+    <span class="qx">Ce repas est-il un <strong>UPF selon NOVA</strong> ? (additifs, ingrédients industriels → souvent VRAI).</span>
+    <span class="qx">La teneur en <strong>sel</strong> dépasse-t-elle le maximum recommandé (5 g NaCl/j) ?</span>
+    <span class="qx">L'apport en <strong>protéines</strong> couvre-t-il les besoins d'un homme de 70/80 kg ? (≈ 0,83 g/kg/j).</span>
+    <span class="qx">La composante énergétique vient-elle surtout des protéines ? (souvent FAUX → lipides/glucides). « L'aspartame est cancérigène et interdit en UE » → <strong>FAUX</strong>.</span>
+  </div>
+  <a class="top" href="#ch7">↑ Haut du chapitre</a>
+</section>
+<!-- ====================== NUTRITION & CANCER ====================== -->
+<section class="chapter reveal" id="cancer" data-c="c">
+  <div class="chap-head">
+    <span class="chap-num cc">Module</span>
+    <h2>Nutrition &amp; cancer</h2>
+  </div>
+  <p class="intro">L'alimentation comme source de cancérigènes <em>et</em> de composés protecteurs. Mécanismes toxicologiques, recommandations de prévention (WCRF) et prise en charge du patient.</p>
+  <p>Trois grands profils alimentaires sont distingués : <strong>méditerranéen</strong>, <strong>occidental / « unhealthy »</strong> et <strong>plant-based</strong>. On rappelle au passage les <strong>phases du métabolisme des xénobiotiques</strong> — phase 1 de <strong>fonctionnalisation</strong> (oxydation par les CYP450/OFM, NADPH) et phase 2 de <strong>conjugaison</strong> (glucurono-conjugaison/UGT, GSH, sulfo-, acétylation/NAT, méthylation/SAM) — car elles gouvernent à la fois l'activation et la détoxification des cancérigènes.</p>
+
+  <h3 id="ca-tox">Y a-t-il des cancérigènes dans l'alimentation ?</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Origine</th><th>Cancérigène</th><th>Mécanisme &amp; cible</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Conservation</strong></td><td><strong>Aflatoxine B1</strong> (moisissure)</td><td>Génotoxique → <strong>cancer du foie</strong> (aggravé par hépatite B).</td></tr>
+      <tr><td><strong>Environnement / additifs</strong></td><td><strong>Nitrates → nitrites → nitrosamines</strong> (NMDA)</td><td>Nitrites = conservateurs des charcuteries ; réduction in vivo (bactéries salivaires, pH gastrique) → nitrosamines mutagènes → <strong>cancer estomac, côlon</strong>.</td></tr>
+      <tr><td><strong>Préparation (cuisson)</strong></td><td><strong>Acrylamide</strong></td><td><strong>Réaction de Maillard</strong> (&gt; 120 °C : frites, pain, café). Métabolisé par <strong>CYP2E1</strong> → glycidamide → adduits à l'ADN. ↑ cancers endomètre/ovaires.</td></tr>
+      <tr><td><strong>Cuisson haute T° de la viande</strong></td><td><strong>HAP</strong> &amp; <strong>amines hétérocycliques</strong></td><td>Issus des flammes / de la créatinine. Génotoxiques. Les <strong>acétyleurs rapides (NAT2)</strong> ont un risque colorectal accru.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Mesures de protection pour l'acrylamide : réduire les précurseurs (asparagine, sucres réducteurs), maturité/stockage des pommes de terre, additifs antioxydants/acidifiants (réglementation européenne).</p>
+
+  <h3 id="ca-defav">Facteurs alimentaires défavorables (lien « convaincant »)</h3>
+  <ul>
+    <li><strong>Alcool</strong> → œsophage, pharynx, larynx, sein (ROS via CYP2E1, génotoxicité de l'<strong>acétaldéhyde</strong>, ↑ œstrogènes, inflammation).</li>
+    <li><strong>Sodium</strong> → estomac (irritation, synergie avec <em>Helicobacter pylori</em>).</li>
+    <li><strong>Corpulence / obésité</strong> → côlon, sein, prostate (↑ androstènediol, estrone, œstradiol par le tissu adipeux → prolifération mammaire ; ↑ IGF-1 et insuline, inhibés par l'exercice).</li>
+    <li><strong>Charcuterie &amp; viande rouge</strong> → côlon. <strong>Arsenic</strong> (eau) → poumon.</li>
+  </ul>
+
+  <div class="box exam">
+    <span class="tag">📝 Examen — LA question de cancer</span>
+    <p>« Citez <strong>3 raisons scientifiques</strong> de consommer &lt; 300 g de viande rouge/semaine » (réponse-type) :</p>
+    <ol class="body" style="margin-bottom:0">
+      <li><strong>Fer héminique</strong> → catalyse la formation de radicaux libres → stress oxydatif → dommages à l'ADN.</li>
+      <li><strong>Cuisson à haute T°</strong> → HAP + amines hétérocycliques, génotoxiques.</li>
+      <li><strong>Viande transformée</strong> → nitrites → <strong>nitrosamines</strong> cancérigènes (côlon).</li>
+    </ol>
+  </div>
+
+  <h4>Les 10 mesures de prévention (WCRF)</h4>
+  <p>BMI 21–23 kg/m² · PAL &gt; 1,6 · densité calorique &lt; 125 kcal/100 g · ≥ 600 g légumes &amp; fruits/j + ≥ 25 g de fibres · &lt; 300 g viande rouge/sem · alcool ≤ 1 (F) / 2 (H) verres/j · &lt; 2 g sodium/j &amp; minimiser les aflatoxines · <strong>pas de compléments alimentaires</strong> · allaitement 6 mois · conseils spécifiques aux malades.</p>
+
+  <h3 id="ca-fav">Facteurs protecteurs</h3>
+  <p>Les <strong>fibres alimentaires</strong> : le risque de cancer du côlon <strong>diminue de ~10 % par 10 g de fibres/j supplémentaires</strong>. Mécanismes : accélération du transit (↓ temps de contact des cancérigènes), et surtout <strong>fermentation par le microbiote en AGCC</strong> — le <strong>butyrate</strong> est <strong>pro-apoptotique</strong> dans les cellules cancéreuses. (Histoire : hypothèse de Burkitt 1970 → doute en 2000 → renouveau via les fibres <em>fermentescibles</em>.)</p>
+  <div class="two">
+    <div class="card"><h4>Phytochimiques protecteurs</h4>
+      <ul class="tight"><li><strong>Glucosinolates</strong> (crucifères) → indole-3-carbinol &amp; <strong>sulforaphane</strong> : inactivent des cancérigènes, induisent les enzymes de <strong>détoxification de phase II</strong>, pro-apoptose.</li><li>Isoflavones (soja), coumarines, inhibiteurs de protéases.</li></ul></div>
+    <div class="card"><h4>Folates &amp; méthylation</h4>
+      <ul class="tight"><li>La méthylation de l'ADN dépend des vitamines <strong>B6, B9, B12</strong>.</li><li>Déficit en folate → incorporation massive de <strong>dUMP</strong> dans l'ADN → cassures de brins → risque de cancer du côlon.</li></ul></div>
+  </div>
+  <p><strong>Antioxydants</strong> (vit C, vit E, β-carotène, caroténoïdes) : protecteurs dans l'alimentation… mais ⚠ <strong>danger des mégadoses isolées</strong>. La supplémentation en <strong>β-carotène (20–50 mg/j) augmente le cancer du poumon chez le fumeur</strong> (études ATBC, CARET) ; l'étude SELECT a montré ↑ cancer prostate avec la vitamine E. L'étude française <strong>Su.Vi.Max</strong> a observé −31 % de cancers chez l'homme (pas chez la femme).</p>
+
+  <div class="box keep">
+    <span class="tag">★ À retenir — le paradoxe antioxydant</span>
+    <p>Les fruits &amp; légumes protègent, mais les <strong>antioxydants isolés à haute dose ne reproduisent pas cet effet</strong> et peuvent être <strong>pro-oxydants/délétères</strong> (β-carotène + tabac → poumon). D'où la recommandation : <strong>« pas de compléments alimentaires » en prévention du cancer</strong> — donnez l'aliment, pas la pilule.</p>
+  </div>
+  <div class="box exam">
+    <span class="tag">📝 Examen — QCM type</span>
+    <span class="qx">« Le β-carotène pourrait être utile en prévention CV… » → bonne réponse : <strong>« par ses propriétés antioxydantes »</strong> (b). « Précurseur de la vit A » et « stocké dans le tissu adipeux » sont vrais mais <em>hors sujet</em>.</span>
+    <span class="qx">« Les viandes cuites au barbecue augmentent le risque de cancer » → <strong>VRAI</strong> (HAP + amines hétérocycliques).</span>
+  </div>
+
+  <h3 id="ca-patient">Conseils au patient atteint de cancer</h3>
+  <p>Le plus souvent <strong>similaires à la prévention</strong>, avec adaptations en cas d'atteinte de la sphère digestive haute ou d'effets secondaires (nausées, diarrhée → nutrition entérale/parentérale possible). La <strong>cachexie cancéreuse</strong> (anorexie, perte de masse maigre et grasse) touche <strong>50–80 %</strong> des patients (pancréas, côlon, œsophage…). Conseils : <strong>fractionner</strong> les repas denses en énergie, <strong>augmenter les protéines</strong>, intégrer des <strong>n-3 PUFA</strong> (régulation de l'appétit).</p>
+  <a class="top" href="#cancer">↑ Haut du chapitre</a>
+</section>
+<!-- ====================== INTERACTIONS ALIMENTS-MÉDICAMENTS ====================== -->
+<section class="chapter reveal" id="inter" data-c="i">
+  <div class="chap-head">
+    <span class="chap-num ci">Module</span>
+    <h2>Interactions aliments-médicaments</h2>
+  </div>
+  <p class="intro">Comment l'alimentation modifie le devenir du médicament (et inversement). Au cœur du sujet : l'absorption, le métabolisme oxydatif (CYP) et le cas d'école du pamplemousse.</p>
+  <p>On distingue deux sens et deux types d'effets :</p>
+  <ul class="tight">
+    <li><strong>Aliment → médicament</strong> : interactions <strong>pharmacocinétiques</strong> (devenir du médicament) et <strong>pharmacodynamiques</strong> (effet du médicament).</li>
+    <li><strong>Médicament → aliment / état nutritionnel</strong> (goût, absorption des nutriments, appétit, métabolisme).</li>
+  </ul>
+
+  <h3 id="in-pk">Interactions pharmacocinétiques</h3>
+  <h4>Type I — galéniques (ex vivo)</h4>
+  <p>Avant même l'absorption : adsorption de la <strong>lévothyroxine</strong> dans une ligne de nutrition entérale ; complexes insolubles caféine + chlorpromazine ; destruction de la <strong>thiamine par les sulfites</strong>.</p>
+  <h4>Type II — absorption</h4>
+  <ul class="tight">
+    <li><strong>Complexes insolubles</strong> : <strong>tétracyclines + Ca²⁺</strong> des produits laitiers → ↓ absorption.</li>
+    <li><strong>Effet pH</strong> : l'aspirine est mieux absorbée à jeun (forme non ionisée) mais à prendre <strong>au repas</strong> pour éviter les ulcères.</li>
+    <li><strong>Repas lipidiques</strong> : ↑ absorption des médicaments <strong>lipophiles</strong> (cyclosporine, via les acides biliaires) ; ralentissement de la motilité (cholécystokinine) → nifédipine en fin de repas.</li>
+    <li><strong>Compétition</strong> : L-Dopa vs protéines alimentaires.</li>
+  </ul>
+  <div class="two">
+    <div class="card"><h4>À prendre AVEC un repas</h4><p>céfuroxime, érythromycine, <strong>statines</strong>, lithium.</p></div>
+    <div class="card"><h4>À prendre À JEUN</h4><p>ampicilline, ciprofloxacine, doxycycline, tétracycline, captopril, indinavir. Les <strong>jus de fruits</strong> ↓ la biodisponibilité (transport OATP1A2).</p></div>
+  </div>
+
+  <h3 id="in-cyp">Type III — métabolisme &amp; cytochromes</h3>
+  <p>Les interactions au niveau du métabolisme expliquent une grande part de la <strong>variabilité interindividuelle</strong> de la pharmacocinétique. L'état nutritionnel, les macronutriments et les <strong>substances phytochimiques</strong> modulent les CYP.</p>
+  <h4>Effet de premier passage</h4>
+  <p>Pour un médicament à fort coefficient d'extraction hépatique (propranolol, dextropropoxyphène), un <strong>repas protéiné augmente le flux sanguin hépatique</strong> → ↓ l'effet de premier passage → ↑ biodisponibilité.</p>
+  <h4>Le cas du paracétamol &amp; de l'alcool</h4>
+  <p>Le paracétamol est normalement glucurono-/sulfo-conjugué ; une faible part passe par le <strong>CYP2E1</strong> → métabolite toxique <strong>NAPQI</strong> (détoxifié par le GSH). L'<strong>éthanol induit le CYP2E1</strong> → plus de NAPQI → <strong>hépatotoxicité accrue</strong>. Le <strong>jeûne</strong> aggrave aussi (↓ UDPGA/glycogène → inhibition de la glucuronoconjugaison).</p>
+  <h4>Phytochimiques inducteurs/inhibiteurs</h4>
+  <ul class="tight">
+    <li><strong>Choux</strong> : les indoles (indole-3-carbinol) activent le récepteur <strong>AhR</strong> → induction du <strong>CYP1A1</strong>.</li>
+    <li><strong>BBQ / HAP</strong> → induction CYP1A1 ; <strong>caféine</strong> (thé/café) → CYP1A2.</li>
+    <li><strong>Épices</strong> : <strong>pipérine</strong> (poivre noir) inhibe l'UGT-1A1 (↑ phénytoïne, propranolol, théophylline) ; capsaïcine inhibe le CYP2E1 ; allicine (ail) induit le CYP1A2.</li>
+  </ul>
+
+  <div class="box keep">
+    <span class="tag">★ À retenir — le pamplemousse (cas d'école)</span>
+    <p>Le jus de pamplemousse <strong>inhibe le CYP3A4 intestinal</strong> (qui métabolise &gt; 50 % des médicaments) et la <strong>P-glycoprotéine</strong>. Molécules actives : <strong>flavonoïdes (naringine)</strong> et <strong>furanocoumarines (6,7-dihydroxybergamottine)</strong>. Conséquence : ↑ de l'AUC — <strong>×3 félodipine, ×3 cyclosporine, ×7–10 terfénadine</strong> → ↑ effets secondaires (hypotension, sédation, arythmies). Découverte par <strong>sérendipité</strong> (jus utilisé pour masquer le goût de l'alcool).</p>
+  </div>
+
+  <h4>Type III (distribution) &amp; Type IV (excrétion)</h4>
+  <p><strong>Malnutrition (dénutrition ou obésité)</strong> = risque majeur nécessitant l'adaptation de la posologie ; l'<strong>obésité</strong> est particulièrement critique pour les <strong>antibiotiques et anticoagulants</strong> (volume de distribution ↑ pour les molécules lipophiles). <strong>Excrétion</strong> : le pH urinaire (4,5–8) dépend de l'alimentation (diète « alcaline » riche en fruits/légumes vs « acide » riche en protéines) ; les <strong>acides faibles sont davantage excrétés en pH alcalin</strong> (l'inverse pour les bases faibles).</p>
+
+  <h3 id="in-pd">Interactions pharmacodynamiques</h3>
+  <ul class="tight">
+    <li><strong>IMAO + tyramine</strong> (fromages affinés…) → <strong>crise hypertensive</strong> (fonction de la dose).</li>
+    <li><strong>Warfarine + vitamine K</strong> : anticoagulant à <strong>faible index thérapeutique</strong> → surveiller les aliments riches en vit K ; ail, n-3 PUFA, vit E et gingembre <strong>↓ l'agrégation plaquettaire</strong> (risque additif). Rôle aussi du microbiote (synthèse de vit K endogène).</li>
+  </ul>
+
+  <h3 id="in-medvers">Médicaments → nutriments &amp; vitamines</h3>
+  <p>Les médicaments altèrent à leur tour la disponibilité des nutriments :</p>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Médicament</th><th>Conséquence nutritionnelle</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Antibiotiques</strong> (amoxicilline, tétracycline…)</td><td>↓ vitamine K et vitamines B (microbiote)</td></tr>
+      <tr><td><strong>Orlistat</strong></td><td>↓ vitamines liposolubles <strong>A, D, E, K</strong> → fragilité osseuse</td></tr>
+      <tr><td><strong>IPP</strong> (inhibiteurs de pompe à protons)</td><td>↓ <strong>B12</strong> (facteur intrinsèque), vit C, absorption Zn/Mg</td></tr>
+      <tr><td><strong>Rifampicine, phénytoïne</strong></td><td>Induction CYP → ↓ vitamines D, E</td></tr>
+      <tr><td><strong>Metformine</strong></td><td>↓ <strong>B12</strong> (blocage de l'endocytose)</td></tr>
+      <tr><td><strong>Antipsychotiques</strong> (clozapine, olanzapine, rispéridone)</td><td>↑ obésité, syndrome métabolique (intolérance au glucose, hyperTG)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><strong>Conclusion :</strong> domaine encore peu exploré (microbiote, obésité, fonction barrière intestinale). Comme les interactions médicamenteuses, les interactions aliment/médicament peuvent <strong>compromettre l'efficacité</strong> ou <strong>promouvoir les effets secondaires</strong> — pas de « recette », une analyse au cas par cas requérant une double formation en pharmacologie et nutrition.</p>
+
+  <div class="box exam">
+    <span class="tag">📝 Examen — questions de synthèse</span>
+    <span class="qx">« Pourquoi adapter la posologie chez un <strong>obèse buvant de l'alcool</strong> avec des repas à 45 % de lipides ? » → ↑ V<sub>distribution</sub> des médicaments lipophiles (obésité) ; éthanol induit/inhibe les CYP ; lipides ↑ absorption des liposolubles et ralentissent la vidange gastrique (modifie T<sub>max</sub>). → réévaluer dose, éviter marge thérapeutique étroite, surveillance.</span>
+    <span class="qx">« Miglitol® (inhibiteur d'α-glucosidase) diminue l'absorption des polysaccharides » → glucides non hydrolysés atteignent le côlon → fermentation → gaz/diarrhée ; meilleur contrôle de la glycémie postprandiale.</span>
+    <span class="qx">« Citez 2 interactions microbiote ↔ alimentation » → fermentation des fibres en AGCC ; métabolisation des polyphénols (→ urolithines) ; édulcorants → dysbiose.</span>
+  </div>
+  <a class="top" href="#inter">↑ Haut du chapitre</a>
+</section>
+<!-- ====================== STRATÉGIE D'EXAMEN ====================== -->
+<section class="chapter reveal" id="exam">
+  <div class="chap-head">
+    <span class="chap-num" style="background:var(--ink)">Méthode</span>
+    <h2>Stratégie d'examen</h2>
+  </div>
+  <p class="intro">Six années d'annales (2018 → juin 2025) révèlent une structure très stable. Voici les formats à anticiper et les réflexes qui rapportent des points.</p>
+
+  <h3>Les formats récurrents</h3>
+  <ol class="body">
+    <li><strong>Définitions + exemple + intérêt santé.</strong> On vous demande de définir <em>puis</em> d'illustrer. Termes vus : fibre fermentescible, nutriment essentiel, anti-nutriment, prébiotique, intolérance, contaminant alimentaire, aliment ultra-transformé, IG bas, AA limitant, BMI, syndrome métabolique, aliment fonctionnel.</li>
+    <li><strong>Vrai / Faux avec justification.</strong> Le piège est toujours dans la <em>justification</em> : une affirmation peut être vraie mais « hors sujet » (= comptée fausse).</li>
+    <li><strong>« Donnez le terme correspondant à la définition. »</strong> Reliez une description à un mot précis (NOVA, additif, acrylamide, phytate, NaCl, amidon, One Health, impédancemétrie…).</li>
+    <li><strong>QCM</strong> (entourer la/les bonne(s) réponse(s), souvent sans pénalité).</li>
+    <li><strong>Question ouverte de synthèse</strong> — surtout cancer (3 raisons viande rouge), fibres &amp; pathologies, interactions médicamenteuses, obésité.</li>
+    <li><strong>Analyse d'un produit réel</strong> (burger, plat préparé, lait de soja vs lait de vache) : Nutri-Score, NOVA, sel max, besoins protéiques, profil lipidique.</li>
+  </ol>
+
+  <h3>Les ponts entre chapitres (très valorisés)</h3>
+  <div class="two">
+    <div class="card"><h4>Micronutriments ↔ lipides ↔ obésité</h4><p>Orlistat → ↓ vit liposolubles A/D/E/K → ↓ Ca → fragilité osseuse.</p></div>
+    <div class="card"><h4>Obésité ↔ cancer</h4><p>Tissu adipeux → œstrogènes, IGF-1, insuline → cancers hormono-dépendants &amp; côlon.</p></div>
+    <div class="card"><h4>Fibres ↔ microbiote ↔ cancer</h4><p>Fibres fermentescibles → AGCC → butyrate pro-apoptotique → ↓ cancer colorectal.</p></div>
+    <div class="card"><h4>Alcool : transversal</h4><p>7 kcal/g · CYP2E1 (paracétamol) · acétaldéhyde cancérigène · cancers œsophage/sein.</p></div>
+  </div>
+
+  <div class="box warn">
+    <span class="tag">⚠ Pièges les plus fréquents</span>
+    <ul class="tight" style="margin-bottom:0">
+      <li>L'éthanol fournit <strong>7 kcal/g</strong> (≈ 29 kJ/g) — <em>pas</em> 7 kJ/g.</li>
+      <li>BMI ≥ 25 = <strong>surpoids</strong> ; l'obésité commence à <strong>30</strong> (pas 25).</li>
+      <li>L'<strong>AJR = m + 2 SD</strong> (97,5 %), <em>pas</em> la moyenne des besoins.</li>
+      <li>L'AMT/UL est un seuil <strong>de sécurité</strong>, pas un besoin.</li>
+      <li>Les fibres : <strong>0 kcal/g</strong> seulement si non fermentées (ex. cellulose) ; les fibres solubles fermentescibles ≈ <strong>2 kcal/g</strong>.</li>
+      <li>« Pas de compléments alimentaires » en prévention du cancer (mégadoses délétères).</li>
+      <li>La vitamine <strong>K</strong> (pas B12) intervient dans la coagulation.</li>
+    </ul>
+  </div>
+  <a class="top" href="#exam">↑ Haut</a>
+</section>
+  </main>
+</div>
+
+<footer>
+  <p><strong>WFARM2149 — Approche pharmaceutique de la nutrition.</strong> Synthèse de révision couvrant la suite du cours après les chapitres 1 à 5 : chapitre 6 (minéraux, oligoéléments &amp; vitamines), chapitre 7 (obésité), nutrition &amp; cancer, interactions aliments-médicaments.</p>
+  <p>Document de travail élaboré à partir des diapositives du cours (N.M. Delzenne, UCLouvain) et des annales 2018–2025. Les encadrés <span style="color:var(--exam)">Examen</span> reprennent des extraits réels d'examens et de corrigés ; les encadrés <span style="color:var(--keep)">À retenir</span> et <span style="color:var(--warn)">Pièges</span> signalent les points à haute valeur. Vérifiez toujours les seuils chiffrés sur les diapositives officielles, certaines valeurs ayant été révisées (CSS/EFSA 2025–2026).</p>
+</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

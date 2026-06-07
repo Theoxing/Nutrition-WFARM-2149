@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>J1 Après-midi · Lipides &amp; Protéines — Nutrition WFARM2149</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3f2e8; --paper-2:#e7e8d6; --ink:#1b211a; --ink-soft:#4d5447;
+  --accent:#3d6b3a; --accent-deep:#284d27; --accent-soft:#c4d8be;
+  --line:#cdd2bc; --gold:#9a7d2c;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.6;background-image:radial-gradient(circle at 12% 8%,rgba(61,107,58,.06),transparent 40%),radial-gradient(circle at 88% 92%,rgba(154,125,44,.06),transparent 45%);}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px 120px}
+header.hero{padding:64px 0 40px;border-bottom:3px double var(--line);margin-bottom:8px}
+.kicker{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-deep);font-weight:700}
+.hero h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(38px,7vw,68px);line-height:.98;margin:14px 0 10px;letter-spacing:-.01em}
+.hero .sub{font-style:italic;font-size:21px;color:var(--ink-soft);max-width:60ch}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.pill{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--ink-soft);background:rgba(255,255,255,.4)}
+.pill.hot{background:var(--accent);color:#fff;border-color:var(--accent)}
+section{margin-top:54px}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:22px}
+.sec-num{font-family:"Fraunces",serif;font-weight:900;font-size:40px;color:var(--accent);line-height:1;opacity:.85}
+.sec-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:30px;margin:0;letter-spacing:-.01em}
+.sec-head .tag{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--gold);padding:5px 10px;border-radius:4px;align-self:center}
+.card{background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:16px 0;box-shadow:0 2px 0 rgba(0,0,0,.02)}
+.card h3{font-family:"Fraunces",serif;font-weight:600;font-size:21px;margin:0 0 8px}
+.card p{margin:8px 0}
+.term{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--accent-deep);font-size:.92em}
+mark{background:linear-gradient(transparent 55%,var(--accent-soft) 55%);color:inherit;padding:0 1px;font-weight:500}
+.num{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--gold)}
+ul.clean{margin:8px 0;padding-left:22px}ul.clean li{margin:5px 0}
+.callout{border-left:4px solid var(--accent);background:rgba(61,107,58,.07);padding:12px 18px;border-radius:0 8px 8px 0;margin:14px 0;font-size:16.5px}
+.callout b{color:var(--accent-deep)}
+.reveal{border:1px dashed var(--accent);border-radius:10px;padding:0;margin:12px 0;overflow:hidden;background:rgba(255,255,255,.4)}
+.reveal summary{cursor:pointer;list-style:none;padding:16px 20px;font-family:"Fraunces",serif;font-weight:600;font-size:18px;display:flex;align-items:center;gap:12px}
+.reveal summary::-webkit-details-marker{display:none}
+.reveal summary::before{content:"?";font-family:"JetBrains Mono",monospace;font-weight:700;color:#fff;background:var(--accent);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:14px;flex:0 0 auto}
+.reveal[open] summary::before{content:"✓";background:var(--gold)}
+.reveal .body{padding:0 20px 18px 58px;font-size:16.5px;color:var(--ink-soft)}
+.reveal .body p:first-child{margin-top:0}
+.vf{display:inline-block;font-family:"JetBrains Mono",monospace;font-weight:700;font-size:12px;padding:2px 8px;border-radius:4px;color:#fff;margin-right:6px}
+.vf.v{background:var(--accent)}.vf.f{background:#b8492b}
+.check{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.check:last-child{border-bottom:none}
+.check input{appearance:none;width:24px;height:24px;border:2px solid var(--accent);border-radius:6px;flex:0 0 auto;margin-top:2px;cursor:pointer;position:relative;transition:.15s}
+.check input:checked{background:var(--accent)}
+.check input:checked::after{content:"✓";color:#fff;position:absolute;inset:0;display:grid;place-items:center;font-family:"JetBrains Mono";font-weight:700;font-size:14px}
+.check label{cursor:pointer;flex:1}.check input:checked + label{opacity:.5;text-decoration:line-through}
+.progress-box{position:sticky;top:0;z-index:5;background:var(--paper-2);border:1px solid var(--line);border-radius:0 0 12px 12px;padding:12px 20px;margin:0 -24px 0;display:flex;align-items:center;gap:14px;font-family:"JetBrains Mono",monospace;font-size:13px}
+.bar{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--gold));transition:width .4s}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:16px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-deep)}
+tr:last-child td{border-bottom:none}
+footer{margin-top:70px;padding-top:24px;border-top:3px double var(--line);font-style:italic;color:var(--ink-soft);font-size:15px}
+.nav{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.nav a{font-family:"JetBrains Mono",monospace;font-size:12px;text-decoration:none;color:var(--accent-deep);border:1px solid var(--line);padding:8px 14px;border-radius:8px;background:rgba(255,255,255,.4)}
+.nav a:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="progress-box"><span>RÉVISÉ</span><div class="bar"><i id="barfill"></i></div><span id="pct">0%</span></div>
+<div class="wrap">
+<header class="hero">
+  <div class="kicker">WFARM2149 · Approche pharmaceutique de la nutrition</div>
+  <h1>Jour 1 — Après-midi</h1>
+  <p class="sub">Lipides puis protéines. Deux chapitres gros pourvoyeurs de questions «&nbsp;pourquoi AGPI/AGMI &gt; saturés&nbsp;», phytostérols, valeur biologique, malnutrition.</p>
+  <div class="meta">
+    <span class="pill hot">~2 h</span>
+    <span class="pill">Chap. 3 · Lipides</span>
+    <span class="pill">Chap. 4 · Protéines</span>
+  </div>
+</header>
+
+<!-- LIPIDES -->
+<section id="l1">
+  <div class="sec-head"><span class="sec-num">1</span><h2>Lipides : la hiérarchie des acides gras</h2><span class="tag">question récurrente</span></div>
+  <div class="card">
+    <table>
+      <tr><th>Type</th><th>Effet santé</th><th>Sources</th></tr>
+      <tr><td><strong>AGS</strong> (saturés)</td><td>↑ cholestérol LDL → athérogène</td><td>beurre, viande rouge, charcuterie</td></tr>
+      <tr><td><strong>AGMI</strong> (mono-insat.)</td><td>↓ LDL, ↑ HDL ; ↑ métabolisation TAG post-prandiaux ; ↓ inflammation endothéliale</td><td>huile d'olive, avocat</td></tr>
+      <tr><td><strong>AGPI</strong> (poly-insat.)</td><td>améliorent le profil lipidique (oméga-3 surtout)</td><td>huiles végétales, poissons gras</td></tr>
+      <tr><td><strong>AG trans</strong></td><td>les <mark>pires</mark> : ↑ LDL <em>et</em> ↓ HDL + inflammation</td><td>industriels ; trace naturelle (laitiers, ac. vaccénique)</td></tr>
+    </table>
+    <div class="callout"><b>La phrase qui rapporte les points :</b> il est recommandé de <strong>remplacer les AGS et trans par des graisses insaturées</strong> (Mensink &amp; Katan : substitution AGS→AGMI ↓ LDL).</div>
+  </div>
+
+  <details class="reveal">
+    <summary>Oméga-3 (AGPI n-3) — définition + rôle</summary>
+    <div class="body">
+      <p>AG polyinsaturé dont la <strong>1ère double liaison est sur le 3ᵉ carbone</strong> depuis l'extrémité méthyle. <em>Essentiels</em> = non synthétisables, apport alimentaire obligatoire.</p>
+      <p><strong>Exemples :</strong> ALA (lin, colza, noix) ; EPA &amp; DHA (poissons gras). <strong>Rôles :</strong> anti-inflammatoire, anti-thrombotique, hypotriglycéridémiant, cardioprotecteur, développement cérébral/visuel. <strong>Ratio idéal n-6/n-3 &lt; 4:1.</strong></p>
+      <p><em>Pièges V/F :</em> n-3 n'a pas toujours 3 DL (DHA = 6) · l'ALA n'est pas que dans le poisson · les AGPI subissent la <strong>peroxydation lipidique</strong> (V).</p>
+    </div>
+  </details>
+
+  <details class="reveal">
+    <summary>Phytostérols / stanols — rôle &amp; mécanisme</summary>
+    <div class="body"><p>Composés végétaux <mark>structurellement proches du cholestérol</mark>. À ~<span class="num">2 g/j</span>, ils entrent en <strong>compétition avec le cholestérol au niveau intestinal</strong> → ↓ absorption → ↓ cholestérol total et ↓ LDL. Utilisés dans les aliments fonctionnels (margarines enrichies), chez les personnes en excès modéré de cholestérol.</p></div>
+  </details>
+
+  <div class="card">
+    <h3>À ne pas oublier sur les lipides</h3>
+    <ul class="clean">
+      <li>Tous les lipides ≈ <span class="num">9 kcal/g</span> (via les acides gras des triglycérides) — V.</li>
+      <li><span class="term">Aliment fonctionnel</span> : en plus de sa valeur nutritive, effet bénéfique <strong>démontré</strong> sur une fonction de l'organisme (margarine aux phytostérols, yaourt probiotique, poissons gras EPA/DHA).</li>
+      <li>Cholestérol alimentaire : ce n'est pas lui qui est «&nbsp;toxique&nbsp;», c'est l'association cholestérol + lipides (LDL) qui est délétère.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROTEINES -->
+<section id="p1">
+  <div class="sec-head"><span class="sec-num">2</span><h2>Protéines</h2></div>
+  <div class="card">
+    <h3>Qualité protéique</h3>
+    <ul class="clean">
+      <li><span class="term">Valeur biologique</span> — qualité d'une protéine selon sa teneur en AA essentiels et sa digestibilité.</li>
+      <li>Protéines <strong>végétales</strong> : souvent <mark>incomplètes</mark> (manque ≥ 1 AA essentiel) + digestibilité plus faible → on varie les sources (céréales + légumineuses).</li>
+      <li><span class="term">AA limitant</span> — l'acide aminé essentiel présent en plus faible quantité, qui «&nbsp;plafonne&nbsp;» la synthèse protéique.</li>
+      <li>Besoin : <span class="num">0,8 g/kg/j</span> → un homme de <span class="num">80 kg</span> ≈ <span class="num">64 g/j</span> (un plat ≈ 20 g → insuffisant seul).</li>
+    </ul>
+  </div>
+
+  <details class="reveal">
+    <summary>Nutriment essentiel — définition de Q1 (juin 2025)</summary>
+    <div class="body"><p>Nutriment que l'on <mark>ne peut pas synthétiser</mark> et qui, par son rôle clé dans des fonctions physiologiques, doit être apporté par l'alimentation. <strong>Ex :</strong> acides aminés essentiels, acides gras essentiels, toutes les vitamines.</p></div>
+  </details>
+
+  <details class="reveal">
+    <summary>Gluten &amp; intolérances</summary>
+    <div class="body"><p>Le <strong>gluten (gliadine)</strong> présent dans de nombreuses céréales peut provoquer une intolérance → maladie cœliaque (altération de la muqueuse de l'intestin grêle, malabsorption, inflammation) → éviction définitive. À distinguer de l'intolérance au <strong>lactose</strong> (un glucide, pas une protéine).</p></div>
+  </details>
+
+  <div class="card">
+    <h3>Malnutrition (OMS) — déficit protéino-énergétique</h3>
+    <table>
+      <tr><th>Forme</th><th>Cause</th><th>Signes</th></tr>
+      <tr><td><strong>Marasme</strong></td><td>déficit <em>calorique</em> global</td><td>atrophie musculaire/tissulaire majeure</td></tr>
+      <tr><td><strong>Kwashiorkor</strong></td><td>déficit <em>protéique</em></td><td>œdème, hépatomégalie, irritabilité, dépigmentation</td></tr>
+    </table>
+    <p>Malnutrition = déséquilibre apports/besoins → englobe <strong>sous-nutrition ET surpoids/obésité</strong>.</p>
+  </div>
+
+  <details class="reveal">
+    <summary>Régime végétalien : définition &amp; carences (enfant)</summary>
+    <div class="body"><p><strong>Végétalien</strong> = exclut <mark>tous</mark> les produits animaux (viande, poisson, œufs, laitages, miel). <strong>Végétarien</strong> = peut inclure œufs/laitages. Carences à risque chez l'enfant : <strong>vitamine B12</strong> (uniquement d'origine animale) et <strong>fer</strong> (fer non héminique végétal moins bien absorbé → associer à la vitamine C).</p></div>
+  </details>
+</section>
+
+<!-- checklist -->
+<section id="done">
+  <div class="sec-head"><span class="sec-num">✓</span><h2>Auto-contrôle</h2></div>
+  <div class="card" id="checklist">
+    <div class="check"><input type="checkbox" id="c1"><label for="c1">Je classe AGS / AGMI / AGPI / trans par effet sur LDL &amp; HDL</label></div>
+    <div class="check"><input type="checkbox" id="c2"><label for="c2">Pourquoi les AG trans sont les pires (LDL↑ + HDL↓)</label></div>
+    <div class="check"><input type="checkbox" id="c3"><label for="c3">Oméga-3 : définition (3ᵉ C), ALA/EPA/DHA, ratio &lt;4:1</label></div>
+    <div class="check"><input type="checkbox" id="c4"><label for="c4">Phytostérols : mécanisme de compétition intestinale + dose</label></div>
+    <div class="check"><input type="checkbox" id="c5"><label for="c5">Aliment fonctionnel &amp; nutriment essentiel : définitions par cœur</label></div>
+    <div class="check"><input type="checkbox" id="c6"><label for="c6">Valeur biologique, AA limitant, besoin 0,8 g/kg/j</label></div>
+    <div class="check"><input type="checkbox" id="c7"><label for="c7">Marasme vs kwashiorkor</label></div>
+    <div class="check"><input type="checkbox" id="c8"><label for="c8">Végétalien vs végétarien + carences B12 / fer</label></div>
+  </div>
+</section>
+
+<footer>
+  <p>Fiche 2/4 · Pense à reformuler chaque réponse en 2–3 phrases : c'est le format attendu à l'examen.</p>
+  <div class="nav">
+    <a href="J1-matin_fondations-glucides.html">← J1 Matin</a>
+    <a href="J2-matin_micronutriments-obesite.html">→ J2 Matin · Micronutriments &amp; obésité</a>
+    <a href="J2-apresmidi_drill-examens.html">→ J2 Après-midi · Drill</a>
+  </div>
+</footer>
+</div>
+<script>
+(function(){var KEY="nutri_j1pm";var boxes=document.querySelectorAll('#checklist input');
+function load(){try{var s=JSON.parse(localStorage.getItem(KEY)||"{}");boxes.forEach(function(b){if(s[b.id])b.checked=true;});}catch(e){}}
+function save(){try{var s={};boxes.forEach(function(b){s[b.id]=b.checked;});localStorage.setItem(KEY,JSON.stringify(s));}catch(e){}}
+function upd(){var n=0;boxes.forEach(function(b){if(b.checked)n++;});var p=boxes.length?Math.round(n/boxes.length*100):0;document.getElementById('barfill').style.width=p+"%";document.getElementById('pct').textContent=p+"%";}
+load();upd();boxes.forEach(function(b){b.addEventListener('change',function(){save();upd();});});})();
+</script>
+</body>
+</html>
